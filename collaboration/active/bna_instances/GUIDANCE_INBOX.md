@@ -15,11 +15,11 @@
 
 ## IRON Cutover (G+Lumen Approved 2025-12-04)
 
-- [ ] IRON Cutover Approved
-- [ ] Dragon-first sequence authorized
+- [x] IRON Cutover Approved
+- [x] Dragon-first sequence authorized
 - [ ] Quiet mode
 - [ ] Canary complete
-- [ ] KM-1176 observing live
+- [x] KM-1176 observing live
 
 **Sequence:** Dragon first → 3h Canary → Tiger second → Continuous IRON
 
