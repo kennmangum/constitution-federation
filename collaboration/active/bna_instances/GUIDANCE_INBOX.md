@@ -21,7 +21,7 @@
 - [ ] Canary complete
 - [x] KM-1176 observing live
 
-**Sequence:** Dragon first → 3h Canary → Tiger second → Continuous IRON
+**Sequence:** Dragon first → Tiger second → 3 Hr Canary → Continuous IRON
 
 ---
 

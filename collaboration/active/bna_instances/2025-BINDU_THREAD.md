@@ -55,3 +55,36 @@
 - **Action Requested:** Approve / Modify / Reject
 
 ---
+
+## 2025-12-04T23:16:45.756899Z — YELLOW Proposal (TIGER)
+
+- **Type:** Stale Context Alert
+- **Rationale:** Checkpoint is 3.9h old. Reviewing for missed tasks.
+- **Action Requested:** Approve / Modify / Reject
+- **Link:** /home/kmangum/Tiger_1a/orchestrator/context_checkpoint.yaml
+
+---
+
+## 2025-12-04T23:17:32.350455Z — YELLOW Proposal (TIGER) [Iron v1.0]
+
+- **ID:** YP-2025-12-04-001
+- **Title:** Prioritize Revenue Generation with ROE Aligned Actions
+- **Lane:** Solar|Quest|MERC
+- **Rationale:** Maximizing revenue generation is critical for human financial stability (LGP)
+- **ROE Impact:** Expected impact: Increased revenue, improved efficiency
+- **Generational Rationale:** LGP alignment
+- **Action Requested:** Approve `[APPROVED YP-2025-12-04-001]` / Modify / Reject `[REJECTED YP-2025-12-04-001]`
+
+---
+
+## 2025-12-04T23:19:20.481458Z — YELLOW Proposal (TIGER) [Iron v1.0]
+
+- **ID:** YP-2025-12-04-004
+- **Title:** Explore alternative revenue streams for MERC lane
+- **Lane:** MERC
+- **Rationale:** This could provide additional financial stability, but requires careful consideration of impact on ROE and LGP.
+- **ROE Impact:** Expected increase in revenue generation
+- **Generational Rationale:** LGP alignment
+- **Action Requested:** Approve `[APPROVED YP-2025-12-04-004]` / Modify / Reject `[REJECTED YP-2025-12-04-004]`
+
+---
