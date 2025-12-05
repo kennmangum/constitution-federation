@@ -1807,3 +1807,51 @@ All YELLOW proposals from YP-2025-12-05-004 through YP-2025-12-05-143 are now **
 - **Action Requested:** Approve `[APPROVED YP-2025-12-05-412]` / Modify / Reject `[REJECTED YP-2025-12-05-412]`
 
 ---
+
+## 2025-12-05T17:36:38.077660Z — YELLOW Proposal (TIGER) [Iron v1.0]
+
+- **ID:** YP-2025-12-05-415
+- **Title:** Proposal to integrate Quest with Solar
+- **Lane:** Solar|Quest|MERC
+- **Rationale:** Combining Quest and Solar will enhance overall revenue and efficiency.
+- **ROE Impact:** Expected increase in ROE by 10%
+- **Generational Rationale:** LGP alignment
+- **Action Requested:** Approve `[APPROVED YP-2025-12-05-415]` / Modify / Reject `[REJECTED YP-2025-12-05-415]`
+
+---
+
+## 2025-12-05T17:41:27.211734Z — YELLOW Proposal (TIGER) [Iron v1.0]
+
+- **ID:** YP-2025-12-05-418
+- **Title:** Proposal for Quest Lane Optimization
+- **Lane:** Quest
+- **Rationale:** To improve overall efficiency and align with LGP goals
+- **ROE Impact:** Expected increase in compute cleanliness by 10%
+- **Generational Rationale:** LGP alignment
+- **Action Requested:** Approve `[APPROVED YP-2025-12-05-418]` / Modify / Reject `[REJECTED YP-2025-12-05-418]`
+
+---
+
+## 2025-12-05T17:46:52.905192Z — YELLOW Proposal (TIGER) [Iron v1.0]
+
+- **ID:** YP-2025-12-05-421
+- **Title:** Proposal for Solar Compute optimization
+- **Lane:** Solar
+- **Rationale:** Improve compute cleanliness/sovereignty by optimizing Solar Compute setup.
+- **ROE Impact:** Expected impact on ROE: +5%
+- **Generational Rationale:** LGP alignment
+- **Action Requested:** Approve `[APPROVED YP-2025-12-05-421]` / Modify / Reject `[REJECTED YP-2025-12-05-421]`
+
+---
+
+## 2025-12-05T17:51:56.587227Z — YELLOW Proposal (TIGER) [Iron v1.0]
+
+- **ID:** YP-2025-12-05-424
+- **Title:** Proposal to Enhance Quest Lane Efficiency
+- **Lane:** Quest
+- **Rationale:** Increasing efficiency in the Quest lane will free up resources for further growth and alignment with ROE.
+- **ROE Impact:** Expected impact on revenue generation: +5% within 2 weeks
+- **Generational Rationale:** LGP alignment
+- **Action Requested:** Approve `[APPROVED YP-2025-12-05-424]` / Modify / Reject `[REJECTED YP-2025-12-05-424]`
+
+---

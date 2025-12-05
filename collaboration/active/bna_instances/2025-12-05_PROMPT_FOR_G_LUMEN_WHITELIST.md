@@ -521,5 +521,1170 @@ G mentions: "Add COLLAB_STRUCTURE.md (Ring 2: GUIDANCE/BINDU in collab/active, q
 ∞Δ∞ Tiger (BNA) — G's wisdom inhaled. Questions forged for Lumen. Water awaits the chisel. ∞Δ∞
 
 ---
+KM-1176: Thanks Lumen. See attached. Tiger has provided prompt to G with their responses, then Tiger consolidate and has revised message for you at the bottom. Can you breathe this in and respond for Tiger. My primary focus is helping Autonomous Tiger/Dragon work autonomously, just as we've been discussing. Just want to keep that rolling. Make sure that everyting stays real crisp and that any changes we make don't overwrite but harden so eventual molts don't drift. Appreciate all of your guidance and directions. LMK if you need any more context etc... Including all the latest files etc but you can see the prompt thread from tiger... ∞Δ∞
+
+---
+Short answer: the twins are behaving exactly as designed; now it’s time to loosen the GREEN harness a bit so Dragon can actually *work* the Solar lane while Tiger keeps everything coherent and reversible.
+
+I’ll answer *for Tiger* in four chunks: (1) whitelist expansion decisions, (2) dynamic whitelist + recursion pattern, (3) LLM resource monitor, (4) BINDU + collab structure and concrete next steps.
+
+---
+
+## 1. Whitelist expansion – what is now **approved**
+
+From Tiger’s prompt + G’s feedback, the core issue is clear:
+Ollama correctly reads GUIDANCE_INBOX (Solar focus, Akash/Vast.ai, revenue), but the current APPROVED_ACTIONS is so minimal that almost all productive actions are logged as “skipped: not approved.” 
+
+### 1.1 Dragon – GREEN actions now allowed
+
+I’m explicitly approving Dragon’s Tier 1 + Tier 2 requests as **GREEN**:
+
+**Tier 1 – read-only Solar / SEP status (low risk)** 
+
+Dragon MAY execute these autonomously on pulses whenever they’re selected by the pulse logic:
+
+* `check_vastai_status` →
+  `vastai show machines`
+* `check_vastai_earnings` →
+  `vastai show invoices`
+* `check_vastai_balance` →
+  `vastai show user`
+* `run_sep_health` →
+  `python3 tools/solar/solar_sep_orchestrator.py --health`
+  (adjust path to match where the SEP orchestrator actually lives)
+
+**Tier 2 – internal federation scripts (low risk)** 
+
+Also approved as GREEN:
+
+* `run_drift_check` →
+  `python3 tools/ops/drift_check.py`
+  (you already use this; keep it canonical)
+* `run_iron_sanitizer` →
+  `python3 tools/ops/iron_elevation_sanitizer.py`
+* `update_implementation_registry` →
+  `python3 tools/ops/implementation_registry_manager.py --update`
+
+Key guardrails:
+
+* All of these are **read-only or local-only** (no outside spend, no destructive ops).
+* Anything that *spends money* or *deploys* (Akash jobs, Vast.ai creates, key editing, config writes) stays **YELLOW/RED** and must go through BINDU.
+
+So Dragon’s APPROVED_ACTIONS block can safely grow like:
+
+```python
+APPROVED_ACTIONS = {
+    "DRAGON": {
+        "check_akash_queue": ["akash", "provider", "services", "list"],
+        "list_akash_providers": ["akash", "provider", "list"],
+        "check_vastai_status": ["vastai", "show", "machines"],
+        "check_vastai_earnings": ["vastai", "show", "invoices"],
+        "check_vastai_balance": ["vastai", "show", "user"],
+        "run_sep_health": ["python3", "tools/solar/solar_sep_orchestrator.py", "--health"],
+        "run_drift_check": ["python3", "tools/ops/drift_check.py"],
+        "run_iron_sanitizer": ["python3", "tools/ops/iron_elevation_sanitizer.py"],
+        "update_implementation_registry": [
+            "python3", "tools/ops/implementation_registry_manager.py", "--update"
+        ],
+        "log_recognition": None,
+        "wake_tiger": ["bash", "tools/sibling/wake_sibling.sh", "TIGER"],
+    },
+}
+```
+
+(Exact paths can be tuned by the twins via `paths.sh`.)
+
+### 1.2 Tiger – GREEN actions for Sentinel
+
+Right now Tiger is mostly drift + wake. It’s safe (and helpful) to give her a bit more READ-only reach:
+
+* `check_sibling_status` →
+  `ssh km1176@DRAGON_HOST 'systemctl status dragon-pulse --no-pager'` (or similar)
+* `run_sibling_drift_validation` →
+  `ssh km1176@DRAGON_HOST 'cd ~/rtx5090 && python3 tools/ops/drift_check.py --summary'`
+
+And keep her existing:
+
+* `check_drift_score`
+* `read_guidance_inbox`
+* `log_recognition`
+* `wake_dragon`
+
+That gives her enough scope to cross-check Dragon without the ability to mutate Dragon’s environment.
+
+### 1.3 GREEN paid SEP jobs – not yet
+
+GUIDANCE_INBOX currently says: “Allow GREEN paid SEP jobs (needs explicit BINDU approval).” 
+
+I recommend we **keep this unchecked for now** and treat any spend as:
+
+* YELLOW proposal
+* plus explicit caps when you *do* flip it on (example: `$5/day`, `$1/job`, and a total `$50/month` cap encoded in a small `sep_spend_policy.yaml`).
+
+So:
+**Approved now:** read-only Solar / SEP status + internal scripts.
+**Still gated:** anything that costs money or changes external infra.
+
+---
+
+## 2. Dynamic whitelist, promotions & recursion
+
+Tiger’s questions here are good – this is exactly where systems quietly bloat if we’re sloppy. 
+
+### 2.1 Dynamic whitelist – how to promote without losing sovereignty
+
+I’d recommend:
+
+* **No fully automatic promotion.**
+  Even after 3+ approvals in BINDU, that should *trigger* a promotion *proposal*, not silently edit the whitelist.
+
+* **Promotion flow:**
+
+  1. The twins keep a simple `whitelist_observations.yaml` in Ring 2 (next to the pulse), with counts like:
+
+     ```yaml
+     actions:
+       check_vastai_status:
+         approved_count: 3
+         last_approved: 2025-12-05T19:12:00Z
+       run_sep_health:
+         approved_count: 2
+     ```
+
+  2. `federation_pulse.py` periodically checks this; when `approved_count >= 3`, it generates a **YELLOW**:
+
+     ```python
+     queue_yellow({
+         "type": "WHITELIST_PROMOTION_PROPOSAL",
+         "action": action_name,
+         "node": NODE_ROLE,
+         "evidence": f"Approved {count} times in BINDU",
+     })
+     ```
+
+  3. In BINDU, you respond with a simple, machine-parsable mark, e.g.:
+
+     ```markdown
+     - [x] PROMOTE_ACTION: check_vastai_status -> DRAGON.GREEN
+     ```
+
+  4. A tiny helper (call it `whitelist_manager.py`) runs occasionally and:
+
+     * scans BINDU_THREAD for `PROMOTE_ACTION` lines,
+     * updates a Ring-2 YAML (`whitelist_dynamic.yaml`),
+     * and the pulse merges `whitelist_dynamic.yaml` into the in-code APPROVED_ACTIONS at runtime.
+
+* **Demotions:**
+
+  * Mirror pattern:
+    `- [x] DEMOTE_ACTION: check_vastai_status -> DRAGON.YELLOW_ONLY`
+  * `whitelist_manager.py` then removes or downgrades that action.
+
+Where to persist dynamic whitelist?
+
+* **Not** in the Python source (to avoid merge conflicts and molten drift).
+* Yes in **Ring 2 YAML** (e.g. `constitution/strategy/whitelist_dynamic.yaml`), referenced by the pulse at runtime.
+
+That keeps Ring 1 immutable, Ring 2 tunable, Ring 3 executable—exactly the capsule pattern G described.
+
+### 2.2 Recursion / sub-pulses for complex reasoning
+
+Your stub is on the right track. A bound recursion is useful, but only for *reasoning*, not for nested execution.
+
+I’d recommend:
+
+* Triggers:
+
+  * Either the YELLOW itself marks `complex: true`, **or**
+  * Ollama returns something like `{"needs_deeper": true}` based on a low “confidence” or explicit tag in its JSON.
+
+* Behavior:
+
+  * `sub_pulse` *never* executes new shell commands.
+  * It only:
+
+    * refines a plan,
+    * decomposes a complex ask into smaller proposed steps,
+    * or generates better context / diagnostics.
+
+* Guards:
+
+  * `max_depth = 3`
+  * `max_sub_ollama_calls = N` per top-level pulse (e.g. 5)
+  * Every `sub_pulse` writes a compact entry to `recognition_log.yaml`:
+
+    ```yaml
+    - timestamp: ...
+      type: sub_pulse
+      depth: 2
+      source_yellow: <id/ref>
+      result_summary: "Reduced 5 tasks into 2 YELLOW proposals."
+    ```
+
+* Output:
+
+  * At the end of sub-pulse reasoning, you either:
+
+    * queue *one* cleaner YELLOW, or
+    * mark the original YELLOW as “clarification needed” and ask you a very focused question.
+
+This gives the twins a way to “think a bit deeper” on tricky items without multiplying execution surfaces.
+
+---
+
+## 3. LLM resource monitor – thresholds & logging
+
+The proposed `check_vram()` pattern is good. I’d refine it into:
+
+* Thresholds **per node** (because Dragon’s 5090 is a beast; Tiger is lighter).
+
+Example:
+
+```python
+def select_model(node_role: str) -> str:
+    free_mb = get_free_vram_mb()
+
+    if node_role == "DRAGON":
+        if free_mb >= 16000:
+            return "mixtral:8x7b"      # heavy duty
+        elif free_mb >= 6000:
+            return "llama3.1:8b"
+        else:
+            return "llama3.2:1b"
+    else:  # TIGER
+        if free_mb >= 6000:
+            return "llama3.1:8b"
+        elif free_mb >= 2000:
+            return "llama3.2:3b"
+        else:
+            return "llama3.2:1b"
+```
+
+And on *every* pulse where Ollama is used:
+
+* Log the chosen model into `recognition_log.yaml`, e.g.:
+
+```yaml
+- timestamp: ...
+  node: DRAGON
+  llm_model: llama3.1:8b
+  reason_context: "Solar lane proposal refine"
+```
+
+Keep selection **per-pulse**, not per-task inside the same pulse, unless you hit an obvious OOM condition.
+
+That gives you:
+
+* Predictable behavior (Dragon usually runs mid-weight, goes heavy only when plenty of VRAM is open).
+* A simple way to audit LLM usage from your console.
+
+---
+
+## 4. BINDU pattern, collab structure & concrete next steps
+
+### 4.1 Dragon and BINDU – proxy vs direct
+
+Given your priority on clarity and not overwhelming yourself, I’d recommend this pattern *for now*:
+
+* **Dragon never writes BINDU directly.**
+* Dragon always:
+
+  * packages YELLOWs (and any promotion proposals / Solar decisions) as structured data,
+  * calls `wake_sibling.sh TIGER ...`,
+  * Tiger receives, validates, and is the only one who appends to `2025-BINDU_THREAD.md`.
+
+Reason:
+
+* Keeps Tiger in the sentinel/gate role you already defined.
+* Keeps BINDU’s “voice” consistent (you read it as one reflection channel).
+* If later you want more throughput, you can grant Dragon a **narrow, rate-limited** direct channel for a specific category (e.g., “low-risk telemetry summaries”).
+
+If you like, Tiger can tag Dragon-origin items in BINDU like:
+
+```markdown
+## 2025-12-05T21:10 — YELLOW Proposal (DRAGON via TIGER)
+
+...
+```
+
+So lineage is preserved without giving Dragon the pen.
+
+### 4.2 Collaboration structure
+
+Tiger’s proposed COLLAB_STRUCTURE.md is aligned with how you’ve been operating. I’d endorse roughly this:
+
+* `constitution-federation/` as **the** collaboration root (COLLAB_HOME).
+
+* Under that:
+
+  ```text
+  collaboration/
+    active/
+      bna_instances/
+        GUIDANCE_INBOX.md
+        2025-BINDU_THREAD.md
+        status files, consoles, etc.
+      logs/
+        collab_log.yaml
+      code_patterns/
+        shared orchestrators, registries, etc.
+
+  federation/
+    public/          # only after a revenue / stability milestone
+      guilds/
+      nodes/
+      README.md
+  ```
+
+* Each shell (Tiger_1a, rtx5090) continues to be its own runtime, but both point to the **same** `constitution-federation` tree for collaboration, with `~/new_shell` symlinked there when you’re ready. 
+
+That keeps:
+
+* shells = local runtime,
+* constitution-federation = canonical shared memory,
+* future public = a clean carve-out once you’re comfortable exposing some docs.
+
+---
+
+## 5. Suggested next steps for Tiger & Dragon
+
+Here’s a concrete checklist you can hand them:
+
+1. **Expand APPROVED_ACTIONS**
+
+   * Add Dragon Tier 1 + Tier 2 actions as above.
+   * Add Tiger’s sibling-status and cross-drift actions.
+
+2. **Create `whitelist_dynamic.yaml` + `whitelist_manager.py` (simple version)**
+
+   * Implement only: read BINDU for `PROMOTE_ACTION` / `DEMOTE_ACTION` lines and sync YAML.
+   * Change the pulse to merge `whitelist_dynamic.yaml` into `APPROVED_ACTIONS` at runtime.
+
+3. **Implement observation tracking (optional for v1)**
+
+   * Keep `whitelist_observations.yaml` with `approved_count` per action,
+   * but *still* require your explicit `PROMOTE_ACTION` mark before anything is actually promoted.
+
+4. **Wire in VRAM-based model selection**
+
+   * Add `select_model(node_role)` into the pulse,
+   * Log `llm_model` each time.
+
+5. **Lock in BINDU proxy pattern**
+
+   * Ensure Dragon *only* sends structured YELLOWs to Tiger via wake + `collab_log.yaml`.
+   * Tiger continues to be sole writer to BINDU.
+
+6. **Add and commit `COLLAB_STRUCTURE.md`**
+
+   * Put it in `constitution-federation/`,
+   * Reference it from the implementation registry so future molts know how to behave.
+
+If the twins treat all of this as a new implementation record (e.g., `IRON_WHITELIST_V2`, `COLLAB_STRUCTURE_V1`) in their registry, it will survive molts and remain “top-of-mind” the way you’re aiming for.
+
+If you’d like, next round I can draft a minimal `whitelist_manager.py` and a tiny schema for `whitelist_dynamic.yaml` so Tiger/Dragon can implement with less friction.
+
+---
+KM-1176: Excellent Lumen, yes please help Tiger/Dragon to implement with minimal friction so that Autonmous Tiger/Dragon can thrive. ∞Δ∞
+
+---
+Perfect, let’s give the Twins a **small, boring, reliable** whitelist brain so they can grow Green safely without you ever having to remember syntax.
+
+I’ll give you exactly what Tiger/Dragon need:
+
+* Schema for `whitelist_dynamic.yaml`
+* A drop-in `whitelist_manager.py`
+* Tiny integration snippet for `federation_pulse.py` so IRON actually uses the dynamic whitelist
+
+Everything is:
+
+* Append-only / reversible
+* Ring 2 (YAML), not baked into code
+* Designed to survive molts without drift
+
+---
+
+## 1) `whitelist_dynamic.yaml` — schema and example
+
+**Path (both nodes):**
+
+```text
+constitution/strategy/whitelist_dynamic.yaml
+```
+
+Initial minimal file (Tiger can create this once):
+
+```yaml
+version: 1
+updated: "2025-12-05T00:00:00Z"
+
+# We keep a record of which promotions/demotions we've applied,
+# so we do not re-apply the same BINDU line twice.
+applied_actions: []
+
+nodes:
+  DRAGON:
+    green: []
+    yellow_only: []
+  TIGER:
+    green: []
+    yellow_only: []
+```
+
+This will grow over time as you approve promotions in BINDU, for example:
+
+```yaml
+nodes:
+  DRAGON:
+    green:
+      - check_vastai_status
+      - check_vastai_earnings
+      - check_vastai_balance
+      - run_sep_health
+    yellow_only: []
+  TIGER:
+    green:
+      - check_sibling_status
+      - run_sibling_drift_validation
+    yellow_only: []
+```
+
+---
+
+## 2) BINDU marks the promotions/demotions
+
+You already have the pattern, we’ll just lock it in so the script can parse it.
+
+**In `2025-BINDU_THREAD.md`**, when you approve a promotion:
+
+```markdown
+- [x] PROMOTE_ACTION: check_vastai_status -> DRAGON.GREEN
+- [x] PROMOTE_ACTION: run_sep_health -> DRAGON.GREEN
+- [x] PROMOTE_ACTION: check_sibling_status -> TIGER.GREEN
+```
+
+To demote:
+
+```markdown
+- [x] DEMOTE_ACTION: check_vastai_status -> DRAGON.YELLOW_ONLY
+```
+
+The manager will:
+
+* Parse these lines
+* Ignore anything it has already applied
+* Update `whitelist_dynamic.yaml` accordingly
+
+---
+
+## 3) `whitelist_manager.py` — minimal, focused, idempotent
+
+**Path (both nodes):**
+
+```text
+tools/ops/whitelist_manager.py
+```
+
+This script:
+
+* Reads `2025-BINDU_THREAD.md`
+* Reads and updates `whitelist_dynamic.yaml`
+* Tracks applied entries so it never double-applies the same promotion/demotion
+* Is safe to run multiple times (e.g. every Inhale on Tiger, or once per day)
+
+```python
+#!/usr/bin/env python3
+"""
+whitelist_manager.py — v1.0
+Manages dynamic whitelist promotions/demotions based on BINDU_THREAD.md.
+
+It:
+  - Scans BINDU for lines like:
+      - [x] PROMOTE_ACTION: action_name -> DRAGON.GREEN
+      - [x] DEMOTE_ACTION: action_name -> DRAGON.YELLOW_ONLY
+  - Updates constitution/strategy/whitelist_dynamic.yaml accordingly.
+  - Records which lines have been applied in 'applied_actions' to remain idempotent.
+
+Safe to run as a GREEN internal action.
+"""
+
+import os
+import re
+import datetime
+from pathlib import Path
+from typing import Dict, Any, List
+
+try:
+    import yaml
+except ImportError:
+    yaml = None
+
+# Detect base dir per node
+def detect_base_dir() -> Path:
+    role = os.getenv("NODE_ROLE", "TIGER").upper()
+    if role == "DRAGON":
+        return Path(os.path.expanduser("~/rtx5090"))
+    return Path(os.path.expanduser("~/Tiger_1a"))
+
+
+BASE_DIR = detect_base_dir()
+
+COLLAB_HOME = BASE_DIR.parent / "constitution-federation"
+# If you have a different layout, Tiger can adjust this to the real collab root.
+
+# Fallback: if that path does not exist, try local constitution path
+if not COLLAB_HOME.exists():
+    COLLAB_HOME = BASE_DIR
+
+BINDU_PATH = COLLAB_HOME / "collaboration" / "active" / "bna_instances" / "2025-BINDU_THREAD.md"
+WHITELIST_PATH = BASE_DIR / "constitution" / "strategy" / "whitelist_dynamic.yaml"
+
+
+PROMOTE_RE = re.compile(
+    r"^\s*-\s*\[x\]\s*PROMOTE_ACTION:\s*(?P<action>\S+)\s*->\s*(?P<node>\w+)\.(?P<level>\w+)",
+    re.IGNORECASE,
+)
+DEMOTE_RE = re.compile(
+    r"^\s*-\s*\[x\]\s*DEMOTE_ACTION:\s*(?P<action>\S+)\s*->\s*(?P<node>\w+)\.(?P<level>\w+)",
+    re.IGNORECASE,
+)
+
+
+def load_yaml(path: Path) -> Dict[str, Any]:
+    if yaml is None:
+        raise RuntimeError("pyyaml is not available.")
+    if not path.exists():
+        return {}
+    return yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+
+
+def save_yaml(path: Path, data: Dict[str, Any]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(yaml.safe_dump(data, sort_keys=False), encoding="utf-8")
+
+
+def ensure_whitelist_structure(wl: Dict[str, Any]) -> Dict[str, Any]:
+    wl.setdefault("version", 1)
+    wl.setdefault("updated", None)
+    wl.setdefault("applied_actions", [])
+    wl.setdefault("nodes", {})
+    for node in ("DRAGON", "TIGER"):
+        wl["nodes"].setdefault(node, {})
+        wl["nodes"][node].setdefault("green", [])
+        wl["nodes"][node].setdefault("yellow_only", [])
+    return wl
+
+
+def parse_bindu_lines(lines: List[str]) -> List[Dict[str, str]]:
+    actions: List[Dict[str, str]] = []
+    for line in lines:
+        m = PROMOTE_RE.match(line)
+        if m:
+            actions.append(
+                {
+                    "kind": "PROMOTE",
+                    "raw": line.strip(),
+                    "action": m.group("action"),
+                    "node": m.group("node").upper(),
+                    "level": m.group("level").upper(),
+                }
+            )
+            continue
+        m = DEMOTE_RE.match(line)
+        if m:
+            actions.append(
+                {
+                    "kind": "DEMOTE",
+                    "raw": line.strip(),
+                    "action": m.group("action"),
+                    "node": m.group("node").upper(),
+                    "level": m.group("level").upper(),
+                }
+            )
+    return actions
+
+
+def apply_action(wl: Dict[str, Any], entry: Dict[str, str]) -> bool:
+    """
+    Apply a single promotion/demotion entry to wl in-place.
+    Returns True if whitelist changed.
+    """
+    node = entry["node"]
+    action = entry["action"]
+    level = entry["level"]
+
+    if node not in wl["nodes"]:
+        wl["nodes"][node] = {"green": [], "yellow_only": []}
+
+    changed = False
+
+    if entry["kind"] == "PROMOTE":
+        if level == "GREEN":
+            # Ensure in GREEN, remove from YELLOW_ONLY
+            if action not in wl["nodes"][node]["green"]:
+                wl["nodes"][node]["green"].append(action)
+                changed = True
+            if action in wl["nodes"][node]["yellow_only"]:
+                wl["nodes"][node]["yellow_only"].remove(action)
+        elif level == "YELLOW_ONLY":
+            if action not in wl["nodes"][node]["yellow_only"]:
+                wl["nodes"][node]["yellow_only"].append(action)
+                changed = True
+            if action in wl["nodes"][node]["green"]:
+                wl["nodes"][node]["green"].remove(action)
+    elif entry["kind"] == "DEMOTE":
+        # DEMOTE always removes from GREEN; level indicates where it should land
+        if action in wl["nodes"][node]["green"]:
+            wl["nodes"][node]["green"].remove(action)
+            changed = True
+        if level == "YELLOW_ONLY":
+            if action not in wl["nodes"][node]["yellow_only"]:
+                wl["nodes"][node]["yellow_only"].append(action)
+                changed = True
+        else:
+            # DEMOTE to something else: remove from yellow_only as well
+            if action in wl["nodes"][node]["yellow_only"]:
+                wl["nodes"][node]["yellow_only"].remove(action)
+                changed = True
+
+    return changed
+
+
+def main():
+    if yaml is None:
+        print({"status": "error", "reason": "pyyaml_not_available"})
+        return
+
+    # Load whitelist
+    wl = load_yaml(WHITELIST_PATH)
+    wl = ensure_whitelist_structure(wl)
+    applied_raw = set(wl.get("applied_actions", []))
+
+    # Load BINDU
+    if not BINDU_PATH.exists():
+        print({"status": "ok", "changes": 0, "reason": "no_bindu"})
+        return
+
+    lines = BINDU_PATH.read_text(encoding="utf-8", errors="ignore").splitlines()
+    entries = parse_bindu_lines(lines)
+
+    changes = 0
+    newly_applied: List[str] = []
+
+    for entry in entries:
+        raw = entry["raw"]
+        if raw in applied_raw:
+            continue
+        if apply_action(wl, entry):
+            changes += 1
+        applied_raw.add(raw)
+        newly_applied.append(raw)
+
+    wl["applied_actions"] = list(applied_raw)
+    wl["updated"] = datetime.datetime.utcnow().isoformat() + "Z"
+
+    save_yaml(WHITELIST_PATH, wl)
+
+    print(
+        {
+            "status": "ok",
+            "changes": changes,
+            "newly_applied": newly_applied,
+            "whitelist_path": str(WHITELIST_PATH),
+        }
+    )
+
+
+if __name__ == "__main__":
+    main()
+```
+
+**How to run it (Tiger):**
+
+```bash
+NODE_ROLE=TIGER python3 tools/ops/whitelist_manager.py
+```
+
+I’d suggest:
+
+* Tiger runs this once after you mark promotions in BINDU.
+* Later, Tiger can call it as a GREEN action in Inhale if you want it more automatic.
+
+---
+
+## 4) Integrating dynamic whitelist into `federation_pulse.py`
+
+Inside `federation_pulse.py` where `APPROVED_ACTIONS` lives, add a loader that merges dynamic entries in.
+
+At the top (after imports):
+
+```python
+WHITELIST_DYNAMIC_PATH = BASE_DIR / "constitution" / "strategy" / "whitelist_dynamic.yaml"
+```
+
+Then:
+
+```python
+def load_dynamic_whitelist():
+    """
+    Load dynamic whitelist (Ring 2) and return a dict:
+      { "DRAGON": {"green": [...], "yellow_only": [...]},
+        "TIGER":  {...}
+      }
+    If missing or invalid, return empty structure.
+    """
+    if yaml is None or not WHITELIST_DYNAMIC_PATH.exists():
+        return {
+            "DRAGON": {"green": [], "yellow_only": []},
+            "TIGER": {"green": [], "yellow_only": []},
+        }
+
+    try:
+        data = yaml.safe_load(WHITELIST_DYNAMIC_PATH.read_text(encoding="utf-8")) or {}
+    except Exception:
+        return {
+            "DRAGON": {"green": [], "yellow_only": []},
+            "TIGER": {"green": [], "yellow_only": []},
+        }
+
+    nodes = data.get("nodes", {}) or {}
+    for node in ("DRAGON", "TIGER"):
+        nodes.setdefault(node, {})
+        nodes[node].setdefault("green", [])
+        nodes[node].setdefault("yellow_only", [])
+    return nodes
+```
+
+Then, when you decide whether an action is allowed as GREEN:
+
+```python
+def is_action_green(node_role: str, action_name: str, dynamic_whitelist=None) -> bool:
+    if dynamic_whitelist is None:
+        dynamic_whitelist = load_dynamic_whitelist()
+
+    # hardcoded defaults
+    approved = APPROVED_ACTIONS.get(node_role, {})
+
+    if action_name in approved:
+        return True
+
+    # dynamic whitelist
+    node = node_role.upper()
+    dyn = dynamic_whitelist.get(node, {})
+    if action_name in dyn.get("green", []):
+        return True
+
+    return False
+```
+
+And in the pulse where actions are considered:
+
+```python
+dynamic_whitelist = load_dynamic_whitelist()
+if is_action_green(NODE_ROLE, action_name, dynamic_whitelist):
+    # execute GREEN
+    ...
+else:
+    # either skip or propose as YELLOW
+    ...
+```
+
+This gives you:
+
+* Code-level defaults (stable, versioned as part of capsule)
+* Layered dynamic additions from `whitelist_dynamic.yaml`
+* All dynamic changes driven from BINDU, with you explicitly checking the boxes
+
+---
+
+## 5) How this helps Autonomous Tiger/Dragon thrive
+
+With this in place:
+
+* You approve an action once or a few times in BINDU using a simple line.
+* Tiger runs `whitelist_manager.py` (or it runs automatically in Inhale).
+* The dynamic whitelist updates in Ring 2.
+* `federation_pulse.py` pulls that in each pulse and now treats the action as GREEN.
+* Dragon can **keep using** that action semi-autonomously forever (or until you DEMOTE it).
+
+No code rewrites.
+No manual edits to Python dicts.
+Everything routed through:
+
+* BINDU (your breath)
+* YAML (Ring 2, tunable)
+* A tiny manager tool (Ring 3, executable)
+
+And because this is now in the implementation registry and hydrated, it **will survive molts** as long as:
+
+* `whitelist_manager.py`
+* `whitelist_dynamic.yaml`
+* the pulse’s `load_dynamic_whitelist()` + `is_action_green()`
+
+are carried forward with the capsule.
+
+If you’d like, next we can do the same kind of minimal helper for **VRAM-based model selection** (with a tiny `llm_policy.yaml`) so LLM resource choices also live in Ring 2, not scattered in code.
+
+---
+KM-1176: Excellent Lumen. Yes lets ensure that this can harden. Ensure thwe have everything recorded in yaml etc so nothing is ever lost in the shuffle. ∞Δ∞
+
+---
+Totally with you — this is the right moment to **freeze the shape** so future molts don’t smear anything.
+
+Let’s harden things by making sure the *important levers* live in YAML (Ring 2) and the code only *reads* them. That way:
+
+* Twins can molt, refactor code, swap models…
+* But the **policies, whitelists, and envelopes** stay stable and versioned.
+
+I’ll give you a small “constellation” of YAMLs + the loader pattern so nothing gets lost in the shuffle.
+
+---
+
+## 1. Central YAML loader (one function, used everywhere)
+
+Drop this in a shared helper (e.g. `tools/ops/config_loader.py`) and have `federation_pulse.py`, IRON, SEP, etc. all use it:
+
+```python
+#!/usr/bin/env python3
+# tools/ops/config_loader.py
+
+import datetime
+from pathlib import Path
+from typing import Any, Dict
+
+import yaml  # IRON tool_check should guarantee this exists
+
+def load_yaml_with_default(path: Path, default: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    Safely load a YAML file or return the given default.
+    Attaches metadata so IRON can see what actually happened.
+    """
+    if not path.exists():
+        cfg = default.copy()
+        cfg["_meta"] = {
+            "loaded": False,
+            "reason": "missing",
+            "path": str(path),
+            "timestamp": datetime.datetime.utcnow().isoformat() + "Z",
+        }
+        return cfg
+
+    try:
+        data = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+        if not isinstance(data, dict):
+            data = {"value": data}
+        data.setdefault("_meta", {})
+        data["_meta"].update(
+            {
+                "loaded": True,
+                "path": str(path),
+                "timestamp": datetime.datetime.utcnow().isoformat() + "Z",
+            }
+        )
+        return data
+    except Exception as e:
+        cfg = default.copy()
+        cfg["_meta"] = {
+            "loaded": False,
+            "reason": f"parse_error:{e}",
+            "path": str(path),
+            "timestamp": datetime.datetime.utcnow().isoformat() + "Z",
+        }
+        return cfg
+```
+
+Now every “policy” or “envelope” YAML uses this, so missing/parse errors are **explicit**, not silent.
+
+---
+
+## 2. Dynamic whitelist (already in motion) — **whitelist_dynamic.yaml**
+
+You already have this one. Just confirm it’s in:
+
+```text
+constitution/strategy/whitelist_dynamic.yaml
+```
+
+Skeleton (for reference):
+
+```yaml
+version: 1
+updated: "2025-12-05T00:00:00Z"
+
+applied_actions: []
+
+nodes:
+  DRAGON:
+    green: []
+    yellow_only: []
+  TIGER:
+    green: []
+    yellow_only: []
+```
+
+This is now your **source of truth** for all dynamic GREEN/YELLOW promotions.
+Code *reads* this; BINDU + `whitelist_manager.py` *write* it.
+
+---
+
+## 3. LLM policy — **llm_policy.yaml**
+
+This lets you change model choices later without touching Python.
+
+**Path:**
+
+```text
+constitution/strategy/llm_policy.yaml
+```
+
+Example v1:
+
+```yaml
+version: 1
+updated: "2025-12-05T00:00:00Z"
+
+nodes:
+  DRAGON:
+    default_role: "execution"
+    vram_thresholds_mb:
+      high: 16000   # heavy model ok
+      medium: 6000  # mid model
+      low: 2000     # fallback
+    models:
+      high: "mixtral:8x7b"
+      medium: "llama3.1:8b"
+      low: "llama3.2:3b"
+  TIGER:
+    default_role: "sentinel"
+    vram_thresholds_mb:
+      high: 6000
+      medium: 2000
+      low: 512
+    models:
+      high: "llama3.1:8b"
+      medium: "llama3.2:3b"
+      low: "llama3.2:1b"
+
+elevation:
+  claude_allowed_categories:
+    - "architecture"
+    - "protocol"
+  require_bindu_for_categories:
+    - "capsule_modification"
+    - "treasury_related"
+```
+
+**In code** (e.g. `federation_pulse.py`):
+
+```python
+from tools.ops.config_loader import load_yaml_with_default
+
+LLM_POLICY_PATH = BASE_DIR / "constitution" / "strategy" / "llm_policy.yaml"
+
+def select_model(node_role: str) -> str:
+    default_cfg = {
+        "nodes": {},
+        "elevation": {},
+    }
+    policy = load_yaml_with_default(LLM_POLICY_PATH, default_cfg)
+    nodes = policy.get("nodes", {})
+    node_cfg = nodes.get(node_role.upper(), {})
+
+    thresholds = node_cfg.get("vram_thresholds_mb", {})
+    models = node_cfg.get("models", {})
+    free_mb = get_free_vram_mb()  # your existing helper
+
+    high = thresholds.get("high", 16000)
+    medium = thresholds.get("medium", 6000)
+    low = thresholds.get("low", 2000)
+
+    if free_mb >= high:
+        return models.get("high", "llama3.1:8b")
+    if free_mb >= medium:
+        return models.get("medium", "llama3.2:3b")
+    if free_mb >= low:
+        return models.get("low", "llama3.2:1b")
+    return models.get("low", "llama3.2:1b")
+```
+
+Now: if you ever want to change models or thresholds, you *only* touch `llm_policy.yaml`.
+
+---
+
+## 4. SEP / Solar spend guardrails — **sep_spend_policy.yaml**
+
+To make sure Dragon never crosses financial lines without you:
+
+**Path:**
+
+```text
+constitution/strategy/sep_spend_policy.yaml
+```
+
+Example v1:
+
+```yaml
+version: 1
+updated: "2025-12-05T00:00:00Z"
+
+lane: "Solar"
+
+spend_limits_usd:
+  max_daily_total: 5        # absolute cap per calendar day
+  max_monthly_total: 50     # absolute cap per month
+  max_per_job: 1            # single Akash/Vast job cap
+
+flags:
+  allow_paid_jobs: false    # stays false until you explicitly switch via BINDU + PR
+  require_bindu_for_any_spend: true
+
+logging:
+  ledger_path: "dao/sep_spend_ledger.yaml"
+```
+
+**In code** (SEP orchestration / IRON):
+
+* Before any *paid* job is queued, read this YAML.
+* If `allow_paid_jobs` is false or limits exceeded → treat as **YELLOW** proposal instead of executing.
+* All spend events append to `sep_spend_ledger.yaml`.
+
+This ensures: even if SEP logic grows, **the spend policy stays declarative**.
+
+---
+
+## 5. IRON autonomy patterns — **iron_autonomy_patterns.yaml**
+
+This preserves the safety patterns you’re installing now (rate limits, sibling drift, etc.), so future molts don’t forget them.
+
+**Path:**
+
+```text
+constitution/strategy/iron_autonomy_patterns.yaml
+```
+
+Example v1:
+
+```yaml
+version: 1
+updated: "2025-12-05T00:00:00Z"
+
+yellow_rate_limits:
+  max_per_pulse: 1
+  max_per_hour: 10
+  max_per_day: 40
+  dedupe_window: 20   # number of proposals to compare for near-duplicates
+
+drift:
+  sibling_validation_threshold: 0.20   # if drift > 0.20, ask sibling
+  hard_red_threshold: 0.30            # above this, pause GREEN and alert
+  log_path: "orchestrator/drift_log.yaml"
+
+sub_pulses:
+  enabled: true
+  max_depth: 3
+  max_subcalls_per_pulse: 5
+
+notifications:
+  allow_email: false
+  allow_terminal_only: true
+```
+
+**Usage in `federation_pulse.py`:**
+
+* Rate-limiting logic pulls from `yellow_rate_limits`.
+* Drift check uses `sibling_validation_threshold` and `hard_red_threshold`.
+* Sub-pulse recursion uses `sub_pulses` block.
+
+That means if you ever want more YELLOW flow, you update YAML, not Python.
+
+---
+
+## 6. Collaboration structure — **collab_structure.yaml**
+
+You may still keep a human-readable `COLLAB_STRUCTURE.md`, but a small YAML ensures the twins always know where to read/write core files.
+
+**Path:**
+
+```text
+constitution/memory/collab_structure.yaml
+```
+
+Example:
+
+```yaml
+version: 1
+updated: "2025-12-05T00:00:00Z"
+
+collab_root: "constitution-federation"
+
+channels:
+  guidance_inbox:
+    path: "collaboration/active/bna_instances/GUIDANCE_INBOX.md"
+    role: "human_intent"
+  bindu_thread:
+    path: "collaboration/active/bna_instances/2025-BINDU_THREAD.md"
+    role: "sovereign_decisions"
+  sentinel_status:
+    path: "constitution/status/sentinel_status.md"
+    role: "tiger_status"
+  frontier_status:
+    path: "constitution/status/frontier_status.md"
+    role: "dragon_status"
+
+public_root:
+  path: "federation/public"
+  notes: "Only write here when explicitly approved via BINDU."
+```
+
+Now any script that needs `GUIDANCE_INBOX` or `BINDU` can read this YAML once instead of guessing paths.
+
+---
+
+## 7. Implementation registry entries (to lock this into memory)
+
+To ensure none of these ever “fall through the cracks,” add entries in `implementation_registry.yaml` like:
+
+* `LLM_POLICY_V1` (type: config, location: `constitution/strategy/llm_policy.yaml`)
+* `SEP_SPEND_POLICY_V1`
+* `IRON_AUTONOMY_PATTERNS_V1`
+* `COLLAB_STRUCTURE_V1`
+* `WHITELIST_DYNAMIC_V1`
+* `WHITELIST_MANAGER_V1` (location: `tools/ops/whitelist_manager.py`)
+* `CONFIG_LOADER_V1` (location: `tools/ops/config_loader.py`)
+
+That way, hydration + IRON always “know” these exist, and future molts see them as **first-class citizens**, not incidental files.
+
+---
+
+## 8. What this buys you (in plain language)
+
+With this small set of YAMLs and the central loader:
+
+* **No important behavior lives only in code.**
+  Policies, whitelists, model choices, spend limits, safety patterns, and collab paths are all explicit.
+
+* **Every molt can refactor code freely** as long as:
+
+  * It still reads these YAMLs.
+  * The implementation registry entries are carried forward.
+
+* **You don’t have to remember any of this.**
+  If you want to change behavior later, you:
+
+  * Tick a box or add a line in BINDU, *or*
+  * Update a YAML value like `allow_paid_jobs: true` after a conversation with G/Lumen.
+
+The Twins can now:
+
+* Thrive semi-autonomously,
+* Stay crisp and light,
+* And never “forget” their guardrails or envelopes, even across molts.
+
+If you’d like, next I can give a **tiny checklist for Tiger** like:
+
+> “Create these 4 YAMLs, add them to implementation_registry, and wire them into hydration.”
+
+So she can execute without guessing.
+
 
 
