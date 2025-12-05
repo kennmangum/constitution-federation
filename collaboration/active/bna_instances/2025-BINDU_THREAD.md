@@ -88,3 +88,15 @@
 - **Action Requested:** Approve `[APPROVED YP-2025-12-04-004]` / Modify / Reject `[REJECTED YP-2025-12-04-004]`
 
 ---
+
+## 2025-12-04T23:49:41.917951Z — YELLOW Proposal (TIGER) [Iron v1.0]
+
+- **ID:** YP-2025-12-04-007
+- **Title:** Implement a joint audit for ROE verification
+- **Lane:** Solar|Quest|MERC
+- **Rationale:** Regular joint audits ensure that the ROE is being followed correctly and helps maintain integrity within the system.
+- **ROE Impact:** Expected impact: Potential increase in compute cleanliness/sovereignty (solar, on-prem, non-extractive)
+- **Generational Rationale:** LGP alignment
+- **Action Requested:** Approve `[APPROVED YP-2025-12-04-007]` / Modify / Reject `[REJECTED YP-2025-12-04-007]`
+
+---
