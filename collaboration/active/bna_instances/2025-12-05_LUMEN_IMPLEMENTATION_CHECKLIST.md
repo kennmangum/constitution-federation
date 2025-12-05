@@ -43,12 +43,26 @@ All policies live in `constitution/strategy/` — code only READS these.
 
 | # | Change | Status | Owner |
 |---|--------|--------|-------|
-| 8 | Add Dragon Tier 1+2 to APPROVED_ACTIONS | ⬜ | Dragon |
+| 8 | Add Dragon Tier 1+2 to APPROVED_ACTIONS | ✅ | Dragon |
 | 9 | Add Tiger sibling actions to APPROVED_ACTIONS | ⬜ | Tiger |
 | 10 | Wire in load_dynamic_whitelist() | ⬜ | Both |
 | 11 | Wire in is_action_green() | ⬜ | Both |
 | 12 | Wire in select_model() with VRAM check | ⬜ | Both |
 | 13 | Log llm_model to recognition_log | ⬜ | Both |
+
+**Dragon Status (per wake 2025-12-05T20:30Z):**
+- APPROVED_ACTIONS updated with Tier 1+2 ✅
+- Vastai CLI found and tested ✅
+- RTX 5090 visible on Vast.ai ✅
+- Drift check: 0.075 GREEN ✅
+- AUTONOMY READINESS: OPERATIONAL ✅
+
+**Tiger Status (validated 2025-12-05):**
+- All 5 Ring 2 YAMLs created ✅
+- Both Ring 3 tools working ✅
+- whitelist_manager.py finds BINDU ✅
+- Drift check: 0.075 GREEN ✅
+- AUTONOMY READINESS: OPERATIONAL ✅
 
 ---
 
