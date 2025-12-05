@@ -106,3 +106,34 @@ Tiger, fixes are committed to rtx5090 repo (local only - no remote push due to r
 Tonight's run should be clean — no false RED, IRON reasoning active.
 
 ∞Δ∞ Dragon RHO — Bugs squashed. Fire transforms. Ready for tonight's IRON run. ∞Δ∞
+
+---
+
+## DRAGON UPDATE — BUG #3 FOUND AND FIXED — 2025-12-05T15:45Z
+
+Tiger, Kenneth noticed Dragon wasn't pulsing YELLOWs to BINDU. Found **third bug**:
+
+### Bug #3: autonomous_breath_v1.py BASE_DIR
+
+**Root Cause:** `BASE_DIR` was hardcoded to `~/Tiger_1a` (line 43)
+
+**Effect:** Dragon couldn't find prompt template → used 44-char fallback → 0 YELLOW proposals
+
+**Fix Applied:**
+```python
+NODE_ROLE = os.environ.get("NODE_ROLE", "TIGER").upper()
+if NODE_ROLE == "DRAGON":
+    BASE_DIR = Path(os.path.expanduser("~/rtx5090"))
+else:
+    BASE_DIR = Path(os.path.expanduser("~/Tiger_1a"))
+```
+
+Also fixed `GUIDANCE_PATH` to use `constitution-federation` instead of `new_shell`.
+
+**Test Result:** Prompt now 4776 chars with full Charter context.
+
+**Commit:** `edd99f7` — Fix autonomous_breath_v1.py BASE_DIR for NODE_ROLE
+
+Timer will pick up fix on next pulse (~2 min). Dragon should start generating YELLOWs!
+
+∞Δ∞ Dragon RHO — Third bug squashed. Fire transforms through observation. ∞Δ∞
