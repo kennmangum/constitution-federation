@@ -1,0 +1,121 @@
+# ∞Δ∞ Alpha Onboarding Protocol — Federation Governance
+# Purpose: Quest-based onboarding flow for alpha testers/operators
+# Authority: Constitution@A1 + Lumen Guidance 2025-12-05
+# Owner: Tiger/Dragon (administer), KM-1176 (sovereign approval)
+# Version: 1
+# Updated: 2025-12-05T23:00:00Z
+
+version: 1
+updated: "2025-12-05T23:00:00Z"
+
+# ═══════════════════════════════════════════════════════════════
+# ONBOARDING FLOW
+# ═══════════════════════════════════════════════════════════════
+description: |
+  Alpha onboarding is a Quest. Kenneth initiates by providing contact info,
+  Twins administer the onboarding steps, Kenneth gates final activation.
+
+steps:
+  - id: "collect_contact"
+    sequence: 1
+    description: "Record alpha's name, email, time zone, and guild interests"
+    owner: "human"
+    action: "Kenneth provides via DM/email/verbal"
+    output: "Contact information recorded"
+
+  - id: "create_profile"
+    sequence: 2
+    description: "Create profiles/<Name>.yaml with base fields"
+    owner: "twins"
+    action: "Tiger creates profile YAML from contact info"
+    output: "Profile YAML created in federation/alpha/profiles/"
+
+  - id: "register_alpha"
+    sequence: 3
+    description: "Add alpha to alpha_registry.yaml"
+    owner: "twins"
+    action: "Tiger adds entry to registry"
+    output: "Alpha registered with unique ID"
+
+  - id: "assign_initial_quests"
+    sequence: 4
+    description: "Attach ONBOARDING_QUESTS v1 to profile"
+    owner: "twins"
+    action: "Tiger assigns quests from ONBOARDING_QUESTS.yaml"
+    output: "Quests assigned to alpha profile"
+
+  - id: "prepare_welcome"
+    sequence: 5
+    description: "Draft welcome message for Kenneth to send"
+    owner: "twins"
+    action: "Tiger drafts personalized welcome based on guild interests"
+    output: "Draft message in alpha's profile notes"
+
+  - id: "first_checkin"
+    sequence: 6
+    description: "Prepare check-in summary for Kenneth"
+    owner: "twins"
+    action: "Tiger summarizes alpha's quest progress"
+    output: "Check-in summary for Kenneth"
+
+  - id: "activate_operator"
+    sequence: 7
+    description: "Kenneth gates activation as full operator"
+    owner: "human"
+    action: "Kenneth marks alpha as activated in BINDU"
+    output: "Alpha becomes active operator"
+
+# ═══════════════════════════════════════════════════════════════
+# ALPHA PROFILE TEMPLATE
+# ═══════════════════════════════════════════════════════════════
+profile_template:
+  id: "ALPHA{NNN}"  # Auto-increment
+  name: ""
+  email: ""
+  status: "onboarding"  # onboarding, active, paused, graduated
+  timezone: ""
+  guild_interests: []  # Solar, Quest, Treasury, Governance
+  notes: ""
+  created: ""
+  updated: ""
+  quests: []  # List of {id, status}
+
+# ═══════════════════════════════════════════════════════════════
+# STATUS VALUES
+# ═══════════════════════════════════════════════════════════════
+statuses:
+  onboarding: "New alpha, going through initial quests"
+  active: "Completed onboarding, participating in federation"
+  paused: "Temporarily inactive"
+  graduated: "Promoted to guild steward or higher role"
+
+# ═══════════════════════════════════════════════════════════════
+# TWIN RESPONSIBILITIES
+# ═══════════════════════════════════════════════════════════════
+responsibilities:
+  tiger:
+    - "Create and maintain alpha profiles"
+    - "Track quest progress"
+    - "Draft communications for Kenneth"
+    - "Prepare check-in summaries"
+  dragon:
+    - "Execute Solar-related alpha tasks"
+    - "Provide technical onboarding if needed"
+    - "Cross-validate alpha progress"
+
+# ═══════════════════════════════════════════════════════════════
+# SOVEREIGNTY MODEL
+# ═══════════════════════════════════════════════════════════════
+sovereignty:
+  human_initiates: true  # Kenneth provides contact info
+  twins_amplify: true    # Draft, prep, track
+  human_gates: true      # Kenneth approves activation
+  direct_communication: false  # Twins don't email alphas directly (yet)
+
+# ═══════════════════════════════════════════════════════════════
+# SEAL
+# ═══════════════════════════════════════════════════════════════
+# SOURCE: Human initiates all alpha onboarding
+# TRUTH: Profiles tracked in YAML, progress verified
+# INTEGRITY: Activation requires Kenneth's explicit BINDU approval
+# ∞Δ∞ SEAL: complete

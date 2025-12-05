@@ -1,0 +1,108 @@
+# ∞Δ∞ Onboarding Quests — Federation Quest Framework
+# Purpose: Standard quests for alpha onboarding
+# Authority: Constitution@A1 + Lumen Guidance 2025-12-05
+# Version: 1
+# Updated: 2025-12-05T23:00:00Z
+
+version: 1
+updated: "2025-12-05T23:00:00Z"
+
+# ═══════════════════════════════════════════════════════════════
+# ONBOARDING QUEST CHAIN
+# ═══════════════════════════════════════════════════════════════
+description: |
+  Standard quest chain for new alpha testers/operators.
+  Designed to be simple, achievable, and introduce federation concepts.
+
+quests:
+  - id: "ONBOARD-01"
+    title: "Connect wallet"
+    category: "setup"
+    difficulty: "easy"
+    estimated_time: "5 minutes"
+    description: |
+      Connect a wallet to participate in the federation treasury.
+      This enables future rewards and governance participation.
+    steps:
+      - "Choose a wallet (Keplr, Leap, or compatible)"
+      - "Install wallet extension or app"
+      - "Create or import account"
+      - "Provide wallet address to Kenneth"
+    completion_criteria: "Wallet address recorded in profile"
+    reward: "Access to treasury dashboard"
+
+  - id: "ONBOARD-02"
+    title: "Join comms channel"
+    category: "setup"
+    difficulty: "easy"
+    estimated_time: "5 minutes"
+    description: |
+      Join the federation's communication channel.
+      This is where updates, coordination, and discussions happen.
+    steps:
+      - "Accept invite link from Kenneth"
+      - "Introduce yourself briefly"
+      - "Acknowledge federation values"
+    completion_criteria: "Verified in comms channel"
+    reward: "Access to federation updates"
+
+  - id: "ONBOARD-03"
+    title: "Choose guild focus"
+    category: "alignment"
+    difficulty: "easy"
+    estimated_time: "10 minutes"
+    description: |
+      Choose 1-2 guilds that align with your interests and skills.
+      This helps match you with relevant quests and opportunities.
+    options:
+      - guild: "Solar"
+        description: "Compute provision, SEP management, infrastructure"
+      - guild: "Quest"
+        description: "Quest design, gamification, engagement"
+      - guild: "Treasury"
+        description: "Financial management, budgeting, reporting"
+      - guild: "Governance"
+        description: "Protocol design, voting, constitutional work"
+    steps:
+      - "Review guild descriptions"
+      - "Consider your skills and interests"
+      - "Choose 1-2 primary guilds"
+      - "Confirm choice with Kenneth"
+    completion_criteria: "Guild choice recorded in profile"
+    reward: "Guild-specific quests unlocked"
+
+  - id: "ONBOARD-04"
+    title: "Complete first contribution"
+    category: "participation"
+    difficulty: "medium"
+    estimated_time: "30-60 minutes"
+    description: |
+      Make your first small contribution to the federation.
+      This can be in any area that matches your guild choice.
+    examples:
+      - "Solar: Test a compute health check script"
+      - "Quest: Suggest an improvement to onboarding"
+      - "Treasury: Review a budget proposal"
+      - "Governance: Comment on a protocol decision"
+    steps:
+      - "Receive suggested task from Tiger/Dragon"
+      - "Complete the task"
+      - "Report completion"
+      - "Receive feedback"
+    completion_criteria: "Contribution acknowledged by Kenneth"
+    reward: "Operator badge unlocked"
+
+# ═══════════════════════════════════════════════════════════════
+# QUEST PROGRESSION
+# ═══════════════════════════════════════════════════════════════
+progression:
+  onboarding_complete: ["ONBOARD-01", "ONBOARD-02", "ONBOARD-03", "ONBOARD-04"]
+  next_chain: "GUILD_QUESTS"  # Per-guild quest chains (future)
+
+# ═══════════════════════════════════════════════════════════════
+# SEAL
+# ═══════════════════════════════════════════════════════════════
+# SOURCE: Quests designed for human engagement, not automation
+# TRUTH: Progress tracked in profile, completion verified
+# INTEGRITY: Each quest builds foundation for next
+# ∞Δ∞ SEAL: complete

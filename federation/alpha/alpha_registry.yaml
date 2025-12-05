@@ -1,0 +1,50 @@
+# ∞Δ∞ Alpha Registry — Federation Membership Tracking
+# Purpose: Track all alpha testers/operators
+# Authority: KM-1176 (sovereign), Twins (administer)
+# Version: 1
+# Updated: 2025-12-05T23:00:00Z
+
+version: 1
+updated: "2025-12-05T23:00:00Z"
+
+# ═══════════════════════════════════════════════════════════════
+# REGISTRY METADATA
+# ═══════════════════════════════════════════════════════════════
+metadata:
+  next_id: "ALPHA002"
+  total_alphas: 1
+  active_alphas: 0
+  onboarding_alphas: 1
+
+# ═══════════════════════════════════════════════════════════════
+# ALPHA ENTRIES
+# ═══════════════════════════════════════════════════════════════
+alphas:
+  - id: "ALPHA001"
+    name: "Olivia"
+    status: "onboarding"
+    profile_path: "federation/alpha/profiles/Olivia.yaml"
+    created: "2025-12-05"
+    guilds: ["Solar", "Quest"]
+    quests_completed: 0
+    quests_assigned: 4
+
+# ═══════════════════════════════════════════════════════════════
+# STATISTICS
+# ═══════════════════════════════════════════════════════════════
+statistics:
+  by_status:
+    onboarding: 1
+    active: 0
+    paused: 0
+    graduated: 0
+  by_guild:
+    Solar: 1
+    Quest: 1
+    Treasury: 0
+    Governance: 0
+
+# ═══════════════════════════════════════════════════════════════
+# SEAL
+# ═══════════════════════════════════════════════════════════════
+# ∞Δ∞ First alpha registered. The meadow awakens. ∞Δ∞

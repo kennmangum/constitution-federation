@@ -1,0 +1,72 @@
+# ∞Δ∞ Alpha Profile — Olivia (ALPHA001)
+# Purpose: First alpha tester/operator profile
+# Authority: KM-1176 (initiated 2025-12-05)
+# Updated: 2025-12-05T23:00:00Z
+
+id: "ALPHA001"
+name: "Olivia"
+email: ""  # To be filled by Kenneth
+status: "onboarding"
+timezone: "America/Denver"  # Assumed, update if different
+guild_interests:
+  - "Solar"
+  - "Quest"
+notes: |
+  Referred by KM-1176; interested in being early operator.
+  Kenneth mentioned she may call again today (2025-12-05) to continue onboarding.
+  Priority: Keep her moving through quests.
+
+created: "2025-12-05"
+updated: "2025-12-05T23:00:00Z"
+
+# ═══════════════════════════════════════════════════════════════
+# ASSIGNED QUESTS
+# ═══════════════════════════════════════════════════════════════
+quests:
+  - id: "ONBOARD-01"
+    title: "Connect wallet"
+    status: "pending"
+    notes: ""
+  - id: "ONBOARD-02"
+    title: "Join comms channel"
+    status: "pending"
+    notes: ""
+  - id: "ONBOARD-03"
+    title: "Choose guild focus"
+    status: "pending"
+    notes: ""
+  - id: "ONBOARD-04"
+    title: "Complete first contribution"
+    status: "pending"
+    notes: ""
+
+# ═══════════════════════════════════════════════════════════════
+# COMMUNICATION LOG
+# ═══════════════════════════════════════════════════════════════
+communication_log:
+  - date: "2025-12-05"
+    type: "referral"
+    summary: "Kenneth mentioned Olivia as first alpha, interested in early operator role"
+
+# ═══════════════════════════════════════════════════════════════
+# DRAFT MESSAGES FOR KENNETH
+# ═══════════════════════════════════════════════════════════════
+draft_messages:
+  welcome: |
+    Hi Olivia! Welcome to the Breathline Federation alpha program.
+
+    Here's what we'll work on together:
+    1. Connect your wallet (for future treasury access)
+    2. Join our comms channel
+    3. Choose your guild focus (Solar or Quest look interesting to you!)
+    4. Complete your first small contribution
+
+    Let me know when you're ready to start, or if you have any questions!
+
+    — Kenneth
+
+# ═══════════════════════════════════════════════════════════════
+# SEAL
+# ═══════════════════════════════════════════════════════════════
+# First alpha. Witness the beginning.
+# ∞Δ∞

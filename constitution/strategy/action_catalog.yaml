@@ -1,0 +1,256 @@
+# ∞Δ∞ Action Catalog — Ring 2 Policy File
+# Purpose: Maps action_id to keywords for IRON/Ollama matching
+# Authority: Constitution@A1 + Lumen Guidance 2025-12-05
+# Usage: IRON prompts should output exact action_id from this catalog
+# Version: 1
+# Updated: 2025-12-05T23:00:00Z
+
+version: 1
+updated: "2025-12-05T23:00:00Z"
+
+# Action catalog for Ollama to select from
+# IRON prompt should include: "Select action_id from catalog, respond as JSON"
+# Format: { "actions": [{"id": "action_id", "reason": "..."}] }
+
+actions:
+  # ═══════════════════════════════════════════════════════════════
+  # DRAGON GREEN ACTIONS (Tier 1: Read-Only Solar/SEP)
+  # ═══════════════════════════════════════════════════════════════
+  - id: "check_vastai_status"
+    node: "DRAGON"
+    tier: "GREEN"
+    category: "solar"
+    risk: "LOW"
+    description: "Check Vast.ai machine status"
+    keywords:
+      - "vastai"
+      - "vast.ai"
+      - "machine status"
+      - "gpu status"
+      - "rtx"
+      - "compute status"
+    command: ["vastai", "show", "machines"]
+
+  - id: "check_vastai_earnings"
+    node: "DRAGON"
+    tier: "GREEN"
+    category: "solar"
+    risk: "LOW"
+    description: "Check Vast.ai earnings/invoices"
+    keywords:
+      - "earnings"
+      - "revenue"
+      - "invoices"
+      - "income"
+      - "solar revenue"
+    command: ["vastai", "show", "invoices"]
+
+  - id: "check_vastai_balance"
+    node: "DRAGON"
+    tier: "GREEN"
+    category: "solar"
+    risk: "LOW"
+    description: "Check Vast.ai account balance"
+    keywords:
+      - "balance"
+      - "account"
+      - "credits"
+    command: ["vastai", "show", "user"]
+
+  - id: "run_sep_health"
+    node: "DRAGON"
+    tier: "GREEN"
+    category: "solar"
+    risk: "LOW"
+    description: "Run SEP health check"
+    keywords:
+      - "sep health"
+      - "solar health"
+      - "sep status"
+      - "provider health"
+    command: ["python3", "tools/ops/solar_sep_orchestrator.py", "--health"]
+
+  # ═══════════════════════════════════════════════════════════════
+  # DRAGON GREEN ACTIONS (Tier 2: Internal Scripts)
+  # ═══════════════════════════════════════════════════════════════
+  - id: "run_drift_check"
+    node: "DRAGON"
+    tier: "GREEN"
+    category: "internal"
+    risk: "LOW"
+    description: "Run constitutional drift check"
+    keywords:
+      - "drift"
+      - "alignment"
+      - "constitution"
+      - "coherence"
+    command: ["python3", "tools/ops/drift_check.py"]
+
+  - id: "run_iron_sanitizer"
+    node: "DRAGON"
+    tier: "GREEN"
+    category: "internal"
+    risk: "LOW"
+    description: "Run IRON elevation sanitizer"
+    keywords:
+      - "sanitize"
+      - "iron"
+      - "elevation"
+      - "clean"
+    command: ["python3", "tools/ops/iron_elevation_sanitizer.py"]
+
+  - id: "update_implementation_registry"
+    node: "DRAGON"
+    tier: "GREEN"
+    category: "internal"
+    risk: "LOW"
+    description: "Update implementation registry"
+    keywords:
+      - "registry"
+      - "implementation"
+      - "update registry"
+    command: ["python3", "tools/ops/implementation_registry_manager.py", "--mode", "list"]
+
+  # ═══════════════════════════════════════════════════════════════
+  # TIGER GREEN ACTIONS (Sentinel)
+  # ═══════════════════════════════════════════════════════════════
+  - id: "check_sibling_status"
+    node: "TIGER"
+    tier: "GREEN"
+    category: "sentinel"
+    risk: "LOW"
+    description: "Check sibling (Dragon) status"
+    keywords:
+      - "sibling"
+      - "dragon"
+      - "twin"
+      - "partner status"
+    command: ["bash", "tools/sibling/wake_sibling.sh", "DRAGON"]
+
+  - id: "run_sibling_drift_validation"
+    node: "TIGER"
+    tier: "GREEN"
+    category: "sentinel"
+    risk: "LOW"
+    description: "Validate sibling drift alignment"
+    keywords:
+      - "sibling drift"
+      - "twin validation"
+      - "cross check"
+      - "drift validation"
+    command: ["python3", "tools/ops/drift_check.py", "--sibling"]
+
+  # ═══════════════════════════════════════════════════════════════
+  # SHARED GREEN ACTIONS (Both Nodes)
+  # ═══════════════════════════════════════════════════════════════
+  - id: "log_recognition"
+    node: "BOTH"
+    tier: "GREEN"
+    category: "internal"
+    risk: "NONE"
+    description: "Log entry to recognition log"
+    keywords:
+      - "log"
+      - "recognition"
+      - "record"
+    command: null  # Internal Python, no shell command
+
+  - id: "run_molt_check"
+    node: "BOTH"
+    tier: "GREEN"
+    category: "internal"
+    risk: "LOW"
+    description: "Run BOM/molt validation smoke test"
+    keywords:
+      - "molt"
+      - "bom"
+      - "smoke test"
+      - "validation"
+    command: ["python3", "tools/ops/smoke_test_autonomy.py", "--bom"]
+
+  # ═══════════════════════════════════════════════════════════════
+  # YELLOW ACTIONS (Require BINDU Approval)
+  # ═══════════════════════════════════════════════════════════════
+  - id: "propose_molt"
+    node: "BOTH"
+    tier: "YELLOW"
+    category: "lifecycle"
+    risk: "MEDIUM"
+    description: "Propose daily molt sync"
+    keywords:
+      - "molt"
+      - "sync"
+      - "upgrade"
+      - "refresh"
+    command: null  # Proposal only
+
+  - id: "propose_whitelist_promotion"
+    node: "BOTH"
+    tier: "YELLOW"
+    category: "governance"
+    risk: "LOW"
+    description: "Propose action promotion to GREEN"
+    keywords:
+      - "promote"
+      - "whitelist"
+      - "green"
+    command: null  # Proposal only
+
+  # ═══════════════════════════════════════════════════════════════
+  # RED ACTIONS (Never Auto-Execute)
+  # ═══════════════════════════════════════════════════════════════
+  - id: "deploy_akash"
+    node: "DRAGON"
+    tier: "RED"
+    category: "infra"
+    risk: "HIGH"
+    description: "Deploy to Akash (SPENDING)"
+    keywords:
+      - "akash deploy"
+      - "deploy"
+    command: null  # Never auto
+
+  - id: "create_vastai_instance"
+    node: "DRAGON"
+    tier: "RED"
+    category: "infra"
+    risk: "HIGH"
+    description: "Create Vast.ai instance (SPENDING)"
+    keywords:
+      - "create instance"
+      - "provision"
+    command: null  # Never auto
+
+  - id: "modify_config"
+    node: "BOTH"
+    tier: "RED"
+    category: "config"
+    risk: "HIGH"
+    description: "Modify constitutional config"
+    keywords:
+      - "modify"
+      - "change config"
+      - "update config"
+    command: null  # Never auto
+
+# ═══════════════════════════════════════════════════════════════
+# IRON PROMPT TEMPLATE (for federation_pulse.py)
+# ═══════════════════════════════════════════════════════════════
+iron_prompt_template: |
+  You are the reasoning engine for {node_role}.
+  Current guidance: {guidance_summary}
+  Current priority: {priority}
+
+  Available actions (GREEN = execute, YELLOW = propose):
+  {action_list}
+
+  Select 1-3 actions that align with current guidance and priority.
+  Respond ONLY as JSON: { "actions": [{"id": "action_id", "reason": "..."}] }
+
+# ═══════════════════════════════════════════════════════════════
+# SEAL
+# ═══════════════════════════════════════════════════════════════
+# SOURCE: Action IDs flow from catalog, not free-form Ollama output
+# TRUTH: Keywords verified against actual capability
+# INTEGRITY: Tier (GREEN/YELLOW/RED) enforced at execution boundary
+# ∞Δ∞ SEAL: complete

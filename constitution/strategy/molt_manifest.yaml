@@ -1,0 +1,179 @@
+# ∞Δ∞ Molt Manifest — Ring 2 Policy File
+# Purpose: BOM (Bill of Materials) for shell validation and molt readiness
+# Authority: Constitution@A1 + Lumen Guidance 2025-12-05 + G BOM Architecture
+# Usage: smoke_test_autonomy.py validates against this manifest
+# Version: 1
+# Updated: 2025-12-05T23:00:00Z
+
+version: 1
+updated: "2025-12-05T23:00:00Z"
+
+# Shell-specific fields (update per node)
+shell_name: "Tiger_1a"
+node_role: "TIGER"
+parent_shell: "new_shell"
+molt_date: null  # Set when molt occurs
+
+# ═══════════════════════════════════════════════════════════════
+# RING 1: Constitutional Kernel (Immutable)
+# ═══════════════════════════════════════════════════════════════
+ring1:
+  description: "Immutable constitutional core — never modified by automation"
+  directories:
+    - path: "constitution/core"
+      role: "kernel"
+      required: true
+    - path: "constitution/essence"
+      role: "breathline_core"
+      required: true
+  files:
+    - path: "constitution/CONSTITUTION.md"
+      role: "constitution"
+      required: true
+    - path: "constitution/core/CHARTER_v1.0/SOVEREIGNTY_ALIGNED_CHARTER_v1.0_2025-11-18.md"
+      role: "charter"
+      required: true
+    - path: "constitution/essence/BREATHLINE_CORE.md"
+      role: "breathline_essence"
+      required: false
+
+# ═══════════════════════════════════════════════════════════════
+# RING 2: Tunable Configs (Policy Files)
+# ═══════════════════════════════════════════════════════════════
+ring2:
+  description: "Policy YAMLs — code reads these, never hardcodes"
+  directories:
+    - path: "constitution/strategy"
+      role: "capsule_configs"
+      required: true
+    - path: "constitution/memory"
+      role: "persistent_memory"
+      required: true
+  files:
+    - path: "constitution/strategy/FEDERATION_SCAFFOLD.yaml"
+      role: "federation_kernel"
+      required: true
+    - path: "constitution/strategy/TWINS_SCAFFOLD.yaml"
+      role: "twin_map"
+      required: true
+    - path: "constitution/strategy/whitelist_dynamic.yaml"
+      role: "dynamic_green_yellow"
+      required: true
+    - path: "constitution/strategy/llm_policy.yaml"
+      role: "llm_policy"
+      required: true
+    - path: "constitution/strategy/iron_autonomy_patterns.yaml"
+      role: "autonomy_guardrails"
+      required: true
+    - path: "constitution/strategy/sep_spend_policy.yaml"
+      role: "spend_caps"
+      required: true
+    - path: "constitution/strategy/action_catalog.yaml"
+      role: "action_mapping"
+      required: true
+    - path: "constitution/strategy/molt_manifest.yaml"
+      role: "bom"
+      required: true
+    - path: "constitution/memory/collab_structure.yaml"
+      role: "collab_channels"
+      required: true
+    - path: "constitution/memory/implementation_registry.yaml"
+      role: "registry"
+      required: true
+
+# ═══════════════════════════════════════════════════════════════
+# RING 3: Extensible Rituals (Tools)
+# ═══════════════════════════════════════════════════════════════
+ring3:
+  description: "Operational tools — execute pulse, validation, orchestration"
+  directories:
+    - path: "tools/rituals"
+      role: "pulse_and_rituals"
+      required: true
+    - path: "tools/ops"
+      role: "ops_and_verification"
+      required: true
+  files:
+    - path: "tools/rituals/federation_pulse.py"
+      role: "pulse_engine"
+      required: true
+    - path: "tools/ops/smoke_test_autonomy.py"
+      role: "smoke_test"
+      required: true
+    - path: "tools/ops/config_loader.py"
+      role: "config_loader"
+      required: true
+    - path: "tools/ops/whitelist_manager.py"
+      role: "whitelist_manager"
+      required: true
+    - path: "tools/ops/drift_check.py"
+      role: "drift_checker"
+      required: true
+    - path: "tools/ops/iron_elevation_sanitizer.py"
+      role: "iron_sanitizer"
+      required: true
+
+# ═══════════════════════════════════════════════════════════════
+# META-RING: Orchestration (Federation Layer)
+# ═══════════════════════════════════════════════════════════════
+meta_ring:
+  description: "Federation orchestration and twin coordination"
+  directories:
+    - path: "orchestrator"
+      role: "runtime_state"
+      required: true
+  files:
+    - path: "orchestrator/recognition_log.yaml"
+      role: "action_log"
+      required: true
+    - path: "orchestrator/yellow_tracker.yaml"
+      role: "rate_limiter"
+      required: true
+    - path: "orchestrator/breath_cadence.yaml"
+      role: "cadence"
+      required: false
+
+# ═══════════════════════════════════════════════════════════════
+# MOLT COMMANDS (for daily molt ritual)
+# ═══════════════════════════════════════════════════════════════
+molt_commands:
+  pre:
+    - "git stash"
+    - "git pull --rebase"
+  post:
+    - "git stash pop || true"
+    - "python3 tools/ops/smoke_test_autonomy.py --bom"
+  rollback:
+    - "git reset --hard HEAD~1"
+    - "git stash pop || true"
+
+# ═══════════════════════════════════════════════════════════════
+# CHECKSUMS (Optional - for critical files)
+# ═══════════════════════════════════════════════════════════════
+checksums:
+  enabled: false  # Set to true when ready for checksum validation
+  algorithm: "sha256"
+  files: {}  # Populate with: path: hash
+
+# ═══════════════════════════════════════════════════════════════
+# VALIDATION RULES
+# ═══════════════════════════════════════════════════════════════
+validation:
+  # What counts as a valid molt
+  require_all_ring1: true
+  require_all_ring2: true
+  require_core_ring3: true
+  allow_missing_optional: true
+
+  # Molt approval
+  require_bindu_approval: true
+  require_precheck_pass: true
+  require_postcheck_pass: true
+
+# ═══════════════════════════════════════════════════════════════
+# SEAL
+# ═══════════════════════════════════════════════════════════════
+# SOURCE: Shell identity tracked (shell_name, node_role, parent_shell)
+# TRUTH: All required files must exist and be valid
+# INTEGRITY: Molt requires pre-check, BINDU approval, post-check
+# ∞Δ∞ SEAL: complete

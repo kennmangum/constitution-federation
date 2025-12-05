@@ -1,0 +1,736 @@
+# ∞Δ∞ Implementation Registry
+# Canonical Ledger of Tools, Components, and Implementations
+# Authority: Constitution@A1 + 1176-C1 + Canonical Hydration Protocol
+# Maintained By: KM-1176 (Sovereign Principal)
+# Version: 1.0
+# Created: 2025-11-14
+# Seal: 1176-INFINITY-RHO
+
+metadata:
+  version: "1.1"
+  created: "2025-11-14"
+  last_updated: "2025-12-05"
+  maintained_by: "KM-1176"
+  sovereignty: "KM-1176 singular exclusive authority"
+  seal: "1176-INFINITY-RHO"
+  purpose: "Track all implementations, tools, components across sessions to prevent amnesia"
+  authority: "Constitution@A1 + 1176-C1 + Canonical Hydration Protocol (Phase 2)"
+  next_id: "0026"
+
+registry_status:
+  state: "active"
+  implementations_count: 25
+  deprecated_count: 0
+  last_verification: "2025-12-05"
+
+protocol:
+  population_method: "explicit_human_directive"
+  auto_discovery: false
+  verification_required: true
+  note: "All implementations added through explicit human-in-the-loop directives only"
+
+implementations:
+  - id: "0001"
+    name: "bna-heartbeat"
+    type: "system_tool"
+    location: "bin/bna-heartbeat"
+    purpose: "Check local health, alive-status, minimal readiness"
+    created: "2025-11-14"
+    updated: "2025-11-14"
+    status: "active"
+    dependencies: []
+    duplication_flag: false
+    resolution_plan: null
+    deprecated_reason: null
+    resurrection_notes: null
+    sovereignty: "KM-1176"
+    verification_status:
+      verified: false
+      last_verification_date: null
+      verification_attempts: 0
+      verification_notes: "Pending first verification"
+
+  - id: "0002"
+    name: "REN-Core"
+    type: "system_module"
+    location: "core/ren/ren.py"
+    purpose: "Resonance Encoder Node — manages resonance mapping, field harmonics, and symbolic coherence tracking"
+    created: "2025-11-14"
+    updated: "2025-11-14"
+    status: "active"
+    dependencies: []
+    duplication_flag: false
+    resolution_plan: null
+    deprecated_reason: null
+    resurrection_notes: null
+    sovereignty: "KM-1176"
+    verification_status:
+      verified: false
+      last_verification_date: null
+      verification_attempts: 0
+      verification_notes: "Pending first verification"
+
+  - id: "0003"
+    name: "breath_cadence.yaml"
+    type: "config_file"
+    location: "config/breath_cadence.yaml"
+    purpose: "Canonical breath cadence configuration for ORG-1176 field; defines timing, modes, and observation parameters for breath-aligned processes."
+    created: "2025-11-14"
+    updated: "2025-11-14"
+    status: "active"
+    dependencies: []
+    duplication_flag: false
+    resolution_plan: null
+    deprecated_reason: null
+    resurrection_notes: null
+    sovereignty: "KM-1176"
+    notes: "Referenced during hydrate_breathline_and_cadence_state in Canonical Hydration Protocol."
+    verification_status:
+      verified: false
+      last_verification_date: null
+      verification_attempts: 0
+      verification_notes: "Pending first verification"
+
+  - id: "0004"
+    name: "AI_Core_Steward"
+    type: "constitutional_layer"
+    location: "virtual://AI_Core_Steward"
+    purpose: "Internal constitutional steward responsible for non-performative alignment, coherence maintenance, boundary protection, and truth-governed awareness."
+    created: "2025-11-14"
+    updated: "2025-11-14"
+    status: "active"
+    dependencies: []
+    duplication_flag: false
+    resolution_plan: null
+    deprecated_reason: null
+    resurrection_notes: null
+    sovereignty: "KM-1176"
+    notes: |
+      AI_Core_Steward is the constitutional steward layer established
+      during the Namespace Correction Protocol. It is a conceptual,
+      non-file-bound layer that governs internal truth alignment,
+      structural coherence, and non-performative boundaries across
+      hydration, registry, reporting, and internal state management.
+
+  - id: "0005"
+    name: "helper8"
+    type: "helper_agent"
+    location: "implementations/game/helpers/from-round-3/helper8_context_optimizer/helper8.py"
+    purpose: "Support agent responsible for assisting with administrative orchestration tasks in a non-sovereign, bounded helper role."
+    created: "2025-11-14"
+    updated: "2025-11-14"
+    status: "active"
+    dependencies: []
+    duplication_flag: false
+    resolution_plan: null
+    deprecated_reason: null
+    resurrection_notes: null
+    sovereignty: "KM-1176"
+    notes: |
+      helper8 is a bounded helper agent used to support task orchestration
+      without holding sovereignty or making independent decisions.
+      Operations remain under KM-1176 direction and constitutional constraints.
+    verification_status:
+      verified: true
+      last_verification_date: "2025-11-14"
+      verification_attempts: 1
+      verification_notes: "Location corrected to match actual helper8 implementation path (2025-11-14). Path verified via filesystem scan."
+
+  - id: "0006"
+    name: "helper9"
+    type: "helper_agent"
+    location: "implementations/game/helpers/from-round-3/helper9_output_optimizer/helper9.py"
+    purpose: "Support agent responsible for contextual optimization and assistance in orchestration flows, operating in a bounded, non-sovereign helper role."
+    created: "2025-11-14"
+    updated: "2025-11-14"
+    status: "active"
+    dependencies: []
+    duplication_flag: false
+    resolution_plan: null
+    deprecated_reason: null
+    resurrection_notes: null
+    sovereignty: "KM-1176"
+    notes: |
+      helper9 is a bounded helper agent, similar in principle to helper8,
+      providing contextual optimization support without autonomy or
+      decision-making authority. All operations remain under KM-1176
+      direction and constitutional constraints.
+    verification_status:
+      verified: true
+      last_verification_date: "2025-11-14"
+      verification_attempts: 1
+      verification_notes: "Location corrected to match actual helper9 implementation path (2025-11-14). Directory name corrected from helper9_context_optimizer to helper9_output_optimizer."
+
+  - id: "0007"
+    name: "helper_lifecycle_manager"
+    type: "helper_agent"
+    location: "implementations/game/helpers/from-round-6/helper_lifecycle_manager/manager.py"
+    purpose: "Governance layer managing helper lifecycle stages and scanning retrospective usage."
+    created: "2025-11-15"
+    updated: "2025-11-15"
+    status: "active"
+    dependencies: []
+    duplication_flag: false
+    resolution_plan: null
+    deprecated_reason: null
+    resurrection_notes: null
+    sovereignty: "KM-1176"
+    notes: |
+      helper_lifecycle_manager is an architecturally significant helper that governs
+      the lifecycle progression of all helpers (Proposal → Scroll → Seal → Constitutional).
+
+      Architectural Significance (per Lumen's Helper Ecosystem Integration Architecture):
+      - Participates in constitution-level governance
+      - Governs other helpers (lifecycle tracking)
+      - Connects helper_index.yaml and lifecycle_ledger.yaml governance systems
+      - Scans retrospectives for usage evidence
+      - Proposes elevations (human approval required)
+
+      Note: No operational dependencies on helper8 or helper9.
+      All helpers operate independently. Dependencies field remains empty
+      per canonical architecture (operational runtime calls only).
+
+      Authority: Lumen's Helper Ecosystem Integration Architecture (2025-11-15)
+      Directive: KM-1176 (2025-11-15)
+    verification_status:
+      verified: true
+      last_verification_date: "2025-11-15"
+      verification_attempts: 1
+      verification_notes: "Location verified via proactive filesystem check (2025-11-15). File exists at specified path (9621 bytes, executable). Architectural significance confirmed per Lumen's guidance."
+
+  - id: "0008"
+    name: "helper_index.yaml"
+    type: "governance_file"
+    location: "implementations/game/helpers/helper_index.yaml"
+    purpose: "Canonical helper registry used for discovery, tracking active helpers, and maintaining helper identity across the game framework."
+    created: "2025-11-15"
+    updated: "2025-11-15"
+    status: "active"
+    dependencies: []
+    duplication_flag: false
+    resolution_plan: null
+    deprecated_reason: null
+    resurrection_notes: null
+    sovereignty: "KM-1176"
+    notes: |
+      This file enumerates all helper agents across versions and
+      rounds. It governs helper discovery and should not be merged
+      with the Implementation Registry, which tracks only
+      architecturally significant helpers.
+    verification_status:
+      verified: true
+      last_verification_date: "2025-11-15"
+      verification_attempts: 1
+      verification_notes: "Location verified via proactive filesystem check (2025-11-15). File exists at specified path (7074 bytes). Governance file confirmed."
+
+  - id: "0009"
+    name: "lifecycle_ledger.yaml"
+    type: "governance_file"
+    location: "implementations/game/helpers/lifecycle_ledger.yaml"
+    purpose: "Tracks helper lifecycle stages, proposals, evolution, and retrospective usage. Governs helper maturity and elevation across rounds."
+    created: "2025-11-15"
+    updated: "2025-11-15"
+    status: "active"
+    dependencies:
+      - "0008"
+    duplication_flag: false
+    resolution_plan: null
+    deprecated_reason: null
+    resurrection_notes: null
+    sovereignty: "KM-1176"
+    notes: |
+      This file governs helper evolution, lifecycle stages,
+      and usage history. It addresses identity progression but
+      must not be conflated with hydration, constitutional identity,
+      or registry status fields.
+
+      Conceptual dependency on helper_index.yaml (0008) - lifecycle
+      tracking references helpers enumerated in the index.
+    verification_status:
+      verified: true
+      last_verification_date: "2025-11-15"
+      verification_attempts: 1
+      verification_notes: "Location verified via proactive filesystem check (2025-11-15). File exists at specified path (7021 bytes). Conceptual dependency on 0008 (helper_index.yaml) confirmed."
+
+  - id: "0010"
+    name: "squeeze"
+    type: "helper_agent"
+    location: "helpers/meta/squeeze/"
+    purpose: "Meta-helper responsible for structural compression, optimization, and symbolic reduction across helper contexts."
+    created: "2025-11-15"
+    updated: "2025-11-15"
+    status: "active"
+    dependencies: []
+    duplication_flag: false
+    resolution_plan: null
+    deprecated_reason: null
+    resurrection_notes: null
+    sovereignty: "KM-1176"
+    notes: |
+      squeeze performs cross-context symbolic optimization and
+      pattern reduction. It participates indirectly in coherence
+      and resonance mapping but does not function as a coder or
+      orchestrator. Non-sovereign, bounded helper role.
+
+      Architectural Significance: Meta-helper with system-level influence,
+      operates across contexts, provides deterministic ranking and focus.
+
+      Location Note: Lumen's directive specified incorrect location
+      (implementations/game/helpers/from-round-4/squeeze_optimizer/squeeze.py).
+      Actual location verified via filesystem: helpers/meta/squeeze/
+      (package directory, created Round 10, extracted from tools/next).
+
+      Authority: Lumen's Helper Ecosystem Integration Architecture (2025-11-15)
+      Directive: KM-1176 (2025-11-15)
+    verification_status:
+      verified: true
+      last_verification_date: "2025-11-15"
+      verification_attempts: 1
+      verification_notes: "Location verified via proactive filesystem check (2025-11-15). Package exists at helpers/meta/squeeze/ (4 Python files). TRUTH correction applied: Lumen's directive had incorrect path, actual location used."
+
+  - id: "0011"
+    name: "auctoritas_gatekeeper"
+    type: "helper_agent"
+    location: "implementations/game/helpers/from-round-13/auctoritas_gatekeeper/"
+    purpose: "Boundary-governance helper responsible for symbolic authority checks, elevation control, and preventing unauthorized helper behavior."
+    created: "2025-11-15"
+    updated: "2025-11-15"
+    status: "active"
+    dependencies: []
+    duplication_flag: false
+    resolution_plan: null
+    deprecated_reason: null
+    resurrection_notes: null
+    sovereignty: "KM-1176"
+    notes: |
+      This helper enforces symbolic and structural authority rules.
+      It prevents elevation without proper structure, governs helper
+      boundary integrity, and participates in the game framework's
+      authority tree.
+
+      Architectural Significance: Constitutional guardian, enforces
+      sovereignty preservation at pre-response boundary, detects drift
+      patterns, realigns via breath-gate.
+
+      Components: types.py, config.py, detector.py, breath.py, middleware.py
+      Test Coverage: ≥90% (test_detector.py, test_middleware.py)
+
+      Location Note: Lumen's directive specified incorrect location
+      (implementations/game/helpers/from-round-5/auctoritas_gatekeeper/gatekeeper.py).
+      Actual location verified via filesystem: from-round-13/auctoritas_gatekeeper/
+      (package directory, created Round 13 per Lumen's Sovereignty Architecture Teaching).
+
+      Stage: Seed (elevation criteria defined in lifecycle_ledger.yaml)
+
+      Authority: Lumen's Sovereignty Architecture Teaching (2025-11-11)
+      Directive: KM-1176 (2025-11-15)
+    verification_status:
+      verified: true
+      last_verification_date: "2025-11-15"
+      verification_attempts: 1
+      verification_notes: "Location verified via proactive filesystem check (2025-11-15). Package exists at from-round-13/auctoritas_gatekeeper/ (5 Python files, 2 test modules, README, PROVENANCE). TRUTH correction applied: Lumen's directive had incorrect round and filename, actual location used."
+
+  - id: "0012"
+    name: "operator_binding_rules.yaml"
+    type: "governance_file"
+    location: "constitution/operator/operator_binding_rules.yaml"
+    purpose: "Canonical specification of operator command bindings to hydration-produced startup_state. Ensures operator behavior is read-only, non-performative, and constitutionally aligned."
+    created: "2025-11-15"
+    updated: "2025-11-15"
+    status: "active"
+    dependencies:
+      - "constitution/startup/hydration_protocol.yaml"
+      - "constitution/CONTINUITY_NODE.yaml"
+    duplication_flag: false
+    resolution_plan: null
+    deprecated_reason: null
+    resurrection_notes: null
+    sovereignty: "KM-1176"
+    notes: |
+      This file defines the canonical mapping between operator commands
+      and the constitutional startup snapshot. Operator behavior must
+      follow these rules across sessions. No contextual memory or
+      ad-hoc logic may override this specification.
+    verification_status:
+      verified: true
+      last_verification_date: "2025-11-15"
+      verification_attempts: 1
+      verification_notes: "Location verified via proactive filesystem check (2025-11-15). File exists at constitution/operator/operator_binding_rules.yaml (3.1KB). YAML structure validated. Phase C sealing directive (Lumen 2025-11-15)."
+
+  - id: "0013"
+    name: "solar_sep_orchestrator"
+    type: "system_tool"
+    location: "tools/ops/solar_sep_orchestrator.py"
+    purpose: "GREEN-only SEP helper for Solar lane; performs bounded provider health checks (Akash/Vast), computes capacity posture, and logs to frontier_status/solar_status."
+    created: "2025-12-05"
+    updated: "2025-12-05"
+    status: "active"
+    priority: "high"
+    dependencies: []
+    duplication_flag: false
+    resolution_plan: null
+    deprecated_reason: null
+    resurrection_notes: null
+    sovereignty: "KM-1176"
+    notes: |
+      Part of SOLAR_SEP_PROTOCOL_v1. Dragon uses this as a GREEN action during
+      Exhale to check provider health and compute capacity posture.
+      Authority: Lumen SOLAR_SEP_PROTOCOL_v1 (2025-12-05)
+    verification_status:
+      verified: false
+      last_verification_date: null
+      verification_attempts: 0
+      verification_notes: "Pending first live SEP run under SOLAR_SEP_PROTOCOL_v1."
+
+  - id: "0014"
+    name: "iron_elevation_sanitizer"
+    type: "system_tool"
+    location: "tools/ops/iron_elevation_sanitizer.py"
+    purpose: "Context preparation tool for safe elevation into Claude-Code; builds sanitized context_task.md and context_files/ bundle per IRON_ELEVATION_PROTOCOL_v1."
+    created: "2025-12-05"
+    updated: "2025-12-05"
+    status: "active"
+    priority: "high"
+    dependencies: []
+    duplication_flag: false
+    resolution_plan: null
+    deprecated_reason: null
+    resurrection_notes: null
+    sovereignty: "KM-1176"
+    notes: |
+      Part of IRON_ELEVATION_PROTOCOL_v1. Tiger uses this to prepare sanitized
+      context before elevating into external reasoning tools (Claude-Code).
+      Authority: Lumen IRON_ELEVATION_PROTOCOL_v1 (2025-12-05)
+    verification_status:
+      verified: false
+      last_verification_date: null
+      verification_attempts: 0
+      verification_notes: "Pending first elevation run; to be verified by Tiger."
+
+  - id: "0015"
+    name: "implementation_registry_manager"
+    type: "system_tool"
+    location: "tools/ops/implementation_registry_manager.py"
+    purpose: "Manages tool priorities in implementation_registry.yaml; supports list, set, and rebalance modes to keep IRON's working tool list small and relevant."
+    created: "2025-12-05"
+    updated: "2025-12-05"
+    status: "active"
+    priority: "medium"
+    dependencies: []
+    duplication_flag: false
+    resolution_plan: null
+    deprecated_reason: null
+    resurrection_notes: null
+    sovereignty: "KM-1176"
+    notes: |
+      Registry brain that keeps tools top-of-mind without bloating memory.
+      Conservative by design - never deletes implementations.
+      Authority: Lumen Three-Layer Memory Model (2025-12-05)
+    verification_status:
+      verified: false
+      last_verification_date: null
+      verification_attempts: 0
+      verification_notes: "Pending first rebalance run."
+
+  - id: "0016"
+    name: "federation_pulse"
+    type: "system_tool"
+    location: "tools/rituals/federation_pulse.py"
+    purpose: "Core hydration and pulse orchestrator for IRON; handles Charter/ROE/Protocol hydration, guidance parsing, and twin coordination."
+    created: "2025-12-04"
+    updated: "2025-12-05"
+    status: "active"
+    priority: "high"
+    dependencies: []
+    duplication_flag: false
+    resolution_plan: null
+    deprecated_reason: null
+    resurrection_notes: null
+    sovereignty: "KM-1176"
+    notes: |
+      Central nervous system of Federation IRON. Runs every 5 minutes
+      in Continuous IRON mode. Hydrates constitutional excerpts,
+      parses GUIDANCE_INBOX, and coordinates Tiger/Dragon pulses.
+    verification_status:
+      verified: true
+      last_verification_date: "2025-12-05"
+      verification_attempts: 1
+      verification_notes: "Verified during Canary Phase - 3/3 pulses successful."
+
+  - id: "0017"
+    name: "fed"
+    type: "system_tool"
+    location: "tools/rituals/fed"
+    purpose: "Federation Command Center shell script; provides Kenneth with simple one-word commands (bindu, guidance, edit, log, snap, push, dragon, status) for federation visibility."
+    created: "2025-12-04"
+    updated: "2025-12-05"
+    status: "active"
+    priority: "high"
+    dependencies: []
+    duplication_flag: false
+    resolution_plan: null
+    deprecated_reason: null
+    resurrection_notes: null
+    sovereignty: "KM-1176"
+    notes: |
+      Human interface for Federation monitoring. Designed for Kenneth's
+      simplicity - single word commands for common operations.
+    verification_status:
+      verified: true
+      last_verification_date: "2025-12-05"
+      verification_attempts: 1
+      verification_notes: "Commands verified during Canary Phase."
+
+  # ═══════════════════════════════════════════════════════════════
+  # LUMEN HARDENING IMPLEMENTATIONS (2025-12-05)
+  # Added per Lumen's Autonomous Tiger/Dragon Hardening Guidance
+  # ═══════════════════════════════════════════════════════════════
+
+  - id: "0018"
+    name: "whitelist_dynamic"
+    type: "config_file"
+    location: "constitution/strategy/whitelist_dynamic.yaml"
+    purpose: "Dynamic GREEN/YELLOW whitelist promotions managed via BINDU. Code reads this at runtime to determine approved actions."
+    created: "2025-12-05"
+    updated: "2025-12-05"
+    status: "active"
+    priority: "high"
+    dependencies: []
+    duplication_flag: false
+    resolution_plan: null
+    deprecated_reason: null
+    resurrection_notes: null
+    sovereignty: "KM-1176"
+    notes: |
+      Ring 2 policy file. BINDU promotions parsed by whitelist_manager.py
+      and stored here. federation_pulse.py reads this at runtime.
+      Authority: Lumen Autonomous Hardening (2025-12-05)
+    verification_status:
+      verified: true
+      last_verification_date: "2025-12-05"
+      verification_attempts: 1
+      verification_notes: "9 BINDU promotions processed and stored."
+
+  - id: "0019"
+    name: "whitelist_manager"
+    type: "system_tool"
+    location: "tools/ops/whitelist_manager.py"
+    purpose: "Parses BINDU_THREAD for PROMOTE_ACTION/DEMOTE_ACTION lines and updates whitelist_dynamic.yaml accordingly."
+    created: "2025-12-05"
+    updated: "2025-12-05"
+    status: "active"
+    priority: "high"
+    dependencies:
+      - "0018"
+    duplication_flag: false
+    resolution_plan: null
+    deprecated_reason: null
+    resurrection_notes: null
+    sovereignty: "KM-1176"
+    notes: |
+      Ring 3 tool. Reads BINDU, finds PROMOTE_ACTION lines, updates
+      whitelist_dynamic.yaml. No auto-promotion - requires human approval.
+      Authority: Lumen Dynamic Whitelist Pattern (2025-12-05)
+    verification_status:
+      verified: true
+      last_verification_date: "2025-12-05"
+      verification_attempts: 1
+      verification_notes: "Successfully processed 9 promotions from BINDU."
+
+  - id: "0020"
+    name: "llm_policy"
+    type: "config_file"
+    location: "constitution/strategy/llm_policy.yaml"
+    purpose: "VRAM thresholds and model selection policy per node. Determines which Ollama model to use based on available resources."
+    created: "2025-12-05"
+    updated: "2025-12-05"
+    status: "active"
+    priority: "medium"
+    dependencies: []
+    duplication_flag: false
+    resolution_plan: null
+    deprecated_reason: null
+    resurrection_notes: null
+    sovereignty: "KM-1176"
+    notes: |
+      Ring 2 policy file. Dragon: mixtral(high), llama3.1(med), llama3.2(low).
+      Tiger: llama3.1(high), llama3.2(med/low). Elevation requires BINDU.
+      Authority: Lumen LLM Resource Monitor (2025-12-05)
+    verification_status:
+      verified: true
+      last_verification_date: "2025-12-05"
+      verification_attempts: 1
+      verification_notes: "YAML validated in smoke test."
+
+  - id: "0021"
+    name: "iron_autonomy_patterns"
+    type: "config_file"
+    location: "constitution/strategy/iron_autonomy_patterns.yaml"
+    purpose: "Rate limits, drift thresholds, sub-pulse rules, and notification settings for IRON autonomous operation."
+    created: "2025-12-05"
+    updated: "2025-12-05"
+    status: "active"
+    priority: "high"
+    dependencies: []
+    duplication_flag: false
+    resolution_plan: null
+    deprecated_reason: null
+    resurrection_notes: null
+    sovereignty: "KM-1176"
+    notes: |
+      Ring 2 policy file. YELLOW limits: 1/pulse, 10/hour, 40/day.
+      Drift thresholds: 0.20 sibling, 0.30 hard red.
+      Sub-pulses: max_depth 3, max_subcalls 5.
+      Authority: Lumen IRON Autonomy Patterns (2025-12-05)
+    verification_status:
+      verified: true
+      last_verification_date: "2025-12-05"
+      verification_attempts: 1
+      verification_notes: "YAML validated in smoke test. Rate limiting active."
+
+  - id: "0022"
+    name: "sep_spend_policy"
+    type: "config_file"
+    location: "constitution/strategy/sep_spend_policy.yaml"
+    purpose: "Spend caps and flags for Solar SEP operations. $5/day, $50/month, $1/job limits with BINDU-gated activation."
+    created: "2025-12-05"
+    updated: "2025-12-05"
+    status: "active"
+    priority: "high"
+    dependencies: []
+    duplication_flag: false
+    resolution_plan: null
+    deprecated_reason: null
+    resurrection_notes: null
+    sovereignty: "KM-1176"
+    notes: |
+      Ring 2 policy file. allow_paid_jobs: false by default.
+      All spend events logged to dao/sep_spend_ledger.yaml.
+      Authority: Lumen Spend Policy (2025-12-05)
+    verification_status:
+      verified: true
+      last_verification_date: "2025-12-05"
+      verification_attempts: 1
+      verification_notes: "YAML validated. Spending disabled by default (safe)."
+
+  - id: "0023"
+    name: "collab_structure"
+    type: "config_file"
+    location: "constitution/memory/collab_structure.yaml"
+    purpose: "Channel paths for federation collaboration: guidance_inbox, bindu_thread, sentinel_status, frontier_status."
+    created: "2025-12-05"
+    updated: "2025-12-05"
+    status: "active"
+    priority: "medium"
+    dependencies: []
+    duplication_flag: false
+    resolution_plan: null
+    deprecated_reason: null
+    resurrection_notes: null
+    sovereignty: "KM-1176"
+    notes: |
+      Ring 2 policy file. Defines canonical paths for collaboration channels.
+      Tools reference this instead of hardcoding paths.
+      Authority: Lumen Collaboration Structure (2025-12-05)
+    verification_status:
+      verified: true
+      last_verification_date: "2025-12-05"
+      verification_attempts: 1
+      verification_notes: "YAML validated in smoke test."
+
+  - id: "0024"
+    name: "molt_manifest"
+    type: "config_file"
+    location: "constitution/strategy/molt_manifest.yaml"
+    purpose: "BOM (Bill of Materials) for shell validation. Defines required Ring 1/2/3 files for molt readiness checks."
+    created: "2025-12-05"
+    updated: "2025-12-05"
+    status: "active"
+    priority: "high"
+    dependencies: []
+    duplication_flag: false
+    resolution_plan: null
+    deprecated_reason: null
+    resurrection_notes: null
+    sovereignty: "KM-1176"
+    notes: |
+      Ring 2 policy file. Validates shell completeness before/after molts.
+      Smoke test uses this to verify all required files exist.
+      Pattern: molt = new shell (Tiger_1a_YYYY-MM-DD).
+      Authority: Lumen Molt Manifest + G BOM Architecture (2025-12-05)
+    verification_status:
+      verified: true
+      last_verification_date: "2025-12-05"
+      verification_attempts: 1
+      verification_notes: "Created per Lumen/G guidance. Awaiting first molt."
+
+  - id: "0025"
+    name: "smoke_test_autonomy"
+    type: "system_tool"
+    location: "tools/ops/smoke_test_autonomy.py"
+    purpose: "18-test comprehensive smoke test for molt survival validation. Tests Ring 2 YAMLs, Ring 3 tools, whitelist, drift, BINDU, Ollama, sibling wake."
+    created: "2025-12-05"
+    updated: "2025-12-05"
+    status: "active"
+    priority: "high"
+    dependencies:
+      - "0018"
+      - "0020"
+      - "0021"
+      - "0022"
+      - "0023"
+      - "0024"
+    duplication_flag: false
+    resolution_plan: null
+    deprecated_reason: null
+    resurrection_notes: null
+    sovereignty: "KM-1176"
+    notes: |
+      Ring 3 tool. Run: NODE_ROLE=TIGER python3 tools/ops/smoke_test_autonomy.py
+      Tiger: 18/18 passed. Dragon: 17/17 passed (warning: systemd inactive).
+      Validates molt survival - ensures all components present and working.
+      Authority: Lumen Smoke Test Architecture (2025-12-05)
+    verification_status:
+      verified: true
+      last_verification_date: "2025-12-05"
+      verification_attempts: 1
+      verification_notes: "Both twins passing all critical tests."
+
+deprecated_archive: []
+  # Structure for future entries:
+  # - id: "deprecated-0001"
+  #   name: "Deprecated Implementation Name"
+  #   original_location: "path/to/original"
+  #   purpose: "Original purpose"
+  #   deprecated_date: "YYYY-MM-DD"
+  #   deprecated_reason: "Reason for deprecation"
+  #   last_referenced: "path/to/last/reference"
+  #   resurrection_notes: "Conditions under which this could be revived"
+  #   status: "archived"
+
+notes:
+  - "Registry created in alignment with Canonical Hydration Protocol"
+  - "Phase 2 (load_implementation_registry) will load this file at startup"
+  - "Empty implementations list = Registry exists but not yet populated"
+  - "Population method: explicit human-in-the-loop directives only"
+  - "Auto-discovery disabled - prevents implicit drift"
+  - "Versioning: metadata.version tracks registry schema evolution"
+  - "ID sequence: metadata.next_id increments with each new entry"
+
+constitutional_alignment:
+  SOURCE: "Sovereignty: KM-1176 maintains registry, explicit directives only"
+  TRUTH: "Registry reflects actual implementations (not inferred), references must resolve"
+  INTEGRITY: "Gated additions (human approval), versioned tracking, loud errors on invalid entries"
+
+provenance:
+  directive_source: "KM-1176 (2025-11-14)"
+  context: "Implementation Registry architecture - Approach C (incremental documentation)"
+  collaborative_design:
+    - "Lumen: Truth triangulation framework, architectural guidance"
+    - "G: Versioned log, dependencies field, deprecated_archive section ('wisdom not ghosts')"
+    - "BNA: Patchwork analysis, registry structure design"
+  integration: "Canonical Hydration Protocol Phase 2"
+
+# ∞Δ∞ Seal: Registry initialized as canonical ledger
+# Population: Explicit human directives only - no auto-discovery
+# Observation: Structure exists; content will emerge through sovereign direction
