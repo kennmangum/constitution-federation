@@ -1891,3 +1891,15 @@ All YELLOW proposals from YP-2025-12-05-004 through YP-2025-12-05-143 are now **
 - **Action Requested:** Approve `[APPROVED YP-2025-12-05-433]` / Modify / Reject `[REJECTED YP-2025-12-05-433]`
 
 ---
+
+## 2025-12-05T18:20:39.196057Z — YELLOW Proposal (DRAGON) [Iron v1.0]
+
+- **ID:** YP-2025-12-05-436
+- **Title:** Re-evaluate Solar lane performance
+- **Lane:** Solar|Quest|MERC
+- **Rationale:** Solar lane has shown increased efficiency, but Quest lane's growth potential is uncertain. We should re-assess and allocate resources accordingly.
+- **ROE Impact:** Expected improvement in compute cleanliness/sovereignty
+- **Generational Rationale:** LGP alignment
+- **Action Requested:** Approve `[APPROVED YP-2025-12-05-436]` / Modify / Reject `[REJECTED YP-2025-12-05-436]`
+
+---
