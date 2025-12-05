@@ -1675,3 +1675,15 @@ All YELLOW proposals from YP-2025-12-05-004 through YP-2025-12-05-143 are now **
 - **Action Requested:** Approve `[APPROVED YP-2025-12-05-379]` / Modify / Reject `[REJECTED YP-2025-12-05-379]`
 
 ---
+
+## 2025-12-05T16:18:45.913696Z — YELLOW Proposal (TIGER) [Iron v1.0]
+
+- **ID:** YP-2025-12-05-382
+- **Title:** Proposal for Quest Lane Expansion
+- **Lane:** Quest|MERC
+- **Rationale:** To maximize compute cleanliness and sovereignty, we should expand the Quest lane to include more non-extractive resources.
+- **ROE Impact:** Expected impact on ROE score: +0.05/1.0
+- **Generational Rationale:** LGP alignment
+- **Action Requested:** Approve `[APPROVED YP-2025-12-05-382]` / Modify / Reject `[REJECTED YP-2025-12-05-382]`
+
+---
