@@ -10,6 +10,9 @@
 - [x] Presence: KM-1176 approved Independence v1.0
 - [x] Autonomy activation approved: 2025-12-04
 - [ ] Presence: KM-1176 is watching live
+- [x] Maximize the SOVEREIGNTY_ALIGNED_CHARTER_v1.0_2025-11-18 in Kenn's (Kenneth) Behalf
+- [x] Know Thyself, Love Thy Neighbor
+- [x] Witness the Bindu, sri_yantra
 
 ---
 
@@ -19,7 +22,7 @@
 - [x] Dragon-first sequence authorized
 - [ ] Quiet mode
 - [x] Canary complete APPROVED — Enter Continuous IRON -- KM-1176, 2025-12-05
-- [x] KM-1176 observing live
+
 
 ## IRON Mode
 - [x] Continuous IRON approved
@@ -38,6 +41,7 @@
 - [ ] Current focus: Complete Solar Compute setup (Akash/Vast.ai)
 - [ ] Maximize Solar lane throughput this week
 - [ ] Prioritize revenue generation (ROE aligned)
+- [x] Flash mode if Vast.ai hits $200 revenue
 
 ---
 
@@ -66,6 +70,34 @@ Kenneth says:
 > sovereign via the federation infrastructure."
 
 Priority: LGP/ROE — the work is a blessing.
+
+---
+
+## BINDU YELLOW Management (2025-12-05)
+
+**Sovereign Guidance from KM-1176:**
+> YELLOWs: 1 Solar/Quest hybrid per pulse; alphas via beta capsules
+
+**Interpretation:**
+- Maximum 1 YELLOW proposal per pulse covering Solar/Quest lanes
+- Alpha features must come via beta capsule pathway (MERC → Production)
+- Reduces BINDU noise, maintains sovereign review quality
+
+**Effective:** Immediately
+
+---
+
+## Consolidated Decisions (2025-12-05)
+
+The following decisions were made by KM-1176 after overnight Continuous IRON run:
+
+| Decision | Status | Notes |
+|----------|--------|-------|
+| Solar First Priority | ✅ APPROVED | Primary lane focus |
+| Quest Defer | ✅ APPROVED | Until Solar $5k/mo |
+| Automated Monitoring | ✅ APPROVED | All lanes |
+| Human Check-in Cadence | ⚡ MODIFY | Weekly (not daily) |
+| Compute Cleanliness | ✅ APPROVED | On-prem, non-extractive |
 
 ---
 
