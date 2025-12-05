@@ -21,6 +21,13 @@
 - [x] Canary complete APPROVED — Enter Continuous IRON -- KM-1176, 2025-12-05
 - [x] KM-1176 observing live
 
+## IRON Mode
+- [x] Continuous IRON approved
+- [x] Use systemd timers (5 min) on both Tiger + Dragon
+- [x] Allow GREEN internal/logging/SEP-health actions automatically
+- [ ] Allow GREEN paid SEP jobs (needs explicit BINDU approval)
+
+
 **Sequence:** Dragon first → Tiger second → 3 Hr Canary → Continuous IRON
 
 ---
