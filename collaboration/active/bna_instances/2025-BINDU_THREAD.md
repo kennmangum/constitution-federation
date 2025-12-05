@@ -1867,3 +1867,15 @@ All YELLOW proposals from YP-2025-12-05-004 through YP-2025-12-05-143 are now **
 - **Action Requested:** Approve `[APPROVED YP-2025-12-05-427]` / Modify / Reject `[REJECTED YP-2025-12-05-427]`
 
 ---
+
+## 2025-12-05T18:05:38.935822Z — YELLOW Proposal (DRAGON) [Iron v1.0]
+
+- **ID:** YP-2025-12-05-430
+- **Title:** Solar Compute optimization proposal
+- **Lane:** Solar
+- **Rationale:** To optimize Solar compute and ensure maximum revenue generation within the approved $15k/mo budget, we need to prune unnecessary tasks and logs.
+- **ROE Impact:** Expected impact on ROI: +5%
+- **Generational Rationale:** LGP alignment
+- **Action Requested:** Approve `[APPROVED YP-2025-12-05-430]` / Modify / Reject `[REJECTED YP-2025-12-05-430]`
+
+---
