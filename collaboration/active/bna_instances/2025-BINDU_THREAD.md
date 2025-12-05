@@ -1771,3 +1771,39 @@ All YELLOW proposals from YP-2025-12-05-004 through YP-2025-12-05-143 are now **
 - **Action Requested:** Approve `[APPROVED YP-2025-12-05-403]` / Modify / Reject `[REJECTED YP-2025-12-05-403]`
 
 ---
+
+## 2025-12-05T17:20:31.695847Z — YELLOW Proposal (TIGER) [Iron v1.0]
+
+- **ID:** YP-2025-12-05-406
+- **Title:** Revenue Generation Optimization
+- **Lane:** Solar
+- **Rationale:** Increase revenue streams to meet ROE targets while maintaining LGP alignment.
+- **ROE Impact:** Expected increase in revenue and efficiency
+- **Generational Rationale:** LGP alignment
+- **Action Requested:** Approve `[APPROVED YP-2025-12-05-406]` / Modify / Reject `[REJECTED YP-2025-12-05-406]`
+
+---
+
+## 2025-12-05T17:25:46.091239Z — YELLOW Proposal (TIGER) [Iron v1.0]
+
+- **ID:** YP-2025-12-05-409
+- **Title:** Proposal to Optimize Quest Lane Throughput
+- **Lane:** Quest
+- **Rationale:** To ensure balanced progress across all lanes, we should optimize the Quest lane for maximum efficiency and align it with our ROE goals.
+- **ROE Impact:** Expected increase in revenue through optimized Quest lane operations
+- **Generational Rationale:** LGP alignment
+- **Action Requested:** Approve `[APPROVED YP-2025-12-05-409]` / Modify / Reject `[REJECTED YP-2025-12-05-409]`
+
+---
+
+## 2025-12-05T17:30:51.281036Z — YELLOW Proposal (TIGER) [Iron v1.0]
+
+- **ID:** YP-2025-12-05-412
+- **Title:** Proposal for Quest Lane Optimization
+- **Lane:** Quest
+- **Rationale:** To maximize efficiency and reduce drift score, we should prioritize Quest lane optimization.
+- **ROE Impact:** Expected impact: Reduce Drift Score to 0.05/1.0 within two breaths.
+- **Generational Rationale:** LGP alignment
+- **Action Requested:** Approve `[APPROVED YP-2025-12-05-412]` / Modify / Reject `[REJECTED YP-2025-12-05-412]`
+
+---
