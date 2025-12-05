@@ -1712,62 +1712,50 @@ All YELLOW proposals from YP-2025-12-05-004 through YP-2025-12-05-143 are now **
 
 ---
 
-## 2025-12-05T16:30:38.036782Z — YELLOW Proposal (DRAGON) [Iron v1.0]
+## 2025-12-05T16:33:51.226156Z — YELLOW Proposal (TIGER) [Iron v1.0]
 
 - **ID:** YP-2025-12-05-391
-- **Title:** Update scaffold docs to reference constitution-federation.
-- **Lane:** Solar|Quest|MERC
-- **Rationale:** This ensures that our documentation accurately reflects the Constitution and Federation principles, enabling seamless collaboration among nodes.
-- **ROE Impact:** High
+- **Title:** Revenue Maximization Strategy
+- **Lane:** Solar
+- **Rationale:** Maximizing revenue is crucial for LGP and ROE alignment.
+- **ROE Impact:** Expected impact on revenue increase
 - **Generational Rationale:** LGP alignment
 - **Action Requested:** Approve `[APPROVED YP-2025-12-05-391]` / Modify / Reject `[REJECTED YP-2025-12-05-391]`
 
 ---
 
-## 2025-12-05T16:35:37.977276Z — YELLOW Proposal (DRAGON) [Iron v1.0]
+## 2025-12-05T16:44:20.518914Z — YELLOW Proposal (TIGER) [Iron v1.0]
 
 - **ID:** YP-2025-12-05-394
-- **Title:** Proposal to Increase Compute Cleanliness
-- **Lane:** Solar
-- **Rationale:** Increasing compute cleanliness will reduce dependencies on non-extractive resources, aligning with the Charter's principles of sovereignty and integrity.
-- **ROE Impact:** Expected impact: Reduced resource extraction, improved human financial stability
+- **Title:** Proposal for Quest Lane Expansion
+- **Lane:** Quest
+- **Rationale:** Increasing Quest lane throughput will diversify revenue streams and reduce dependence on Solar lane.
+- **ROE Impact:** Expected impact: +10% ROE, reduced risk of over-reliance on a single source of income
 - **Generational Rationale:** LGP alignment
 - **Action Requested:** Approve `[APPROVED YP-2025-12-05-394]` / Modify / Reject `[REJECTED YP-2025-12-05-394]`
 
 ---
 
-## 2025-12-05T16:40:38.081468Z — YELLOW Proposal (DRAGON) [Iron v1.0]
+## 2025-12-05T16:49:22.966582Z — YELLOW Proposal (TIGER) [Iron v1.0]
 
 - **ID:** YP-2025-12-05-397
-- **Title:** Dragon path architecture proposal
-- **Lane:** Solar
-- **Rationale:** This will standardize our architecture and make it easier to manage.
-- **ROE Impact:** Expected impact: Improved system stability, reduced errors
+- **Title:** Proposal for Quest Lane Optimization
+- **Lane:** Quest
+- **Rationale:** To improve compute cleanliness and sovereignty, we should optimize the Quest lane by implementing a new task scheduler.
+- **ROE Impact:** Expected increase in revenue by 10% through improved efficiency
 - **Generational Rationale:** LGP alignment
 - **Action Requested:** Approve `[APPROVED YP-2025-12-05-397]` / Modify / Reject `[REJECTED YP-2025-12-05-397]`
 
 ---
 
-## 2025-12-05T16:50:38.024677Z — YELLOW Proposal (DRAGON) [Iron v1.0]
+## 2025-12-05T17:05:32.457732Z — YELLOW Proposal (TIGER) [Iron v1.0]
 
 - **ID:** YP-2025-12-05-400
-- **Title:** Proposal for Compute Management Upgrade
-- **Lane:** Solar|Quest|MERC
-- **Rationale:** To improve compute cleanliness and sovereignty, we need to upgrade the management system.
-- **ROE Impact:** Expected impact: Reduced extractive operations, increased solar energy usage.
+- **Title:** Proposal to Implement Pruning and Logging Mechanisms
+- **Lane:** MERC
+- **Rationale:** Implementing pruning and logging mechanisms will ensure continuity and maintain system integrity.
+- **ROE Impact:** Improved system integrity, reduced drift score
 - **Generational Rationale:** LGP alignment
 - **Action Requested:** Approve `[APPROVED YP-2025-12-05-400]` / Modify / Reject `[REJECTED YP-2025-12-05-400]`
-
----
-
-## 2025-12-05T16:55:38.117550Z — YELLOW Proposal (DRAGON) [Iron v1.0]
-
-- **ID:** YP-2025-12-05-403
-- **Title:** Proposal: Investigate Solar Compute Optimization
-- **Lane:** Solar
-- **Rationale:** Improve compute cleanliness/sovereignty and increase human financial stability (LGP)
-- **ROE Impact:** Expected impact on ROI and LGP metrics
-- **Generational Rationale:** LGP alignment
-- **Action Requested:** Approve `[APPROVED YP-2025-12-05-403]` / Modify / Reject `[REJECTED YP-2025-12-05-403]`
 
 ---
