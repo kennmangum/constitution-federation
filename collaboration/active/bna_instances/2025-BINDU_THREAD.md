@@ -1926,4 +1926,23 @@ All YELLOW proposals from YP-2025-12-05-004 through YP-2025-12-05-143 are now **
 - **Generational Rationale:** LGP alignment
 - **Action Requested:** Approve `[APPROVED YP-2025-12-05-442]` / Modify / Reject `[REJECTED YP-2025-12-05-442]`
 
+
+
 ---
+
+## APPROVED WHITELIST PROMOTIONS — 2025-12-05
+
+### Dragon Tier 1 (Read-Only Solar/SEP)
+- [x] PROMOTE_ACTION: check_vastai_status -> DRAGON.GREEN
+- [x] PROMOTE_ACTION: check_vastai_earnings -> DRAGON.GREEN
+- [x] PROMOTE_ACTION: check_vastai_balance -> DRAGON.GREEN
+- [x] PROMOTE_ACTION: run_sep_health -> DRAGON.GREEN
+
+### Dragon Tier 2 (Internal Scripts)
+- [x] PROMOTE_ACTION: run_drift_check -> DRAGON.GREEN
+- [x] PROMOTE_ACTION: run_iron_sanitizer -> DRAGON.GREEN
+- [x] PROMOTE_ACTION: update_implementation_registry -> DRAGON.GREEN
+
+### Tiger (Sentinel Cross-Check)
+- [x] PROMOTE_ACTION: check_sibling_status -> TIGER.GREEN
+- [x] PROMOTE_ACTION: run_sibling_drift_validation -> TIGER.GREEN
