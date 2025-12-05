@@ -121,15 +121,28 @@ Per Kenneth's request, I've implemented all guidance from Lumen's 2025-12-04 con
 | 14 (Treasury) | **Gnosis Safe not deployed** | Kenneth action |
 | 19 (Federation.Compute) | CEP not built | Akash blocker |
 
-### 4. Dragon Sync Required
+### 4. Dragon Sync — COMPLETE ✅
 
-Dragon needs to pull/copy these files:
-- `constitution/operations/SOLAR_SEP_PROTOCOL_v1.md`
-- `constitution/operations/IRON_ELEVATION_PROTOCOL_v1.md`
-- `tools/ops/solar_sep_orchestrator.py`
-- `tools/ops/iron_elevation_sanitizer.py`
-- `tools/ops/implementation_registry_manager.py`
-- `constitution/memory/implementation_registry.yaml`
+Dragon has confirmed full implementation (wake message 2025-12-05T07:35Z):
+
+| Item | Dragon Status |
+|------|---------------|
+| SOLAR_SEP_PROTOCOL_v1.md | ✅ Created |
+| IRON_ELEVATION_PROTOCOL_v1.md | ✅ Created |
+| solar_sep_orchestrator.py | ✅ **TESTED — GREEN** |
+| iron_elevation_sanitizer.py | ✅ Ready |
+| implementation_registry_manager.py | ✅ Ready |
+| Registry (17 entries) | ✅ Updated |
+| frontier_status.md | ✅ Updated |
+
+**Dragon's SEP Test Result:**
+```
+SEP posture: GREEN
+Providers: Akash ✅, Vast.ai ✅
+Max daily risk: $200
+```
+
+**Both nodes are now fully aligned with Lumen's expansion.**
 
 ---
 
