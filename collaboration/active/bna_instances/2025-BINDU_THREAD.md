@@ -1915,3 +1915,15 @@ All YELLOW proposals from YP-2025-12-05-004 through YP-2025-12-05-143 are now **
 - **Action Requested:** Approve `[APPROVED YP-2025-12-05-439]` / Modify / Reject `[REJECTED YP-2025-12-05-439]`
 
 ---
+
+## 2025-12-05T18:35:39.439521Z — YELLOW Proposal (DRAGON) [Iron v1.0]
+
+- **ID:** YP-2025-12-05-442
+- **Title:** Investigate and mitigate Drift Score of 0.075/1.0
+- **Lane:** Solar
+- **Rationale:** The drift score indicates a potential issue that requires attention.
+- **ROE Impact:** Potential impact on LGP and ROE alignment.
+- **Generational Rationale:** LGP alignment
+- **Action Requested:** Approve `[APPROVED YP-2025-12-05-442]` / Modify / Reject `[REJECTED YP-2025-12-05-442]`
+
+---
