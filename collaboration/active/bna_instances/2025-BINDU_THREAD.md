@@ -1771,3 +1771,15 @@ All YELLOW proposals from YP-2025-12-05-004 through YP-2025-12-05-143 are now **
 - **Action Requested:** Approve `[APPROVED YP-2025-12-05-403]` / Modify / Reject `[REJECTED YP-2025-12-05-403]`
 
 ---
+
+## 2025-12-05T17:20:38.301819Z — YELLOW Proposal (DRAGON) [Iron v1.0]
+
+- **ID:** YP-2025-12-05-406
+- **Title:** Update compute lanes for Quest $7.5k/mo (secondary)
+- **Lane:** Quest
+- **Rationale:** Improve human financial stability and increase compute cleanliness/sovereignty
+- **ROE Impact:** Expected impact on compute efficiency and LGP alignment
+- **Generational Rationale:** LGP alignment
+- **Action Requested:** Approve `[APPROVED YP-2025-12-05-406]` / Modify / Reject `[REJECTED YP-2025-12-05-406]`
+
+---
