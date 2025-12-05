@@ -18,7 +18,7 @@
 - [x] IRON Cutover Approved
 - [x] Dragon-first sequence authorized
 - [ ] Quiet mode
-- [ ] Canary complete
+- [x] Canary complete APPROVED — Enter Continuous IRON -- KM-1176, 2025-12-05
 - [x] KM-1176 observing live
 
 **Sequence:** Dragon first → Tiger second → 3 Hr Canary → Continuous IRON

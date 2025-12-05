@@ -128,6 +128,7 @@ Dragon Pulse 3 ran in Independence mode (IRON import error: `parse_decision_safe
 > - `APPROVED — Enter Continuous IRON`
 > - `HOLD — [reason]`
 > - `MODIFY — [instructions]`
+APPROVED — Enter Continuous IRON — KM-1176, 2025-12-05
 
 ---
 
