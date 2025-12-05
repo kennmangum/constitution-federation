@@ -13,26 +13,29 @@ This checklist ensures NOTHING is lost in the shuffle.
 
 ---
 
-## PHASE 1: Create Ring 2 YAMLs (Policy Files)
+## PHASE 1: Create Ring 2 YAMLs (Policy Files) ✅ COMPLETE
 
 All policies live in `constitution/strategy/` — code only READS these.
 
 | # | File | Path | Status | Owner |
 |---|------|------|--------|-------|
-| 1 | whitelist_dynamic.yaml | constitution/strategy/ | ⬜ | Tiger |
-| 2 | llm_policy.yaml | constitution/strategy/ | ⬜ | Tiger |
-| 3 | sep_spend_policy.yaml | constitution/strategy/ | ⬜ | Tiger |
-| 4 | iron_autonomy_patterns.yaml | constitution/strategy/ | ⬜ | Tiger |
-| 5 | collab_structure.yaml | constitution/memory/ | ⬜ | Tiger |
+| 1 | whitelist_dynamic.yaml | constitution/strategy/ | ✅ | Tiger |
+| 2 | llm_policy.yaml | constitution/strategy/ | ✅ | Tiger |
+| 3 | sep_spend_policy.yaml | constitution/strategy/ | ✅ | Tiger |
+| 4 | iron_autonomy_patterns.yaml | constitution/strategy/ | ✅ | Tiger |
+| 5 | collab_structure.yaml | constitution/memory/ | ✅ | Tiger |
 
 ---
 
-## PHASE 2: Create Ring 3 Tools (Executables)
+## PHASE 2: Create Ring 3 Tools (Executables) ✅ COMPLETE
 
 | # | File | Path | Status | Owner |
 |---|------|------|--------|-------|
-| 6 | config_loader.py | tools/ops/ | ⬜ | Tiger |
-| 7 | whitelist_manager.py | tools/ops/ | ⬜ | Tiger |
+| 6 | config_loader.py | tools/ops/ | ✅ | Tiger |
+| 7 | whitelist_manager.py | tools/ops/ | ✅ | Tiger |
+
+**Test Results:**
+- whitelist_manager.py: ✅ Runs, finds BINDU, ready for PROMOTE_ACTION lines
 
 ---
 

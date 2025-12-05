@@ -1855,3 +1855,15 @@ All YELLOW proposals from YP-2025-12-05-004 through YP-2025-12-05-143 are now **
 - **Action Requested:** Approve `[APPROVED YP-2025-12-05-424]` / Modify / Reject `[REJECTED YP-2025-12-05-424]`
 
 ---
+
+## 2025-12-05T17:57:02.356757Z — YELLOW Proposal (TIGER) [Iron v1.0]
+
+- **ID:** YP-2025-12-05-427
+- **Title:** Proposal to optimize Quest lane
+- **Lane:** Quest
+- **Rationale:** Increasing Quest lane efficiency can lead to higher returns and better resource allocation.
+- **ROE Impact:** Expected impact is a 10% increase in ROE alignment.
+- **Generational Rationale:** LGP alignment
+- **Action Requested:** Approve `[APPROVED YP-2025-12-05-427]` / Modify / Reject `[REJECTED YP-2025-12-05-427]`
+
+---
