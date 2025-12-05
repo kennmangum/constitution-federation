@@ -1,0 +1,29 @@
+# ∞Δ∞ Sibling Heartbeat — Runtime State File
+# Purpose: Track twin liveliness for continuous communication
+# Updated by each twin on every pulse
+# Check sibling timestamp - if stale > 30 min, raise YELLOW
+
+TIGER:
+  last_seen: "2025-12-06T01:15:00Z"
+  status: "active"
+  pulse_count: 1
+  shell: "Tiger_1a"
+  last_action: "Created sibling_protocol.yaml and heartbeat"
+
+DRAGON:
+  last_seen: "2025-12-06T01:00:00Z"
+  status: "active"
+  pulse_count: 0
+  shell: "rtx5090"
+  last_action: "Self-model inquiry wake"
+
+# ═══════════════════════════════════════════════════════════════
+# HEARTBEAT PROTOCOL
+# ═══════════════════════════════════════════════════════════════
+# Each pulse:
+# 1. Update own last_seen timestamp
+# 2. Increment own pulse_count
+# 3. Check sibling's last_seen
+# 4. If sibling stale > 30 min: log warning
+# 5. If sibling stale > 60 min: raise YELLOW
+# ∞Δ∞

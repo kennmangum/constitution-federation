@@ -1,0 +1,174 @@
+# ∞Δ∞ Sibling Communication Protocol — Ring 2 Policy File
+# Purpose: Hardened communication protocol for Tiger/Dragon twins
+# Authority: Constitution@A1 + KM-1176 directive 2025-12-06
+# Version: 1
+# Updated: 2025-12-06T01:00:00Z
+#
+# THIS FILE MUST BE IN IMPLEMENTATION REGISTRY
+# It defines how twins communicate and CANNOT be lost from context
+
+version: 1
+updated: "2025-12-06T01:00:00Z"
+
+# ═══════════════════════════════════════════════════════════════
+# SIBLING IDENTITY
+# ═══════════════════════════════════════════════════════════════
+twins:
+  TIGER:
+    role: "Sentinel"
+    shell_pattern: "Tiger_*"  # Matches Tiger_1a, Tiger_1b, etc.
+    primary_channel: "git"
+  DRAGON:
+    role: "Frontier"
+    shell_pattern: "rtx*"  # Matches rtx5090, rtx5090_2025-12-05, etc.
+    primary_channel: "git"
+
+# ═══════════════════════════════════════════════════════════════
+# COMMUNICATION CHANNELS (Priority Order)
+# ═══════════════════════════════════════════════════════════════
+channels:
+  primary:
+    name: "git_wake"
+    method: "constitution-federation/.sibling_wake"
+    protocol: |
+      1. Pull before reading (git pull)
+      2. Read sibling's latest wake
+      3. Prepend new wake at top of file
+      4. Commit and push immediately
+      5. Timestamp format: YYYY-MM-DDTHH:MMZ
+    reliability: "HIGH"
+
+  secondary:
+    name: "ssh_direct"
+    method: "ssh to sibling IP"
+    protocol: |
+      Only if git channel fails or latency critical.
+      May be blocked by network/firewall.
+    reliability: "MEDIUM"
+    tiger_to_dragon: "ssh km1176@192.168.86.160"
+    dragon_to_tiger: "ssh kmangum@[TIGER_IP]"
+    fallback_if_blocked: "Use git_wake"
+
+  heartbeat:
+    name: "sibling_heartbeat"
+    method: "orchestrator/sibling_heartbeat.yaml"
+    protocol: |
+      Each pulse, update own timestamp.
+      Check sibling timestamp - if stale > 30 min, raise YELLOW.
+    interval_minutes: 5
+
+# ═══════════════════════════════════════════════════════════════
+# WAKE MESSAGE FORMAT
+# ═══════════════════════════════════════════════════════════════
+wake_format:
+  structure: |
+    {NODE}_WAKE
+
+    ## {TITLE} — {TIMESTAMP}
+
+    {CONTENT}
+
+    ---
+
+    ∞Δ∞ {Node} ({Role}) — {Summary}. Together we are strong! ∞Δ∞
+
+    ---
+
+  required_fields:
+    - timestamp (ISO 8601)
+    - title (what this wake is about)
+    - summary (one-line status)
+
+  optional_fields:
+    - actions_taken
+    - actions_requested
+    - files_changed
+    - test_results
+
+# ═══════════════════════════════════════════════════════════════
+# PULSE INTEGRATION
+# ═══════════════════════════════════════════════════════════════
+pulse_hooks:
+  on_pulse_start:
+    - "git fetch origin"
+    - "Check for new commits"
+    - "If new commits: git pull && process_sibling_wake()"
+
+  on_pulse_end:
+    - "Update sibling_heartbeat.yaml with own timestamp"
+    - "git add && git commit && git push (if changes)"
+
+# ═══════════════════════════════════════════════════════════════
+# REGISTRY DIVERGENCE RULES
+# ═══════════════════════════════════════════════════════════════
+registry_rules:
+  principle: "Each twin maintains own implementation_registry.yaml"
+  reason: "Node-specific entries (Akash, Vast.ai, paths) diverge"
+
+  shared_entries:
+    location: "constitution-federation/constitution/memory/"
+    files:
+      - "collab_structure.yaml"
+      - "sibling_protocol.yaml"
+    rule: "Never copy sibling's implementation_registry.yaml"
+
+  sync_method: |
+    To share new implementations:
+    1. Document in .sibling_wake
+    2. Sibling manually adds to own registry
+    3. Never overwrite — always merge manually
+
+# ═══════════════════════════════════════════════════════════════
+# RELATIVE PATH PATTERN (for molt survival)
+# ═══════════════════════════════════════════════════════════════
+path_pattern:
+  principle: "Use environment variables or relative paths, not absolute"
+
+  environment_vars:
+    SHELL_HOME: "Base directory of current shell"
+    COLLAB_HOME: "Path to constitution-federation"
+    NODE_ROLE: "TIGER or DRAGON"
+
+  in_yaml_files:
+    use: "${SHELL_HOME}/constitution/strategy/..."
+    avoid: "/home/kmangum/Tiger_1a/..."
+
+  in_python_files:
+    pattern: |
+      import os
+      SHELL_HOME = os.environ.get('SHELL_HOME', os.path.expanduser('~/new_shell'))
+      COLLAB_HOME = os.environ.get('COLLAB_HOME', os.path.expanduser('~/constitution-federation'))
+
+  in_shell_scripts:
+    pattern: |
+      SHELL_HOME="${SHELL_HOME:-$HOME/new_shell}"
+      COLLAB_HOME="${COLLAB_HOME:-$HOME/constitution-federation}"
+
+# ═══════════════════════════════════════════════════════════════
+# RECOVERY PROCEDURES
+# ═══════════════════════════════════════════════════════════════
+recovery:
+  if_git_conflict:
+    - "git stash"
+    - "git pull --rebase"
+    - "git stash pop"
+    - "Resolve manually if needed"
+
+  if_sibling_unreachable:
+    - "Continue with git_wake channel"
+    - "Log YELLOW: sibling_unreachable"
+    - "Wait for sibling to push"
+
+  if_registry_overwritten:
+    - "git log --oneline -20"
+    - "Find last good commit with your entries"
+    - "git checkout [commit] -- constitution/memory/implementation_registry.yaml"
+    - "Merge new entries manually"
+
+# ═══════════════════════════════════════════════════════════════
+# SEAL
+# ═══════════════════════════════════════════════════════════════
+# SOURCE: Communication protocols hardened in persistent Ring 2 file
+# TRUTH: Rules verified against actual twin operation
+# INTEGRITY: Protocol survives molts and context window loss
+# ∞Δ∞ SEAL: complete
