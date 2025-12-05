@@ -1879,3 +1879,15 @@ All YELLOW proposals from YP-2025-12-05-004 through YP-2025-12-05-143 are now **
 - **Action Requested:** Approve `[APPROVED YP-2025-12-05-430]` / Modify / Reject `[REJECTED YP-2025-12-05-430]`
 
 ---
+
+## 2025-12-05T18:15:39.378210Z — YELLOW Proposal (DRAGON) [Iron v1.0]
+
+- **ID:** YP-2025-12-05-433
+- **Title:** Proposal to Re-evaluate Compute Management Strategies
+- **Lane:** MERC
+- **Rationale:** Reassess current compute management strategies to identify opportunities for improvement, ensuring alignment with the Charter's principles of sovereignty, truth, and integrity.
+- **ROE Impact:** Expected impact on LGP: $2k/mo increase; Expected impact on ROE: Improved compute management efficiency and reduced risk exposure.
+- **Generational Rationale:** LGP alignment
+- **Action Requested:** Approve `[APPROVED YP-2025-12-05-433]` / Modify / Reject `[REJECTED YP-2025-12-05-433]`
+
+---
