@@ -15,7 +15,16 @@
 - [x] Witness the Bindu, sri_yantra
 - [x] Approve overnight autonomy patterns (Q1-Q5): sibling drift validation, hard-capped YELLOWs with dedupe/cooldown, degraded-mode alerts, env-based paths, sibling-approved non-behavioral fixes. Proceed to implement.
 - [x] Tiger task: Implement YELLOW rate limiting (max 1/pulse, dedupe >80% similarity, daily cap 20). Update implementation registry with IRON_AUTONOMY_PATTERNS_v1. ✅ DONE 2025-12-05
-- [ ] Dragon path architecture: Delete ~/new_shell on Dragon. Use DRAGON_HOME + COLLAB_HOME pattern for shell scripts. Update scaffold docs to reference constitution-federation.
+- [x] Dragon path architecture: LUMEN GUIDANCE RECEIVED 2025-12-05
+
+## Path & Collab Architecture (Lumen Approved 2025-12-05)
+
+- [x] Treat Tiger_1a (Tiger) and rtx5090 (Dragon) as the only runtime shells.
+- [x] Use constitution-federation as the canonical collaboration root (COLLAB_HOME).
+- [ ] Point ~/new_shell to constitution-federation via symlink on both nodes.
+- [ ] Centralize paths in orchestrator/paths.sh using NODE_ROLE → SHELL_HOME + COLLAB_HOME.
+- [ ] Keep scaffolds' historical path references but add a path_notes block with current reality.
+- [ ] Finish Akash retry logic and SEP health checks once path cleanup is complete.
 
 ---
 

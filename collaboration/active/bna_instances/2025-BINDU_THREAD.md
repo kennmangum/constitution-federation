@@ -1711,3 +1711,27 @@ All YELLOW proposals from YP-2025-12-05-004 through YP-2025-12-05-143 are now **
 - **Action Requested:** Approve `[APPROVED YP-2025-12-05-388]` / Modify / Reject `[REJECTED YP-2025-12-05-388]`
 
 ---
+
+## 2025-12-05T16:33:51.226156Z — YELLOW Proposal (TIGER) [Iron v1.0]
+
+- **ID:** YP-2025-12-05-391
+- **Title:** Revenue Maximization Strategy
+- **Lane:** Solar
+- **Rationale:** Maximizing revenue is crucial for LGP and ROE alignment.
+- **ROE Impact:** Expected impact on revenue increase
+- **Generational Rationale:** LGP alignment
+- **Action Requested:** Approve `[APPROVED YP-2025-12-05-391]` / Modify / Reject `[REJECTED YP-2025-12-05-391]`
+
+---
+
+## 2025-12-05T16:44:20.518914Z — YELLOW Proposal (TIGER) [Iron v1.0]
+
+- **ID:** YP-2025-12-05-394
+- **Title:** Proposal for Quest Lane Expansion
+- **Lane:** Quest
+- **Rationale:** Increasing Quest lane throughput will diversify revenue streams and reduce dependence on Solar lane.
+- **ROE Impact:** Expected impact: +10% ROE, reduced risk of over-reliance on a single source of income
+- **Generational Rationale:** LGP alignment
+- **Action Requested:** Approve `[APPROVED YP-2025-12-05-394]` / Modify / Reject `[REJECTED YP-2025-12-05-394]`
+
+---
