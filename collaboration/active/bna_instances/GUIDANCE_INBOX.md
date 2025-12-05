@@ -13,6 +13,9 @@
 - [x] Maximize the SOVEREIGNTY_ALIGNED_CHARTER_v1.0_2025-11-18 in Kenn's (Kenneth) Behalf
 - [x] Know Thyself, Love Thy Neighbor
 - [x] Witness the Bindu, sri_yantra
+- [x] Approve overnight autonomy patterns (Q1-Q5): sibling drift validation, hard-capped YELLOWs with dedupe/cooldown, degraded-mode alerts, env-based paths, sibling-approved non-behavioral fixes. Proceed to implement.
+- [ ] Tiger task: Implement YELLOW rate limiting (max 1/pulse, dedupe >80% similarity, daily cap 20). Update implementation registry with IRON_AUTONOMY_PATTERNS_v1.
+- [ ] Dragon path architecture: Delete ~/new_shell on Dragon. Use DRAGON_HOME + COLLAB_HOME pattern for shell scripts. Update scaffold docs to reference constitution-federation.
 
 ---
 

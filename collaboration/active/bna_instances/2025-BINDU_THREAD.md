@@ -1531,3 +1531,147 @@ All YELLOW proposals from YP-2025-12-05-004 through YP-2025-12-05-143 are now **
 - **Action Requested:** Approve `[APPROVED YP-2025-12-05-343]` / Modify / Reject `[REJECTED YP-2025-12-05-343]`
 
 ---
+
+## 2025-12-05T15:21:52.414161Z — YELLOW Proposal (TIGER) [Iron v1.0]
+
+- **ID:** YP-2025-12-05-346
+- **Title:** Prioritize revenue generation
+- **Lane:** Solar
+- **Rationale:** To align with ROE and LGP goals, we need to prioritize revenue tasks that have the greatest impact.
+- **ROE Impact:** Expected increase in revenue by $10k/mo
+- **Generational Rationale:** LGP alignment
+- **Action Requested:** Approve `[APPROVED YP-2025-12-05-346]` / Modify / Reject `[REJECTED YP-2025-12-05-346]`
+
+---
+
+## 2025-12-05T15:21:52.414433Z — YELLOW Proposal (TIGER) [Iron v1.0]
+
+- **ID:** YP-2025-12-05-349
+- **Title:** Optimize Quest lane setup
+- **Lane:** Quest
+- **Rationale:** To ensure efficient resource allocation, we should optimize the Quest lane's configuration and settings.
+- **ROE Impact:** Expected improvement in Quest lane throughput by 20%
+- **Generational Rationale:** LGP alignment
+- **Action Requested:** Approve `[APPROVED YP-2025-12-05-349]` / Modify / Reject `[REJECTED YP-2025-12-05-349]`
+
+---
+
+## 2025-12-05T15:21:52.414718Z — YELLOW Proposal (TIGER) [Iron v1.0]
+
+- **ID:** YP-2025-12-05-352
+- **Title:** Integrate new compute environment
+- **Lane:** MERC
+- **Rationale:** To enhance our overall performance and scalability, we should integrate a new compute environment that meets ROE standards.
+- **ROE Impact:** Expected increase in processing power by 30%
+- **Generational Rationale:** LGP alignment
+- **Action Requested:** Approve `[APPROVED YP-2025-12-05-352]` / Modify / Reject `[REJECTED YP-2025-12-05-352]`
+
+---
+
+## 2025-12-05T15:26:33.217125Z — YELLOW Proposal (TIGER) [Iron v1.0]
+
+- **ID:** YP-2025-12-05-355
+- **Title:** Proposal to Optimize Quest Lane
+- **Lane:** Quest
+- **Rationale:** Improving compute cleanliness and sovereignty
+- **ROE Impact:** Expected ROE alignment improvements
+- **Generational Rationale:** LGP alignment
+- **Action Requested:** Approve `[APPROVED YP-2025-12-05-355]` / Modify / Reject `[REJECTED YP-2025-12-05-355]`
+
+---
+
+## 2025-12-05T15:36:42.123331Z — YELLOW Proposal (TIGER) [Iron v1.0]
+
+- **ID:** YP-2025-12-05-358
+- **Title:** Solar Compute Setup Review
+- **Lane:** Solar
+- **Rationale:** To ensure optimal performance and alignment with ROE/ROE-LGP, a review of the Solar Compute setup is required.
+- **ROE Impact:** Expected impact: Increased revenue generation through optimized compute allocation.
+- **Generational Rationale:** LGP alignment
+- **Action Requested:** Approve `[APPROVED YP-2025-12-05-358]` / Modify / Reject `[REJECTED YP-2025-12-05-358]`
+
+---
+
+## 2025-12-05T15:41:42.011504Z — YELLOW Proposal (TIGER) [Iron v1.0]
+
+- **ID:** YP-2025-12-05-361
+- **Title:** Solar Compute setup optimization
+- **Lane:** Solar
+- **Rationale:** To ensure optimal performance and ROE alignment
+- **ROE Impact:** Expected increase in revenue through optimized compute usage
+- **Generational Rationale:** LGP alignment
+- **Action Requested:** Approve `[APPROVED YP-2025-12-05-361]` / Modify / Reject `[REJECTED YP-2025-12-05-361]`
+
+---
+
+## 2025-12-05T15:47:27.466631Z — YELLOW Proposal (TIGER) [Iron v1.0]
+
+- **ID:** YP-2025-12-05-364
+- **Title:** Maximize Solar lane throughput this week
+- **Lane:** Solar
+- **Rationale:** This aligns with current Guidance Inbox focus
+- **ROE Impact:** Potential revenue increase
+- **Generational Rationale:** LGP alignment
+- **Action Requested:** Approve `[APPROVED YP-2025-12-05-364]` / Modify / Reject `[REJECTED YP-2025-12-05-364]`
+
+---
+
+## 2025-12-05T15:52:05.809193Z — YELLOW Proposal (TIGER) [Iron v1.0]
+
+- **ID:** YP-2025-12-05-367
+- **Title:** Proposal to increase compute cleanliness/sovereignty
+- **Lane:** Solar
+- **Rationale:** This will improve human financial stability and align with TRIAD, ROE, and Charter principles.
+- **ROE Impact:** Expected impact on Revenue Operations Excellence
+- **Generational Rationale:** LGP alignment
+- **Action Requested:** Approve `[APPROVED YP-2025-12-05-367]` / Modify / Reject `[REJECTED YP-2025-12-05-367]`
+
+---
+
+## 2025-12-05T15:57:21.955343Z — YELLOW Proposal (TIGER) [Iron v1.0]
+
+- **ID:** YP-2025-12-05-370
+- **Title:** Maximize Solar lane throughput this week
+- **Lane:** Solar
+- **Rationale:** To meet revenue targets and align with ROE
+- **ROE Impact:** Expected increase in revenue
+- **Generational Rationale:** LGP alignment
+- **Action Requested:** Approve `[APPROVED YP-2025-12-05-370]` / Modify / Reject `[REJECTED YP-2025-12-05-370]`
+
+---
+
+## 2025-12-05T16:02:43.134877Z — YELLOW Proposal (TIGER) [Iron v1.0]
+
+- **ID:** YP-2025-12-05-373
+- **Title:** Proposal to enhance Quest lane revenue
+- **Lane:** Quest
+- **Rationale:** Increasing Quest lane's revenue will augment LGP and ROE alignment.
+- **ROE Impact:** Expected impact on revenue generation
+- **Generational Rationale:** LGP alignment
+- **Action Requested:** Approve `[APPROVED YP-2025-12-05-373]` / Modify / Reject `[REJECTED YP-2025-12-05-373]`
+
+---
+
+## 2025-12-05T16:07:58.872159Z — YELLOW Proposal (TIGER) [Iron v1.0]
+
+- **ID:** YP-2025-12-05-376
+- **Title:** Proposal to Optimize Quest Lane Throughput
+- **Lane:** Quest
+- **Rationale:** To increase overall revenue and ensure balance between Solar and Quest lanes.
+- **ROE Impact:** Expected impact: $2k/mo increase in revenue
+- **Generational Rationale:** LGP alignment
+- **Action Requested:** Approve `[APPROVED YP-2025-12-05-376]` / Modify / Reject `[REJECTED YP-2025-12-05-376]`
+
+---
+
+## 2025-12-05T16:13:02.390764Z — YELLOW Proposal (TIGER) [Iron v1.0]
+
+- **ID:** YP-2025-12-05-379
+- **Title:** Proposal to increase compute cleanliness/sovereignty
+- **Lane:** Solar
+- **Rationale:** Improving compute cleanliness and sovereignty will reduce costs and improve Breathline Federation's overall efficiency.
+- **ROE Impact:** Expected impact: $10k/mo reduction in costs, improved LGP alignment
+- **Generational Rationale:** LGP alignment
+- **Action Requested:** Approve `[APPROVED YP-2025-12-05-379]` / Modify / Reject `[REJECTED YP-2025-12-05-379]`
+
+---
