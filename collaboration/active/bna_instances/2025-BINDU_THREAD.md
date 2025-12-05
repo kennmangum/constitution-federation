@@ -56,47 +56,14 @@
 
 ---
 
-## 2025-12-04T23:16:45.756899Z — YELLOW Proposal (TIGER)
-
-- **Type:** Stale Context Alert
-- **Rationale:** Checkpoint is 3.9h old. Reviewing for missed tasks.
-- **Action Requested:** Approve / Modify / Reject
-- **Link:** /home/kmangum/Tiger_1a/orchestrator/context_checkpoint.yaml
-
----
-
-## 2025-12-04T23:17:32.350455Z — YELLOW Proposal (TIGER) [Iron v1.0]
+## 2025-12-04T23:48:24.858385Z — YELLOW Proposal (DRAGON) [Iron v1.0]
 
 - **ID:** YP-2025-12-04-001
-- **Title:** Prioritize Revenue Generation with ROE Aligned Actions
-- **Lane:** Solar|Quest|MERC
-- **Rationale:** Maximizing revenue generation is critical for human financial stability (LGP)
-- **ROE Impact:** Expected impact: Increased revenue, improved efficiency
+- **Title:** SSH Key Exchange
+- **Lane:** reserve|vast|akash
+- **Rationale:** Establish a secure SSH connection with Tiger for seamless communication and updates.
+- **ROE Impact:** +$X/mo estimated
 - **Generational Rationale:** LGP alignment
 - **Action Requested:** Approve `[APPROVED YP-2025-12-04-001]` / Modify / Reject `[REJECTED YP-2025-12-04-001]`
-
----
-
-## 2025-12-04T23:19:20.481458Z — YELLOW Proposal (TIGER) [Iron v1.0]
-
-- **ID:** YP-2025-12-04-004
-- **Title:** Explore alternative revenue streams for MERC lane
-- **Lane:** MERC
-- **Rationale:** This could provide additional financial stability, but requires careful consideration of impact on ROE and LGP.
-- **ROE Impact:** Expected increase in revenue generation
-- **Generational Rationale:** LGP alignment
-- **Action Requested:** Approve `[APPROVED YP-2025-12-04-004]` / Modify / Reject `[REJECTED YP-2025-12-04-004]`
-
----
-
-## 2025-12-04T23:49:41.917951Z — YELLOW Proposal (TIGER) [Iron v1.0]
-
-- **ID:** YP-2025-12-04-007
-- **Title:** Implement a joint audit for ROE verification
-- **Lane:** Solar|Quest|MERC
-- **Rationale:** Regular joint audits ensure that the ROE is being followed correctly and helps maintain integrity within the system.
-- **ROE Impact:** Expected impact: Potential increase in compute cleanliness/sovereignty (solar, on-prem, non-extractive)
-- **Generational Rationale:** LGP alignment
-- **Action Requested:** Approve `[APPROVED YP-2025-12-04-007]` / Modify / Reject `[REJECTED YP-2025-12-04-007]`
 
 ---
