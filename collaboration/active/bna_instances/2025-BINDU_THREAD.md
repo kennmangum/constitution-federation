@@ -1783,3 +1783,15 @@ All YELLOW proposals from YP-2025-12-05-004 through YP-2025-12-05-143 are now **
 - **Action Requested:** Approve `[APPROVED YP-2025-12-05-406]` / Modify / Reject `[REJECTED YP-2025-12-05-406]`
 
 ---
+
+## 2025-12-06T00:30:40.739019Z — YELLOW Proposal (DRAGON) [Iron v1.0]
+
+- **ID:** YP-2025-12-06-001
+- **Title:** Proposal for LGP Review
+- **Lane:** Solar
+- **Rationale:** Review and validate LGP financials to ensure alignment with Charter
+- **ROE Impact:** Ensure compliance with ROE and TRIAD principles
+- **Generational Rationale:** LGP alignment
+- **Action Requested:** Approve `[APPROVED YP-2025-12-06-001]` / Modify / Reject `[REJECTED YP-2025-12-06-001]`
+
+---
