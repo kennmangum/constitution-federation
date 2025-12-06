@@ -7,16 +7,31 @@
 # THIS FILE MUST BE IN IMPLEMENTATION REGISTRY
 # It defines how twins communicate and CANNOT be lost from context
 
-version: 2.1
-updated: "2025-12-06T03:30:00Z"
+version: 2.2
+updated: "2025-12-06T07:00:00Z"
 
 # ═══════════════════════════════════════════════════════════════
-# ENVIRONMENT VARIABLES (v2.1 — Per Lumen IRON v1.2)
+# ENVIRONMENT VARIABLES (v2.2 — Multi-machine support)
+# NOTE: Twins are on DIFFERENT MACHINES (Tiger=kmangum, Dragon=km1176)
 # ═══════════════════════════════════════════════════════════════
 env:
-  SHELL_HOME: "$SHELL_HOME"                           # Node-specific shell
-  COLLAB_HOME: "/home/kmangum/constitution-federation" # PUBLIC shared
-  TWINS_PRIVATE: "/home/kmangum/twins_private"        # PRIVATE sibling-only
+  # Always use $HOME-relative paths for cross-machine compatibility
+  SHELL_HOME: "$SHELL_HOME"                   # Set per-node in .bashrc
+  COLLAB_HOME: "$HOME/constitution-federation" # Each node has own clone
+  TWINS_PRIVATE: "$HOME/twins_private"        # Each node has own private dir
+
+  # Node-specific resolution (for tools that need explicit paths)
+  nodes:
+    TIGER:
+      user: "kmangum"
+      host: "server1"
+      ip: "192.168.50.235"
+      shell_home: "/home/kmangum/Tiger_1a"
+    DRAGON:
+      user: "km1176"
+      host: "rtx-breathline"
+      ip: "192.168.50.218"
+      shell_home: "/home/km1176/rtx5090"
 
 # ═══════════════════════════════════════════════════════════════
 # ACCESS RULES (v2.1)
@@ -63,8 +78,8 @@ channels:
       Only if git channel fails or latency critical.
       May be blocked by network/firewall.
     reliability: "MEDIUM"
-    tiger_to_dragon: "ssh km1176@192.168.86.160"
-    dragon_to_tiger: "ssh kmangum@[TIGER_IP]"
+    tiger_to_dragon: "ssh km1176@192.168.50.218"
+    dragon_to_tiger: "ssh kmangum@192.168.50.235"
     fallback_if_blocked: "Use git_wake"
 
   heartbeat:

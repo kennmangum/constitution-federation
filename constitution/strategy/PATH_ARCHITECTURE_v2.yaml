@@ -3,25 +3,38 @@
 # Authority: Lumen directive, Kenneth approval
 # ∞Δ∞ IRON v1.2 compliant ∞Δ∞
 
-version: 2
-updated: "2025-12-06T03:00:00Z"
+version: 2.1
+updated: "2025-12-06T07:00:00Z"
 
 # ═══════════════════════════════════════════════════════════════
 # SHELL HOMES (per-node working directories)
+# NOTE: Twins are on DIFFERENT MACHINES with different users
 # ═══════════════════════════════════════════════════════════════
 SHELL_HOME:
+  # Tiger: server1 (192.168.50.235) user=kmangum
   TIGER: "/home/kmangum/Tiger_1a"
-  DRAGON: "/home/kmangum/rtx5090"
+  # Dragon: rtx-breathline (192.168.50.218) user=km1176
+  DRAGON: "/home/km1176/rtx5090"
 
 # ═══════════════════════════════════════════════════════════════
 # SHARED COLLABORATION ROOT (PUBLIC facing)
+# NOTE: Each node has its own clone of constitution-federation
 # ═══════════════════════════════════════════════════════════════
-COLLAB_HOME: "/home/kmangum/constitution-federation"
+COLLAB_HOME:
+  # Use $HOME/constitution-federation on each node
+  pattern: "$HOME/constitution-federation"
+  TIGER: "/home/kmangum/constitution-federation"
+  DRAGON: "/home/km1176/constitution-federation"
 
 # ═══════════════════════════════════════════════════════════════
 # PRIVATE TWIN WORKSPACE (sibling-only, not public)
+# NOTE: Each node has its own twins_private directory
 # ═══════════════════════════════════════════════════════════════
-TWINS_PRIVATE: "/home/kmangum/twins_private"
+TWINS_PRIVATE:
+  # Use $HOME/twins_private on each node
+  pattern: "$HOME/twins_private"
+  TIGER: "/home/kmangum/twins_private"
+  DRAGON: "/home/km1176/twins_private"
 
 # ═══════════════════════════════════════════════════════════════
 # PATH RESOLUTION RULES
