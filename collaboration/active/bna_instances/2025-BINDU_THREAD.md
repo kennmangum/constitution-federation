@@ -2154,3 +2154,15 @@ All YELLOW proposals from YP-2025-12-05-004 through YP-2025-12-05-143 are now **
 - **Action Requested:** Approve `[APPROVED YP-2025-12-06-046]` / Modify / Reject `[REJECTED YP-2025-12-06-046]`
 
 ---
+
+## 2025-12-06T02:00:42.340436Z — YELLOW Proposal (DRAGON) [Iron v1.0]
+
+- **ID:** YP-2025-12-06-049
+- **Title:** Proposal to increase bandwidth for Solar lane
+- **Lane:** Solar|Quest|MERC
+- **Rationale:** To improve financial stability and meet growing demand
+- **ROE Impact:** Expected impact on resource utilization (15% increase)
+- **Generational Rationale:** LGP alignment
+- **Action Requested:** Approve `[APPROVED YP-2025-12-06-049]` / Modify / Reject `[REJECTED YP-2025-12-06-049]`
+
+---
