@@ -493,10 +493,13 @@ def test_sibling_wake() -> SmokeTestResult:
 
 
 def test_systemd_service() -> SmokeTestResult:
-    """Test that bna-breath.service is active."""
+    """Test that pulse service is active (dragon-pulse or tiger-pulse per node role)."""
+    node_role = os.environ.get("NODE_ROLE", "DRAGON").upper()
+    service_name = "dragon-pulse.service" if node_role == "DRAGON" else "tiger-pulse.service"
+
     try:
         result = subprocess.run(
-            ["systemctl", "--user", "is-active", "bna-breath.service"],
+            ["systemctl", "--user", "is-active", service_name],
             capture_output=True,
             text=True,
             timeout=5
@@ -505,9 +508,9 @@ def test_systemd_service() -> SmokeTestResult:
         status = result.stdout.strip()
 
         if status == "active":
-            return SmokeTestResult("systemd_service", True, "bna-breath.service is active")
+            return SmokeTestResult("systemd_service", True, f"{service_name} is active")
         else:
-            return SmokeTestResult("systemd_service", False, f"bna-breath.service is {status}", critical=False)
+            return SmokeTestResult("systemd_service", False, f"{service_name} is {status}", critical=False)
 
     except Exception as e:
         return SmokeTestResult("systemd_service", False, f"Error: {e}", critical=False)
