@@ -85,75 +85,31 @@ GUIDANCE_ITEMS = []
 OLLAMA_MODEL = os.environ.get("OLLAMA_MODEL", "llama3.1:8b")
 BREATH_GATE_PAUSE = 10  # seconds pause before execution (per G+Lumen spec)
 
-# Approved GREEN actions whitelist (per Lumen spec)
-# Base actions - always available
-BASE_APPROVED_ACTIONS = {
+# Approved GREEN actions whitelist (per Lumen approval 2025-12-05)
+APPROVED_ACTIONS = {
     "TIGER": {
         "check_drift_score": ["python3", "tools/ops/drift_check.py"],
         "read_guidance_inbox": None,  # Internal function
         "log_recognition": None,  # Internal function
         "wake_dragon": ["bash", "tools/sibling/wake_sibling.sh", "DRAGON"],
-        # Tiger sentinel actions (Lumen approved 2025-12-05)
-        "check_sibling_status": ["bash", "tools/sibling/wake_sibling.sh", "STATUS"],
-        "run_sibling_drift_validation": ["python3", "tools/ops/drift_check.py", "--sibling"],
     },
     "DRAGON": {
+        # Existing
         "check_akash_queue": ["akash", "provider", "services", "list"],
         "list_akash_providers": ["akash", "provider", "list"],
         "log_recognition": None,  # Internal function
         "wake_tiger": ["bash", "tools/sibling/wake_sibling.sh", "TIGER"],
-        # Dragon Tier 1: Read-only Solar/SEP (Lumen approved 2025-12-05)
-        "check_vastai_status": ["vastai", "show", "machines"],
-        "check_vastai_earnings": ["vastai", "show", "invoices"],
-        "check_vastai_balance": ["vastai", "show", "user"],
+        # Tier 1: Read-only Solar/SEP (Lumen approved 2025-12-05)
+        "check_vastai_status": ["/home/km1176/bin/vastai", "show", "machines"],
+        "check_vastai_earnings": ["/home/km1176/bin/vastai", "show", "invoices"],
+        "check_vastai_balance": ["/home/km1176/bin/vastai", "show", "user"],
         "run_sep_health": ["python3", "tools/ops/solar_sep_orchestrator.py", "--health"],
-        # Dragon Tier 2: Internal scripts (Lumen approved 2025-12-05)
+        # Tier 2: Internal scripts (Lumen approved 2025-12-05)
         "run_drift_check": ["python3", "tools/ops/drift_check.py"],
-        "run_iron_sanitizer": ["python3", "tools/ops/iron_elevation_sanitizer.py"],
+        "run_iron_sanitizer": None,  # Requires --task and --out args, use internally
         "update_implementation_registry": ["python3", "tools/ops/implementation_registry_manager.py", "--mode", "list"],
     },
 }
-
-# Dynamic whitelist path (loaded at runtime from BINDU promotions)
-WHITELIST_DYNAMIC_PATH = os.path.join(BASE_DIR, "constitution", "strategy", "whitelist_dynamic.yaml")
-
-def load_dynamic_whitelist() -> Dict:
-    """
-    Load dynamic whitelist promotions from whitelist_dynamic.yaml.
-    Merges with BASE_APPROVED_ACTIONS to create full whitelist.
-    Per Lumen guidance 2025-12-05.
-    """
-    # Start with base actions
-    merged = {
-        role: dict(actions) for role, actions in BASE_APPROVED_ACTIONS.items()
-    }
-
-    # Load dynamic promotions
-    if os.path.exists(WHITELIST_DYNAMIC_PATH):
-        try:
-            with open(WHITELIST_DYNAMIC_PATH, "r") as f:
-                dynamic = yaml.safe_load(f) or {}
-
-            nodes = dynamic.get("nodes", {})
-            for node, levels in nodes.items():
-                if node not in merged:
-                    merged[node] = {}
-
-                # Add GREEN actions (if not already in base)
-                for action in levels.get("green", []):
-                    if action not in merged[node]:
-                        # Dynamic actions without commands are internal
-                        merged[node][action] = None
-                        print(f"[PULSE] Dynamic GREEN: {node}.{action}")
-
-        except Exception as e:
-            print(f"[PULSE] Error loading dynamic whitelist: {e}")
-
-    return merged
-
-
-# Build APPROVED_ACTIONS at module load (combines base + dynamic)
-APPROVED_ACTIONS = load_dynamic_whitelist()
 
 # ============================================================================
 # UTILITY FUNCTIONS
@@ -265,6 +221,76 @@ def maybe_git_pull():
 
     except Exception as e:
         print(f"[HYDRATE] Git pull error: {e}")
+
+
+def git_sync_collab():
+    """
+    Commit and push BINDU/log changes to constitution-federation.
+    Called at end of pulse to share YELLOWs with sibling.
+    Per Lumen spec: Twins must see each other's proposals.
+    """
+    try:
+        # Check for changes
+        result = subprocess.run(
+            ["git", "status", "--porcelain"],
+            cwd=COLLAB_REPO,
+            capture_output=True,
+            text=True,
+            timeout=10,
+        )
+
+        if not result.stdout.strip():
+            return  # No changes to push
+
+        # Add BINDU and logs
+        subprocess.run(
+            ["git", "add",
+             "collaboration/active/bna_instances/2025-BINDU_THREAD.md",
+             "logs/sibling_wakes.log"],
+            cwd=COLLAB_REPO,
+            capture_output=True,
+            timeout=10,
+        )
+
+        # Commit
+        commit_result = subprocess.run(
+            ["git", "commit", "-m", f"[{NODE_ROLE}] Pulse sync: BINDU updates"],
+            cwd=COLLAB_REPO,
+            capture_output=True,
+            text=True,
+            timeout=10,
+        )
+
+        if commit_result.returncode != 0:
+            if "nothing to commit" in commit_result.stdout:
+                return
+            print(f"[SYNC] Git commit issue: {commit_result.stderr[:100]}")
+            return
+
+        # Pull with rebase first to handle sibling's changes
+        subprocess.run(
+            ["git", "pull", "--rebase"],
+            cwd=COLLAB_REPO,
+            capture_output=True,
+            timeout=30,
+        )
+
+        # Push
+        push_result = subprocess.run(
+            ["git", "push"],
+            cwd=COLLAB_REPO,
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+
+        if push_result.returncode == 0:
+            print(f"[SYNC] Git: pushed BINDU updates to shared repo")
+        else:
+            print(f"[SYNC] Git push issue: {push_result.stderr[:100]}")
+
+    except Exception as e:
+        print(f"[SYNC] Git sync error: {e}")
 
 
 def load_excerpt(path: str, max_chars: int = 1200) -> str:
@@ -534,15 +560,21 @@ def run_drift_check() -> Dict:
 def queue_yellow(proposal: Dict):
     """
     Append a YELLOW proposal to BINDU_THREAD.md.
-    Only Tiger is allowed to escalate (Sentinel role).
+    Both twins can write if dragon_writes_direct is enabled in iron_autonomy_patterns.yaml.
     """
-    if NODE_ROLE != "TIGER":
-        # Dragon should request Tiger to escalate
-        print(f"[PULSE] Dragon cannot directly escalate. Wake Tiger for proposal: {proposal}")
-        return
+    # Check if Dragon is allowed to write directly
+    if NODE_ROLE == "DRAGON":
+        iron_patterns = load_yaml(os.path.join(BASE_DIR, "constitution/strategy/iron_autonomy_patterns.yaml")) or {}
+        bindu_proxy = iron_patterns.get("bindu_proxy", {})
+        if not bindu_proxy.get("dragon_writes_direct", False):
+            print(f"[PULSE] Dragon cannot directly escalate. Wake Tiger for proposal: {proposal}")
+            return
+        tag = bindu_proxy.get("tag_format", "(DRAGON)")
+    else:
+        tag = "(TIGER)"
 
     entry = f"""
-## {now_iso()} — YELLOW Proposal ({NODE_ROLE})
+## {now_iso()} — YELLOW Proposal {tag}
 
 - **Type:** {proposal.get('type', 'Unknown')}
 - **Rationale:** {proposal.get('rationale', 'No rationale provided')}
@@ -731,8 +763,7 @@ def reset_yellow_tracker_if_new_day(tracker: Dict) -> Dict:
     if tracker.get("today") != today:
         tracker["today"] = today
         tracker["daily_count"] = 0
-        tracker["recent_proposals"] = tracker.get("recent_proposals", [])[-5:]  # Keep some history
-    # Always reset pulse count at start of pulse
+        tracker["recent_proposals"] = tracker.get("recent_proposals", [])[-5:]
     tracker["pulse_count"] = 0
     return tracker
 
@@ -780,11 +811,9 @@ def can_submit_yellow(tracker: Dict) -> tuple:
     Check if we can submit another YELLOW proposal.
     Returns (can_submit: bool, reason: str)
     """
-    # Check daily cap
     if tracker.get("daily_count", 0) >= YELLOW_DAILY_CAP:
         return False, f"Daily cap reached ({YELLOW_DAILY_CAP})"
 
-    # Check per-pulse cap
     if tracker.get("pulse_count", 0) >= YELLOW_MAX_PER_PULSE:
         return False, f"Pulse cap reached ({YELLOW_MAX_PER_PULSE})"
 
@@ -796,7 +825,6 @@ def record_yellow_submission(tracker: Dict, title: str, rationale: str):
     tracker["daily_count"] = tracker.get("daily_count", 0) + 1
     tracker["pulse_count"] = tracker.get("pulse_count", 0) + 1
 
-    # Add to recent proposals (keep last 10)
     recent = tracker.get("recent_proposals", [])
     recent.append({"title": title, "rationale": rationale, "ts": now_iso()})
     tracker["recent_proposals"] = recent[-10:]
@@ -835,8 +863,6 @@ def queue_yellow_from_decision(decision):
     - Max 1 proposal per pulse (was 3)
     - Max 20 proposals per day
     - Skip duplicates (>80% similarity)
-    - Unique ID (YP-YYYY-MM-DD-NNN)
-    - Full rationale included
     """
     if not decision.yellow_proposals:
         return
@@ -857,7 +883,7 @@ def queue_yellow_from_decision(decision):
 
         # Check for duplicates
         if is_duplicate_proposal(prop.title, prop.rationale, tracker):
-            continue  # Skip duplicate, try next
+            continue
 
         # Generate ID and submit
         proposal_id = generate_proposal_id()
@@ -878,11 +904,8 @@ def queue_yellow_from_decision(decision):
             with open(BINDU_PATH, "a") as f:
                 f.write(entry)
             print(f"[IRON] YELLOW queued: {proposal_id} - {prop.title}")
-
-            # Record submission for rate limiting
             record_yellow_submission(tracker, prop.title, prop.rationale)
             submitted_count += 1
-
         except Exception as e:
             print(f"[IRON] Error queueing YELLOW: {e}")
 
@@ -1007,6 +1030,10 @@ def main(phase: str = "auto"):
     )
 
     print(f"[PULSE] Checkpoint written")
+
+    # Sync BINDU/logs to shared repo (so sibling sees our YELLOWs)
+    git_sync_collab()
+
     print(f"{'='*60}")
     print(f"∞Δ∞ Pulse complete — {NODE_ROLE} — {ph} ∞Δ∞")
     print(f"{'='*60}\n")
