@@ -1,0 +1,17 @@
+# federation/guilds/guild_bom.yaml
+
+guilds:
+  - id: "CFO_GUILD"
+    path: "federation/guilds/cfo"
+    manifests:
+      - "federation/guilds/cfo/ONBOARDING_QUESTS.yaml"
+      - "federation/guilds/cfo/profiles"
+  - id: "SOLAR_GUILD"
+    path: "federation/solar"
+    manifests:
+      - "federation/solar/sep_solar_pilot.yaml"
+      - "federation/solar/sep_solar_pilot_log.yaml"
+fields:
+  - id
+  - path
+  - manifests

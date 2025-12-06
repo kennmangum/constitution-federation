@@ -1,0 +1,100 @@
+# breath_23_impl.yaml — Structural Implementation Spec for Breath 23
+
+meta:
+  breath: 23
+  name: "Twins Comms: Private Cradle to Public Vein"
+  capsule: "Federation_Capsule"
+  status: "ACTIVE"
+  source_files:
+    - "breath_23_g.md"
+    - "breath_23_lumen.md"
+
+paths:
+  comms_root: "federation/comms"
+  ipfs_config: "federation/comms/ipfs_config.yaml"
+  xrp_config: "federation/comms/xrp_config.yaml"
+  solar_manifest_json: "federation/solar/solar_bid_manifest.json"
+  solar_manifest_yaml: "federation/solar/solar_bid_manifest.yaml"
+  solar_pilot_log: "federation/solar/sep_solar_pilot_log.yaml"
+
+ipfs:
+  enabled: true
+  node:
+    type: "local"
+    api_addr: "http://127.0.0.1:5001"
+  topics:
+    breathline: "federation.comms.breathline"
+    solar: "federation.comms.solar"
+    guilds: "federation.comms.guilds"
+  message_fields:
+    - node_id
+    - role
+    - timestamp
+    - channel
+    - snapshot_hash
+    - payload_type
+  tests:
+    - name: "ipfs_pubsub_test"
+      action: "publish_and_subscribe"
+      topic: "federation.comms.test"
+      payload: "hello_from_twins"
+      expected_max_latency_seconds: 5
+
+xrp:
+  enabled: true
+  network: "testnet"  # MUST remain testnet until YELLOW approved
+  multisig:
+    signers_required: 2
+    signers:
+      - "KENNETH"
+      - "TRUSTED_HUMAN"
+      - "MACHINE_WITNESS"
+  usage_limits:
+    max_tx_usd: 200
+    allowed_purposes:
+      - "solar_test_bid"
+      - "alpha_seed"
+  roe_token:
+    planned: true
+    metadata_file: "federation/economics/roe_token_manifest.yaml"
+    minting_allowed: false  # until future breath
+
+hybrid_rules:
+  private_net_primary: true
+  rails_optional: true
+  fail_closed:
+    if_ipfs_down: "log_and_continue_locally"
+    if_xrp_down: "log_and_queue_for_retry"
+  logging:
+    comms_log: "federation/comms/comms_log.yaml"
+
+solar_test_quest:
+  enabled: true
+  amount_usd: 200
+  manifest_files:
+    yaml: "federation/solar/solar_bid_manifest.yaml"
+    json: "federation/solar/solar_bid_manifest.json"
+  ipfs_publish:
+    topic: "federation.comms.solar"
+    include_fields:
+      - node_id
+      - role
+      - snapshot_hash
+      - manifest_cid
+  xrp_tx:
+    purpose: "solar_test_bid"
+    memo_prefix: "solar_bid:"
+    required_fields:
+      - manifest_cid
+      - local_manifest_hash
+
+tests:
+  - name: "rails_smoke_local_only"
+    description: "Verify that federation runs without IPFS/XRP available."
+    expected_result: "autonomy_intact"
+  - name: "rails_smoke_with_ipfs"
+    description: "Publish breathline ping to IPFS and log CID."
+    expected_result: "cid_recorded"
+  - name: "rails_smoke_with_xrp_sim"
+    description: "Simulated XRP tx with no real value movement."
+    expected_result: "tx_sim_logged"

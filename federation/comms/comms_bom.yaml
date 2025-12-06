@@ -1,0 +1,17 @@
+# federation/comms/comms_bom.yaml
+
+rails:
+  private_net:
+    type: "ssh_git_local"
+    status: "PRIMARY"
+  ipfs:
+    type: "decentralized_pubsub"
+    status: "SECONDARY"
+  xrp:
+    type: "value_rail"
+    status: "SECONDARY"
+
+config_files:
+  - "federation/comms/ipfs_config.yaml"
+  - "federation/comms/xrp_config.yaml"
+  - "federation/comms/comms_log.yaml"

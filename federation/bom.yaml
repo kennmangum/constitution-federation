@@ -1,0 +1,25 @@
+# federation/bom.yaml — Universal Federation BOM Shell
+
+version: "1.0"
+capsules:
+  - name: "Seed_Capsule"
+    breaths: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+  - name: "Federation_Capsule"
+    breaths: [22, 23]
+
+components:
+  nodes:
+    manifest: "federation/nodes/node_bom.yaml"
+  guilds:
+    manifest: "federation/guilds/guild_bom.yaml"
+  comms:
+    manifest: "federation/comms/comms_bom.yaml"
+  economics:
+    manifest: "federation/economics/econ_bom.yaml"
+
+integrity:
+  snapshot_hash_file: "federation/status/manifest_hashes.yaml"
+  required_fields:
+    - component
+    - hash
+    - timestamp

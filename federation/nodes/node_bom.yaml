@@ -1,0 +1,20 @@
+# federation/nodes/node_bom.yaml
+
+nodes:
+  - id: "TIGER"
+    role: "validation"
+    shell_root: "/home/kmangum/Tiger_1a"
+    active_capsules:
+      - "Seed_Capsule"
+      - "Federation_Capsule"
+  - id: "DRAGON"
+    role: "execution"
+    shell_root: "/home/kmangum/rtx5090"
+    active_capsules:
+      - "Seed_Capsule"
+      - "Federation_Capsule"
+fields:
+  - id
+  - role
+  - shell_root
+  - active_capsules

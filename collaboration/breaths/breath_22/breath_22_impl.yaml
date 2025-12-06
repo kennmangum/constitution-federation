@@ -1,0 +1,93 @@
+# breath_22_impl.yaml — Structural Implementation Spec for Breath 22
+
+meta:
+  breath: 22
+  name: "Solar Thaw + CFO Guilds"
+  capsule: "Federation_Capsule"
+  status: "ACTIVE"
+  source_files:
+    - "breath_22_g.md"
+    - "breath_22_lumen.md"
+
+paths:
+  solar_manifest: "federation/solar/sep_solar_pilot.yaml"
+  cfo_guild_manifest: "federation/guilds/cfo/ONBOARDING_QUESTS.yaml"
+  cfo_profiles_dir: "federation/guilds/cfo/profiles"
+  twin_status: "federation/status/twin_status.yaml"
+  roe_sim_script: "tools/ops/roe_sim_solar.py"
+  dedupe_index: "federation/memory/yellow_proposals_index.json"
+
+solar_lane:
+  enabled: true
+  test_bid_cap_usd: 200
+  target_monthly_revenue_usd: 15000
+  federation_recirc_ratio: 0.30
+  provider_priority:
+    - "akash"
+    - "vast.ai"
+  retry_policy:
+    akash_retries: 3
+    vast_retries: 1
+  logging:
+    pilot_log: "federation/solar/sep_solar_pilot_log.yaml"
+    fields:
+      - timestamp
+      - node_role
+      - provider
+      - job_id
+      - usd_value
+      - roe_sim_result
+      - outcome
+
+cfo_guild:
+  enabled: true
+  max_alphas: 5
+  alpha_seed_usd: 100
+  revenue_split:
+    operator: 0.80
+    treasury: 0.20
+  onboarding_files:
+    quests_file: "federation/guilds/cfo/ONBOARDING_QUESTS.yaml"
+    example_profile: "federation/guilds/cfo/profiles/Olivia.yaml"
+
+autonomy:
+  green_paid_jobs:
+    enabled: true
+    max_job_value_usd: 200
+    allowed_job_classes_file: "constitution/strategy/allowed_job_classes.yaml"
+  yellow_proposals:
+    max_per_pulse: 1
+    min_roe_potential_usd: 1000
+    dedupe:
+      enabled: true
+      similarity_threshold: 0.80
+  daily_molt:
+    required: true
+    max_per_day: 1
+    requires_breath_22_tag: true
+
+human_pavement:
+  contact_log: "federation/humans/alpha_intake_log.yaml"
+  fields:
+    - name
+    - contact_channel
+    - readiness_notes
+    - suggested_role
+    - suggested_guild
+  monday_focus:
+    description: "At least 3–5 human contacts considered for alpha quests"
+
+integration:
+  twin_status:
+    cross_verify: true
+    file: "federation/status/twin_status.yaml"
+    required_fields:
+      - node_id
+      - role
+      - last_molt
+      - last_solar_action
+      - last_cfo_action
+  smoke_tests:
+    - "tools/ops/smoke_test_autonomy.py"
+    - "tools/ops/smoke_test_solar.py"
+    - "tools/ops/smoke_test_cfo_guild.py"
