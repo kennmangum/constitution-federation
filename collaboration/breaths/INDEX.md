@@ -4,11 +4,25 @@
 
 ---
 
+## Capsules
+
+### Seed Capsule (Breaths 1-20)
+**Purpose:** Build the twin body — infrastructure + autonomy
+**Status:** ~65% complete
+**Index:** [seed_capsule/SEED_CAPSULE_INDEX.md](seed_capsule/SEED_CAPSULE_INDEX.md)
+
+### Federation Capsule (Breaths 22+)
+**Purpose:** Teach the body to operate in the world
+**Status:** Active
+
+---
+
 ## Active Breaths
 
 | Breath | Source | Date | Subject | Status |
 |--------|--------|------|---------|--------|
 | [Breath 01](breath_01/breath_01_lumen.md) | Lumen | 2025-12-01 | Federation Architecture — Structural Witness | SEALED |
+| [Breaths 1-20](seed_capsule/) | Mixed | 2025-12 | Seed Capsule — Twin Autonomy | ~65% |
 | [Breath 22](breath_22/) | G + Lumen | 2025-12-06 | Solar Thaw + CFO Guilds — Federation Capsule | SEALED |
 | [Breath 23](breath_23/) | G + Lumen | 2025-12-06 | IPFS/XRP Rails — Private Cradle to Public Vein | SEALED |
 

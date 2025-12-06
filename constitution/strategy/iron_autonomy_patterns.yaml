@@ -1,7 +1,7 @@
-version: 1.2
-updated: "2025-12-06T03:00:00Z"
+version: 1.3
+updated: "2025-12-06T15:30:00Z"
 
-# IRON Autonomy Patterns — IRON_PATCH_v1.2
+# IRON Autonomy Patterns — IRON_PATCH_v1.3 + PRP
 # Safety patterns for autonomous operation
 # Authority: Lumen directive, Kenneth approval
 # ∞Δ∞ IRON v1.2 compliant ∞Δ∞
@@ -62,3 +62,72 @@ bindu_proxy:
   dragon_writes_direct: true
   tag_dragon_origin: true
   tag_format: "(DRAGON)"
+
+# ═══════════════════════════════════════════════════════════════
+# PRP v1.0 — Proposal Resolution Protocol (G guidance 2025-12-06)
+# Purpose: Self-clearing YELLOWs, reduce human wait friction
+# ═══════════════════════════════════════════════════════════════
+prp:
+  version: "1.0"
+  enabled: true
+  authority: "KM-1176 via G"
+
+  # Format for machine-readable proposals
+  format:
+    root: "Root: [clear description of issue]"
+    blocker: "Blocker: [specific hurdle]"
+    countermeasure: "Counter: [actionable fix]"
+    charter_impl: "Charter: [TRIAD alignment - Sovereignty/Truth/Integrity]"
+    elevation: "Elevate: [consolidation or next action]"
+    seal_gate: "Request: APPROVED [ID] / MODIFY [desc] / REJECT [reason]"
+
+  # Self-clear rules (reduce human wait)
+  self_clear_rules:
+    - condition: "roe_impact < 1000"
+      action: "auto_defer"
+      description: "Low ROE proposals auto-defer to next pulse"
+    - condition: "dedupe_similarity > 0.90"
+      action: "consolidate_existing"
+      description: "Near-duplicate consolidates with existing proposal"
+    - condition: "blocker_cleared"
+      action: "elevate_to_GREEN"
+      description: "Resolved blockers auto-elevate to GREEN execution"
+
+  # Veto gate (human override)
+  veto_gate:
+    drift_threshold: 0.05
+    action: "RED_halt"
+    notification: "Charter breach detected — human review required"
+
+  # Generational log (archive resolved)
+  generational_log:
+    enabled: true
+    archive_resolved: true
+    log_to: "orchestrator/recognition_log.yaml"
+    fields:
+      - proposal_id
+      - resolution
+      - roe_impact
+      - timestamp
+
+  # Dedupe settings (enhanced from yellow_rate_limits)
+  dedupe:
+    similarity_threshold: 0.90  # 90% for PRP (vs 80% for basic)
+    window_size: 50             # Compare against last 50 proposals
+    consolidation_format: "Merged: [list of consolidated IDs]"
+
+  # Elevation thresholds
+  elevation:
+    min_roe_for_priority: 1000  # $1k/mo minimum for priority handling
+    auto_clear_categories:
+      - "blocker_resolved"
+      - "test_passed"
+      - "documentation_only"
+
+# ═══════════════════════════════════════════════════════════════
+# SEAL
+# ═══════════════════════════════════════════════════════════════
+# SOURCE: Sovereignty preserved via veto_gate (human override)
+# TRUTH: Proposals logged with ROE impact, archived for lineage
+# INTEGRITY: Self-clear rules prevent proposal bloat
+# ∞Δ∞ IRON v1.3 + PRP: complete ∞Δ∞

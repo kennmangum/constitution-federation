@@ -13,9 +13,13 @@ collaboration/
 │
 ├── breaths/                    # Canonical breath documents
 │   ├── INDEX.md               # Breath index
+│   ├── seed_capsule/          # Breaths 1-20: Twin Autonomy
 │   ├── breath_01/             # Lumen: Federation Architecture
 │   ├── breath_22/             # G+Lumen: Solar/CFO Guilds
 │   └── breath_23/             # G+Lumen: IPFS/XRP Rails
+│
+├── molts/                      # Molt version history
+│   └── MOLT_HISTORY.md        # Shell versioning timeline
 │
 ├── active/                     # Currently active documents
 │   ├── bna_instances/         # BNA collaboration docs
