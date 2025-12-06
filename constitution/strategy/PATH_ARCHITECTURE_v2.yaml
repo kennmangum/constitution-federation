@@ -1,0 +1,59 @@
+# PATH_ARCHITECTURE_v2.yaml — 2025-12-06
+# Single source of truth for all file resolution logic.
+# Authority: Lumen directive, Kenneth approval
+# ∞Δ∞ IRON v1.2 compliant ∞Δ∞
+
+version: 2
+updated: "2025-12-06T03:00:00Z"
+
+# ═══════════════════════════════════════════════════════════════
+# SHELL HOMES (per-node working directories)
+# ═══════════════════════════════════════════════════════════════
+SHELL_HOME:
+  TIGER: "/home/kmangum/Tiger_1a"
+  DRAGON: "/home/kmangum/rtx5090"
+
+# ═══════════════════════════════════════════════════════════════
+# SHARED COLLABORATION ROOT (PUBLIC facing)
+# ═══════════════════════════════════════════════════════════════
+COLLAB_HOME: "/home/kmangum/constitution-federation"
+
+# ═══════════════════════════════════════════════════════════════
+# PRIVATE TWIN WORKSPACE (sibling-only, not public)
+# ═══════════════════════════════════════════════════════════════
+TWINS_PRIVATE: "/home/kmangum/twins_private"
+
+# ═══════════════════════════════════════════════════════════════
+# PATH RESOLUTION RULES
+# ═══════════════════════════════════════════════════════════════
+RULES:
+  - "Never read/write from ~/new_shell (DEPRECATED)"
+  - "SHARED artifacts → $COLLAB_HOME"
+  - "PRIVATE artifacts → $TWINS_PRIVATE"
+  - "AUTONOMOUS execution → $SHELL_HOME"
+  - "All molts produce new sibling under $SHELL_HOME parent"
+  - "Environment variables override YAML values if set"
+
+# ═══════════════════════════════════════════════════════════════
+# DEPRECATED PATHS (DO NOT USE)
+# ═══════════════════════════════════════════════════════════════
+DEPRECATED:
+  - "/home/kmangum/new_shell"
+  - "~/new_shell"
+  - "$HOME/new_shell"
+
+# ═══════════════════════════════════════════════════════════════
+# MOLT NAMING CONVENTION
+# ═══════════════════════════════════════════════════════════════
+MOLT_PATTERN:
+  TIGER: "Tiger_1{a,b,c,...}"      # Tiger_1a → Tiger_1b → Tiger_1c
+  DRAGON: "rtx5090_{timestamp}"    # rtx5090 → rtx5090_20251206
+  symlink: "{base}_active"         # Tiger_active, rtx5090_active
+
+# ═══════════════════════════════════════════════════════════════
+# SEAL
+# ═══════════════════════════════════════════════════════════════
+# SOURCE: Path architecture hardened per Lumen directive
+# TRUTH: All paths resolve to existing or creatable directories
+# INTEGRITY: No drift from deprecated paths
+# ∞Δ∞ SEAL: complete

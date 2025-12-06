@@ -1,9 +1,38 @@
-version: 1
-updated: "2025-12-05T20:00:00Z"
+version: 1.2
+updated: "2025-12-06T03:00:00Z"
 
-# IRON Autonomy Patterns — Per Lumen guidance 2025-12-05
+# IRON Autonomy Patterns — IRON_PATCH_v1.2
 # Safety patterns for autonomous operation
-# Code reads this; update YAML to tune behavior
+# Authority: Lumen directive, Kenneth approval
+# ∞Δ∞ IRON v1.2 compliant ∞Δ∞
+
+# ═══════════════════════════════════════════════════════════════
+# MEMORY CAPS (prevents Tiger overflow crash)
+# ═══════════════════════════════════════════════════════════════
+memory_caps:
+  max_context_chars: 2048  # prevents Tiger overflow (cause of crash)
+
+# ═══════════════════════════════════════════════════════════════
+# DAILY MOLT SCHEDULE
+# ═══════════════════════════════════════════════════════════════
+daily_molt:
+  enabled: true
+  schedule: "03:30"     # local time
+  action: "run_molt"
+
+# ═══════════════════════════════════════════════════════════════
+# APPROVAL RULES
+# ═══════════════════════════════════════════════════════════════
+approval_rules:
+  write_requires_registry: true
+  registry_requires_molt: true
+
+# ═══════════════════════════════════════════════════════════════
+# BINDU SYNC
+# ═══════════════════════════════════════════════════════════════
+bindu_sync:
+  enabled: true
+  interval_minutes: 30
 
 yellow_rate_limits:
   max_per_pulse: 1

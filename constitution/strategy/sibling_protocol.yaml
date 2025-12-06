@@ -7,8 +7,26 @@
 # THIS FILE MUST BE IN IMPLEMENTATION REGISTRY
 # It defines how twins communicate and CANNOT be lost from context
 
-version: 2
-updated: "2025-12-06T06:30:00Z"
+version: 2.1
+updated: "2025-12-06T03:30:00Z"
+
+# ═══════════════════════════════════════════════════════════════
+# ENVIRONMENT VARIABLES (v2.1 — Per Lumen IRON v1.2)
+# ═══════════════════════════════════════════════════════════════
+env:
+  SHELL_HOME: "$SHELL_HOME"                           # Node-specific shell
+  COLLAB_HOME: "/home/kmangum/constitution-federation" # PUBLIC shared
+  TWINS_PRIVATE: "/home/kmangum/twins_private"        # PRIVATE sibling-only
+
+# ═══════════════════════════════════════════════════════════════
+# ACCESS RULES (v2.1)
+# ═══════════════════════════════════════════════════════════════
+access_rules:
+  - "Tiger may not execute on Dragon"
+  - "Dragon may not write to Tiger"
+  - "Both may write to TWINS_PRIVATE"
+  - "Both may read/write COLLAB_HOME/collaboration"
+  - "Never reference ~/new_shell (DEPRECATED)"
 
 # ═══════════════════════════════════════════════════════════════
 # SIBLING IDENTITY
