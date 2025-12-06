@@ -1,0 +1,25 @@
+version: 1
+updated: "2025-12-05T20:00:00Z"
+
+# SEP Spend Policy — Per Lumen guidance 2025-12-05
+# Guardrails for Solar lane spending
+# Code reads this; update YAML to change limits
+
+lane: "Solar"
+
+spend_limits_usd:
+  max_daily_total: 5        # absolute cap per calendar day
+  max_monthly_total: 50     # absolute cap per month
+  max_per_job: 1            # single Akash/Vast job cap
+
+flags:
+  allow_paid_jobs: false    # stays false until BINDU approval
+  require_bindu_for_any_spend: true
+
+logging:
+  ledger_path: "dao/sep_spend_ledger.yaml"
+
+# To enable paid jobs:
+# 1. Kenneth adds to BINDU: "- [x] ENABLE_PAID_SEP_JOBS"
+# 2. Update this file: allow_paid_jobs: true
+# 3. All spend events append to ledger

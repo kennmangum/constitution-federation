@@ -1,0 +1,36 @@
+version: 1
+updated: "2025-12-05T20:00:00Z"
+
+# LLM Policy — Per Lumen guidance 2025-12-05
+# Controls model selection based on VRAM availability
+# Code reads this; update YAML to change behavior
+
+nodes:
+  DRAGON:
+    default_role: "execution"
+    vram_thresholds_mb:
+      high: 16000   # heavy model ok (RTX 5090)
+      medium: 6000  # mid model
+      low: 2000     # fallback
+    models:
+      high: "mixtral:8x7b"
+      medium: "llama3.1:8b"
+      low: "llama3.2:3b"
+  TIGER:
+    default_role: "sentinel"
+    vram_thresholds_mb:
+      high: 6000
+      medium: 2000
+      low: 512
+    models:
+      high: "llama3.1:8b"
+      medium: "llama3.2:3b"
+      low: "llama3.2:1b"
+
+elevation:
+  claude_allowed_categories:
+    - "architecture"
+    - "protocol"
+  require_bindu_for_categories:
+    - "capsule_modification"
+    - "treasury_related"

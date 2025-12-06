@@ -70,6 +70,175 @@ def test_yaml_available() -> SmokeTestResult:
     return SmokeTestResult("yaml_available", True, "PyYAML available")
 
 
+def load_bom_manifest() -> Dict:
+    """Load the BOM manifest (molt_manifest.yaml) for validation."""
+    manifest_path = BASE_DIR / "constitution" / "strategy" / "molt_manifest.yaml"
+    if not manifest_path.exists():
+        return {}
+    try:
+        return yaml.safe_load(manifest_path.read_text()) or {}
+    except Exception:
+        return {}
+
+
+def test_bom_ring1() -> List[SmokeTestResult]:
+    """Test Ring 1 (Constitutional Kernel) files from BOM manifest."""
+    results = []
+    manifest = load_bom_manifest()
+    ring1 = manifest.get("ring1", {})
+
+    # Test directories
+    for dir_entry in ring1.get("directories", []):
+        path = BASE_DIR / dir_entry["path"]
+        required = dir_entry.get("required", True)
+        if path.exists() and path.is_dir():
+            results.append(SmokeTestResult(
+                f"ring1_dir_{dir_entry['role']}", True, f"Directory exists: {dir_entry['path']}"
+            ))
+        else:
+            results.append(SmokeTestResult(
+                f"ring1_dir_{dir_entry['role']}", False, f"Missing: {dir_entry['path']}", critical=required
+            ))
+
+    # Test files
+    for file_entry in ring1.get("files", []):
+        path = BASE_DIR / file_entry["path"]
+        required = file_entry.get("required", True)
+        if path.exists():
+            results.append(SmokeTestResult(
+                f"ring1_{file_entry['role']}", True, f"Exists: {file_entry['path']}"
+            ))
+        else:
+            results.append(SmokeTestResult(
+                f"ring1_{file_entry['role']}", False, f"Missing: {file_entry['path']}", critical=required
+            ))
+
+    return results
+
+
+def test_bom_ring2() -> List[SmokeTestResult]:
+    """Test Ring 2 (Policy YAMLs) files from BOM manifest."""
+    results = []
+    manifest = load_bom_manifest()
+    ring2 = manifest.get("ring2", {})
+
+    # Test directories
+    for dir_entry in ring2.get("directories", []):
+        path = BASE_DIR / dir_entry["path"]
+        required = dir_entry.get("required", True)
+        if path.exists() and path.is_dir():
+            results.append(SmokeTestResult(
+                f"ring2_dir_{dir_entry['role']}", True, f"Directory exists: {dir_entry['path']}"
+            ))
+        else:
+            results.append(SmokeTestResult(
+                f"ring2_dir_{dir_entry['role']}", False, f"Missing: {dir_entry['path']}", critical=required
+            ))
+
+    # Test files (with YAML validation)
+    for file_entry in ring2.get("files", []):
+        path = BASE_DIR / file_entry["path"]
+        required = file_entry.get("required", True)
+        if not path.exists():
+            results.append(SmokeTestResult(
+                f"ring2_{file_entry['role']}", False, f"Missing: {file_entry['path']}", critical=required
+            ))
+            continue
+
+        # Validate YAML
+        if path.suffix in ['.yaml', '.yml']:
+            try:
+                data = yaml.safe_load(path.read_text())
+                if data and isinstance(data, dict):
+                    results.append(SmokeTestResult(
+                        f"ring2_{file_entry['role']}", True, f"Valid YAML: {file_entry['path']}"
+                    ))
+                else:
+                    results.append(SmokeTestResult(
+                        f"ring2_{file_entry['role']}", False, f"Empty/invalid YAML: {file_entry['path']}", critical=required
+                    ))
+            except Exception as e:
+                results.append(SmokeTestResult(
+                    f"ring2_{file_entry['role']}", False, f"YAML parse error: {e}", critical=required
+                ))
+        else:
+            results.append(SmokeTestResult(
+                f"ring2_{file_entry['role']}", True, f"Exists: {file_entry['path']}"
+            ))
+
+    return results
+
+
+def test_bom_ring3() -> List[SmokeTestResult]:
+    """Test Ring 3 (Tools) files from BOM manifest."""
+    results = []
+    manifest = load_bom_manifest()
+    ring3 = manifest.get("ring3", {})
+
+    # Test directories
+    for dir_entry in ring3.get("directories", []):
+        path = BASE_DIR / dir_entry["path"]
+        required = dir_entry.get("required", True)
+        if path.exists() and path.is_dir():
+            results.append(SmokeTestResult(
+                f"ring3_dir_{dir_entry['role']}", True, f"Directory exists: {dir_entry['path']}"
+            ))
+        else:
+            results.append(SmokeTestResult(
+                f"ring3_dir_{dir_entry['role']}", False, f"Missing: {dir_entry['path']}", critical=required
+            ))
+
+    # Test files
+    for file_entry in ring3.get("files", []):
+        path = BASE_DIR / file_entry["path"]
+        required = file_entry.get("required", True)
+        if path.exists():
+            results.append(SmokeTestResult(
+                f"ring3_{file_entry['role']}", True, f"Exists: {file_entry['path']}"
+            ))
+        else:
+            results.append(SmokeTestResult(
+                f"ring3_{file_entry['role']}", False, f"Missing: {file_entry['path']}", critical=required
+            ))
+
+    return results
+
+
+def test_bom_meta_ring() -> List[SmokeTestResult]:
+    """Test Meta-Ring (Orchestration) files from BOM manifest."""
+    results = []
+    manifest = load_bom_manifest()
+    meta_ring = manifest.get("meta_ring", {})
+
+    # Test directories
+    for dir_entry in meta_ring.get("directories", []):
+        path = BASE_DIR / dir_entry["path"]
+        required = dir_entry.get("required", True)
+        if path.exists() and path.is_dir():
+            results.append(SmokeTestResult(
+                f"meta_dir_{dir_entry['role']}", True, f"Directory exists: {dir_entry['path']}"
+            ))
+        else:
+            results.append(SmokeTestResult(
+                f"meta_dir_{dir_entry['role']}", False, f"Missing: {dir_entry['path']}", critical=required
+            ))
+
+    # Test files
+    for file_entry in meta_ring.get("files", []):
+        path = BASE_DIR / file_entry["path"]
+        required = file_entry.get("required", True)
+        if path.exists():
+            results.append(SmokeTestResult(
+                f"meta_{file_entry['role']}", True, f"Exists: {file_entry['path']}"
+            ))
+        else:
+            results.append(SmokeTestResult(
+                f"meta_{file_entry['role']}", False, f"Missing: {file_entry['path']}", critical=required
+            ))
+
+    return results
+
+
 def test_ring2_yamls() -> List[SmokeTestResult]:
     """Test that all Ring 2 policy YAMLs exist and are valid."""
     results = []
@@ -359,6 +528,12 @@ def run_all_tests() -> Tuple[List[SmokeTestResult], bool]:
     results.append(test_ollama_responsive())
     results.append(test_sibling_wake())
     results.append(test_systemd_service())
+
+    # BOM-based tests (from molt_manifest.yaml)
+    results.extend(test_bom_ring1())
+    results.extend(test_bom_ring2())
+    results.extend(test_bom_ring3())
+    results.extend(test_bom_meta_ring())
 
     # Calculate pass/fail
     critical_failures = [r for r in results if not r.passed and r.critical]

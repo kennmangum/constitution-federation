@@ -1,0 +1,28 @@
+version: 1
+updated: '2025-12-05T18:52:38.107060Z'
+applied_actions:
+- '- [x] PROMOTE_ACTION: run_sibling_drift_validation -> TIGER.GREEN'
+- '- [x] PROMOTE_ACTION: run_iron_sanitizer -> DRAGON.GREEN'
+- '- [x] PROMOTE_ACTION: run_sep_health -> DRAGON.GREEN'
+- '- [x] PROMOTE_ACTION: check_vastai_earnings -> DRAGON.GREEN'
+- '- [x] PROMOTE_ACTION: update_implementation_registry -> DRAGON.GREEN'
+- '- [x] PROMOTE_ACTION: check_vastai_balance -> DRAGON.GREEN'
+- '- [x] PROMOTE_ACTION: run_drift_check -> DRAGON.GREEN'
+- '- [x] PROMOTE_ACTION: check_vastai_status -> DRAGON.GREEN'
+- '- [x] PROMOTE_ACTION: check_sibling_status -> TIGER.GREEN'
+nodes:
+  DRAGON:
+    green:
+    - check_vastai_status
+    - check_vastai_earnings
+    - check_vastai_balance
+    - run_sep_health
+    - run_drift_check
+    - run_iron_sanitizer
+    - update_implementation_registry
+    yellow_only: []
+  TIGER:
+    green:
+    - check_sibling_status
+    - run_sibling_drift_validation
+    yellow_only: []

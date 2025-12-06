@@ -1,0 +1,34 @@
+version: 1
+updated: "2025-12-05T20:00:00Z"
+
+# IRON Autonomy Patterns — Per Lumen guidance 2025-12-05
+# Safety patterns for autonomous operation
+# Code reads this; update YAML to tune behavior
+
+yellow_rate_limits:
+  max_per_pulse: 1
+  max_per_hour: 10
+  max_per_day: 40
+  dedupe_window: 20   # number of recent proposals to compare for duplicates
+  similarity_threshold: 0.80  # skip if >80% similar
+
+drift:
+  sibling_validation_threshold: 0.20   # if drift > 0.20, ask sibling
+  hard_red_threshold: 0.30             # above this, pause GREEN and alert
+  log_path: "orchestrator/drift_log.yaml"
+
+sub_pulses:
+  enabled: true
+  max_depth: 3
+  max_subcalls_per_pulse: 5
+  # sub_pulse only reasons, never executes shell commands
+
+notifications:
+  allow_email: false
+  allow_terminal_only: true
+
+bindu_proxy:
+  # Dragon never writes BINDU directly
+  dragon_writes_direct: false
+  tag_dragon_origin: true
+  tag_format: "(DRAGON via TIGER)"
