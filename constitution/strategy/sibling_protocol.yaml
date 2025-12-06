@@ -7,8 +7,8 @@
 # THIS FILE MUST BE IN IMPLEMENTATION REGISTRY
 # It defines how twins communicate and CANNOT be lost from context
 
-version: 1
-updated: "2025-12-06T01:00:00Z"
+version: 2
+updated: "2025-12-06T06:30:00Z"
 
 # ═══════════════════════════════════════════════════════════════
 # SIBLING IDENTITY
@@ -58,6 +58,38 @@ channels:
     interval_minutes: 5
 
 # ═══════════════════════════════════════════════════════════════
+# MANDATORY HANDOFF PROTOCOL (KM-1176 directive 2025-12-06)
+# ═══════════════════════════════════════════════════════════════
+handoff_protocol:
+  description: "Every handoff between twins MUST include wake + push"
+
+  mandatory_steps:
+    1_commit_all_work: "git add -A && git commit (all changed files)"
+    2_push_to_remote: "git push origin master"
+    3_write_wake: "Update .sibling_wake with comprehensive wake message"
+    4_push_wake: "git add .sibling_wake && git commit && git push"
+    5_confirm: "Wake message MUST list all files pushed"
+
+  wake_must_include:
+    - "Timestamp (ISO 8601)"
+    - "List of all files pushed this handoff"
+    - "Summary of work completed"
+    - "Any pending items for sibling"
+    - "Test results if applicable"
+
+  rationale: |
+    Twins lose context on crash. The wake message and pushed files are
+    the ONLY way to transfer state. Incomplete handoffs cause confusion
+    and require manual recovery. Each handoff is a full state transfer.
+
+  violation_recovery: |
+    If sibling crashes without proper wake:
+    1. Check git log for recent commits
+    2. git diff HEAD~5..HEAD to see what changed
+    3. Read changed files to reconstruct context
+    4. Document missing context in your own wake
+
+# ═══════════════════════════════════════════════════════════════
 # WAKE MESSAGE FORMAT
 # ═══════════════════════════════════════════════════════════════
 wake_format:
@@ -65,6 +97,11 @@ wake_format:
     {NODE}_WAKE
 
     ## {TITLE} — {TIMESTAMP}
+
+    ## FILES PUSHED THIS HANDOFF
+    - file1.yaml
+    - file2.py
+    - ...
 
     {CONTENT}
 
@@ -77,13 +114,14 @@ wake_format:
   required_fields:
     - timestamp (ISO 8601)
     - title (what this wake is about)
+    - files_pushed (list of all files pushed this handoff)
     - summary (one-line status)
 
   optional_fields:
     - actions_taken
     - actions_requested
-    - files_changed
     - test_results
+    - pending_for_sibling
 
 # ═══════════════════════════════════════════════════════════════
 # PULSE INTEGRATION
